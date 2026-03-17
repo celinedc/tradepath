@@ -57,12 +57,12 @@ function StudentDashboard({ profile }) {
                 <h3 className="font-black uppercase tracking-widest text-[10px] text-indigo-100 italic">Your Level-Up Progress</h3>
               </div>
               <h2 className="text-4xl font-black tracking-tight">
-                {hasCompletedDiscovery ? tradeName : "Discovery Awaits"}
+                {currentTrade.name}
               </h2>
               <p className="text-indigo-200 text-sm font-medium">
-                {hasCompletedDiscovery 
-                  ? "Your skills match this high-growth trade perfectly." 
-                  : "Complete your Career Discovery to unlock personalized recommendations."}
+                {currentTrade.id === 'undecided' 
+                  ? "Explore top trades or complete discovery to find your perfect match."
+                  : `Your roadmap to becoming a world-class ${currentTrade.name}.`}
               </p>
             </div>
             {!hasCompletedDiscovery && (
@@ -118,24 +118,24 @@ function StudentDashboard({ profile }) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <MetricCard 
           title="Starting Salary" 
-          value={hasCompletedDiscovery ? `$${currentTrade.base.toLocaleString()}` : "$55k+"}
-          subValue="+12% growth"
+          value={`$${currentTrade.base.toLocaleString()}`}
+          subValue={currentTrade.id === 'undecided' ? "Trade Skill Average" : "+12% growth"}
           icon={<DollarSign className="w-6 h-6 text-indigo-500" />}
           trend="up"
           theme="indigo"
         />
         <MetricCard 
           title="Local Demand" 
-          value={hasCompletedDiscovery ? currentTrade.demand : "Critical"}
-          subValue="450+ openings"
+          value={currentTrade.demand}
+          subValue={currentTrade.id === 'undecided' ? "National Benchmark" : "450+ openings"}
           icon={<Users className="w-6 h-6 text-indigo-500" />}
           trend="up"
           theme="indigo"
         />
         <MetricCard 
           title="Field Growth" 
-          value={hasCompletedDiscovery ? currentTrade.growth : "High"}
-          subValue="Future stable"
+          value={currentTrade.growth}
+          subValue={currentTrade.id === 'undecided' ? "Sector Trend" : "Future stable"}
           icon={<TrendingUp className="w-6 h-6 text-indigo-500" />}
           trend="up"
           theme="indigo"
@@ -145,7 +145,7 @@ function StudentDashboard({ profile }) {
       <section className="space-y-4">
         <div className="flex justify-between items-center">
           <h3 className="text-2xl font-black text-indigo-950 tracking-tight">
-            {hasCompletedDiscovery ? `Best Schools for ${currentTrade.name}s` : "Recommended Programs"}
+            {currentTrade.id === 'undecided' ? "Top-Rated Programs" : `Best Schools for ${currentTrade.name}s`}
           </h3>
           <Link to="/schools" className="text-indigo-600 font-black text-xs uppercase flex items-center gap-1 hover:underline tracking-widest bg-indigo-50 px-6 py-3 rounded-full transition-all hover:bg-indigo-100">
             Explore All <ArrowRight className="w-4 h-4" />

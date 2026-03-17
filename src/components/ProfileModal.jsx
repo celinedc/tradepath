@@ -172,7 +172,7 @@ export default function ProfileModal({ isOpen, onClose }) {
                             className="input-field text-sm p-3 bg-white appearance-none font-bold"
                           >
                             {TRADE_CAREERS.map(t => (
-                              <option key={t.id} value={t.id}>{t.name}</option>
+                              <option key={t.id} value={t.id}>{t.id === 'undecided' ? 'Undecided' : t.name}</option>
                             ))}
                           </select>
                         </div>

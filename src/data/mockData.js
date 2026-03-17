@@ -28,6 +28,114 @@ export const ETHNICITIES = [
 
 export const TRADE_CAREERS = [
   {
+    "id": "undecided",
+    "name": "Career Explorer - Searching",
+    "sector": "Exploring",
+    "base": 48250,
+    "demand": "Very High",
+    "growth": "6%",
+    "payGrowth": [
+      {
+        "year": "1",
+        "white": 48250,
+        "black": 39565,
+        "hispanic": 41012,
+        "asian": 50662,
+        "multi": 44390
+      },
+      {
+        "year": "5",
+        "white": 56450,
+        "black": 46289,
+        "hispanic": 47982,
+        "asian": 59272,
+        "multi": 51934
+      },
+      {
+        "year": "10",
+        "white": 68500,
+        "black": 56170,
+        "hispanic": 58225,
+        "asian": 71925,
+        "multi": 63020
+      },
+      {
+        "year": "15",
+        "white": 82000,
+        "black": 67240,
+        "hispanic": 69700,
+        "asian": 86100,
+        "multi": 75440
+      },
+      {
+        "year": "20",
+        "white": 98000,
+        "black": 80360,
+        "hispanic": 83300,
+        "asian": 102900,
+        "multi": 90160
+      },
+      {
+        "year": "25",
+        "white": 118000,
+        "black": 96760,
+        "hispanic": 100300,
+        "asian": 123900,
+        "multi": 108560
+      },
+      {
+        "year": "30",
+        "white": 142000,
+        "black": 116440,
+        "hispanic": 120700,
+        "asian": 149100,
+        "multi": 130640
+      },
+      {
+        "year": "35",
+        "white": 172000,
+        "black": 141040,
+        "hispanic": 146200,
+        "asian": 180600,
+        "multi": 158240
+      },
+      {
+        "year": "40",
+        "white": 208000,
+        "black": 170560,
+        "hispanic": 176800,
+        "asian": 218400,
+        "multi": 191360
+      }
+    ],
+    "aptitude": "Ideal for students in the discovery phase. This path provides a comparative look at trade career averages while you explore specific skilled trades.",
+    "competencies": [
+      {
+        "title": "Discovery Phase",
+        "desc": "Evaluating interests across multiple high-demand sectors.",
+        "icon": "Search",
+        "color": "text-safety-blue"
+      },
+      {
+        "title": "Aptitude Mapping",
+        "desc": "Identifying natural strengths through hands-on sampling.",
+        "icon": "Compass",
+        "color": "text-indigo-500"
+      },
+      {
+        "title": "Market Analysis",
+        "desc": "Comparing longitudinal wealth outcomes across core trades.",
+        "icon": "TrendingUp",
+        "color": "text-emerald-500"
+      }
+    ],
+    "comparableJob": {
+      "name": "General Bachelor's Degree",
+      "startingSalary": 58500,
+      "avgCost": "$125,000"
+    }
+  },
+  {
     "id": "electrician",
     "name": "Electrician",
     "sector": "Construction",
@@ -31020,7 +31128,7 @@ export const USER_PROFILE = {
   currentSchool: "Central High School",
   schoolCity: "Little Rock",
   schoolState: "AR",
-  selectedTrade: "electrician",
+  selectedTrade: "undecided",
   resume: null,
   grades: [
     { subject: "Algebra II", grade: "B+" },
