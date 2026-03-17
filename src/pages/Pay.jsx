@@ -235,7 +235,7 @@ export default function PayPage() {
       />
 
       {/* Sidebar Filters - Back on Left */}
-      <aside className="w-full lg:w-72 flex-shrink-0 space-y-6 lg:sticky lg:top-8 self-start">
+      <aside className="w-full lg:w-80 flex-shrink-0 space-y-6 lg:sticky lg:top-8 self-start">
         <div className={`card p-6 border-none shadow-sm ${isStudent ? 'bg-white rounded-[2rem]' : 'bg-white'}`}>
           <div className="flex items-center gap-2 mb-6">
             <Filter className={`w-5 h-5 ${isStudent ? 'text-indigo-600' : 'text-safety-blue'}`} />
@@ -493,7 +493,13 @@ export default function PayPage() {
                 <Tooltip 
                   formatter={(value) => [`$${value.toLocaleString()}`, 'Annual Salary']}
                   labelFormatter={(label) => `Year ${label}`}
-                  contentStyle={{borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)'}}
+                  contentStyle={{
+                    borderRadius: '12px', 
+                    border: 'none', 
+                    boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)',
+                    maxWidth: 'none',
+                    whiteSpace: 'pre-wrap'
+                  }}
                 />
                 {showAllEthnicities ? (
                   ETHNICITIES.map(e => (
@@ -620,7 +626,7 @@ export default function PayPage() {
                 </div>
               </div>
 
-            <div className="flex flex-col xl:flex-row gap-10">
+            <div className="flex flex-col gap-10">
               {/* Left: Chart */}
               <div className="flex-1">
                 <div className="flex items-center gap-6 mb-4 text-[10px] font-bold uppercase tracking-widest">
@@ -650,7 +656,13 @@ export default function PayPage() {
                         tickFormatter={(value) => `$${value/1000}k`} 
                       />
                       <Tooltip 
-                        contentStyle={{borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)'}}
+                        contentStyle={{
+                          borderRadius: '12px', 
+                          border: 'none', 
+                          boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)',
+                          maxWidth: 'none',
+                          whiteSpace: 'pre-wrap'
+                        }}
                         formatter={(value, name) => [
                           `$${value.toLocaleString()}`, 
                           name.includes('trade') ? `${tradeData.name} Income` : `${comparablePath.name} Net`
@@ -679,43 +691,46 @@ export default function PayPage() {
                 </div>
               </div>
 
-              {/* Right: Insight Cards */}
-              <div className="w-full xl:w-80 space-y-4">
-                <div className="card p-6 bg-white border-industrial-200 hover:shadow-md transition-all group">
+              {/* Bottom: Insight Cards (Now full width row) */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-industrial-200/50">
+                <div className="card p-6 bg-white border-industrial-100/50 hover:shadow-md transition-all group">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="p-2 bg-rose-50 rounded-lg group-hover:bg-rose-100 transition-colors">
                       <GraduationCap className="w-5 h-5 text-rose-600" />
                     </div>
                     <h4 className="text-sm font-black text-industrial-900 uppercase">Hidden Cost of Debt</h4>
                   </div>
-                  <p className="text-xs text-industrial-500 leading-relaxed">
-                    A typical <span className="font-bold">{comparablePath.name}</span> graduate enters the market <span className="font-bold text-rose-600">${degreeDebt.toLocaleString()}</span> in student debt. Total cost of education including lost wages (opportunity cost) exceeds <span className="font-bold text-industrial-900">{comparablePath.avgCost}</span>.
+                  <p className="text-xs text-industrial-500 leading-relaxed font-medium">
+                    A typical <span className="font-black">{comparablePath.name}</span> graduate enters the market <span className="font-black text-rose-600">${degreeDebt.toLocaleString()}</span> in student debt. Total cost including lost wages exceeds <span className="font-black text-industrial-900">{comparablePath.avgCost}</span>.
                   </p>
                 </div>
 
-                <div className="card p-6 bg-white border-industrial-200 hover:shadow-md transition-all group">
+                <div className="card p-6 bg-white border-industrial-100/50 hover:shadow-md transition-all group">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="p-2 bg-emerald-50 rounded-lg group-hover:bg-emerald-100 transition-colors">
                       <Zap className="w-5 h-5 text-emerald-600" />
                     </div>
                     <h4 className="text-sm font-black text-industrial-900 uppercase">Early Entry Benefit</h4>
                   </div>
-                  <p className="text-xs text-industrial-500 leading-relaxed">
-                    Trade students enter the workforce at least <span className="font-bold text-emerald-600">4 years earlier</span>. This "Head Start" leads to compounding gains and early home ownership potential.
+                  <p className="text-xs text-industrial-500 leading-relaxed font-medium">
+                    Trade students enter the workforce <span className="font-black text-emerald-600">4 years earlier</span>. This "Head Start" leads to compounding gains and early home ownership potential.
                   </p>
                 </div>
 
                 <div 
                   onClick={() => setIsROIModalOpen(true)}
-                  className="card p-5 bg-industrial-900 text-white border-none flex items-center justify-between group cursor-pointer hover:bg-industrial-800 transition-all shadow-xl shadow-industrial-900/20"
+                  className="card p-6 bg-industrial-900 text-white border-none flex flex-col justify-center gap-3 group cursor-pointer hover:bg-industrial-800 transition-all shadow-xl shadow-industrial-900/20"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-indigo-500/20 rounded-lg">
-                      <Target className="w-5 h-5 text-indigo-400" />
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-indigo-500/20 rounded-lg">
+                        <Target className="w-5 h-5 text-indigo-400" />
+                      </div>
+                      <span className="text-sm font-black uppercase tracking-widest text-white leading-none">Your Path ROI</span>
                     </div>
-                    <span className="text-sm font-black uppercase tracking-widest">Your Path ROI</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </div>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <p className="text-[10px] text-industrial-400 font-bold uppercase tracking-wider">Expand Full Wealth Projection</p>
                 </div>
               </div>
             </div>

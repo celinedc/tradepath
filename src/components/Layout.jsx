@@ -123,7 +123,7 @@ export default function Layout({ children }) {
               </span>
             </div>
             <p className="text-industrial-500 text-sm font-medium">
-              {userType === 'student' ? `Career Explorer • Journeying towards ${selectedTradeName}` : `${profile.department} • ${profile.school}`}
+              {userType === 'student' ? `Career Path Discovery • ${selectedTradeName}` : `${profile.department} • ${profile.school}`}
             </p>
           </div>
           <div 
