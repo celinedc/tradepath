@@ -265,12 +265,101 @@ export default function PayPage() {
   const isStudent = userType === 'student';
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
       
-      {/* Main Analysis Content (Left Side) */}
-      <div className="flex-1 space-y-8 min-w-0">
-        {/* Main 40-Year Projection */}
-        <section className="card p-8 bg-white shadow-xl border-none">
+      {/* Top Row: Sidebar + 40-Year Graph */}
+      <div className="flex flex-col lg:flex-row gap-8">
+        {/* Control Panel (Sidebar on Left) - Fixed height parent to prevent scrolling down with page */}
+        <aside className="w-full lg:w-80 flex-shrink-0 space-y-6">
+          <div className={`card p-6 border-none shadow-sm ${isStudent ? 'bg-white rounded-[2rem]' : 'bg-white'}`}>
+              <div className="flex items-center gap-2 mb-6">
+                <Filter className={`w-5 h-5 ${isStudent ? 'text-indigo-600' : 'text-safety-blue'}`} />
+                <span className={`font-black uppercase tracking-widest text-xs ${isStudent ? 'text-indigo-900' : 'text-industrial-900'}`}>Control Panel</span>
+              </div>
+
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-industrial-400 uppercase tracking-widest">Career Path</label>
+                  <select 
+                    value={selectedTrade}
+                    onChange={(e) => setSelectedTrade(e.target.value)}
+                    className={`input-field py-3 text-sm appearance-none cursor-pointer ${isStudent ? 'bg-indigo-50/50 border-indigo-100 rounded-2xl text-indigo-900 font-bold' : 'bg-industrial-50 border-industrial-200'}`}
+                  >
+                    {Object.entries(
+                      TRADE_CAREERS.reduce((acc, t) => {
+                        const sector = t.sector || 'Other';
+                        if (!acc[sector]) acc[sector] = [];
+                        acc[sector].push(t);
+                        return acc;
+                      }, {})
+                    ).map(([sector, trades]) => (
+                      <optgroup key={sector} label={sector}>
+                        {trades.map(t => (
+                          <option key={t.id} value={t.id}>{t.name}</option>
+                        ))}
+                      </optgroup>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="pt-4 border-t border-industrial-100 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-bold text-industrial-700">Region Pay</span>
+                    <button 
+                      onClick={() => setUseRegionalPay(!useRegionalPay)}
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${useRegionalPay ? 'bg-emerald-500' : 'bg-industrial-200'}`}
+                    >
+                      <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${useRegionalPay ? 'translate-x-6' : 'translate-x-1'}`} />
+                    </button>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label className="text-[9px] font-black text-industrial-400 uppercase tracking-widest">Override Location</label>
+                    <select 
+                      value={selectedCustomState}
+                      onChange={(e) => { setSelectedCustomState(e.target.value); if (e.target.value) setUseRegionalPay(true); }}
+                      className={`w-full py-2 px-3 text-xs border rounded-xl appearance-none cursor-pointer ${isStudent ? 'bg-indigo-50/50 border-indigo-100' : 'bg-industrial-50 border-industrial-100'}`}
+                    >
+                      <option value="">Current Profile Location</option>
+                      <optgroup label="Core States">
+                        <option value="CA">California (+25%)</option>
+                        <option value="NY">New York (+25%)</option>
+                        <option value="TX">Texas (+10%)</option>
+                        <option value="FL">Florida (+10%)</option>
+                        <option value="AR">Arkansas (-8%)</option>
+                      </optgroup>
+                      <option value="all">View All States...</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-industrial-100">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-bold text-industrial-700">Gender Equity</span>
+                    <button 
+                      onClick={() => setShowGenderGap(!showGenderGap)}
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${showGenderGap ? 'bg-safety-blue' : 'bg-industrial-200'}`}
+                    >
+                      <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${showGenderGap ? 'translate-x-6' : 'translate-x-1'}`} />
+                    </button>
+                  </div>
+                  <p className="text-[10px] text-industrial-400 leading-tight">Apply gender-based wage gap analysis.</p>
+                </div>
+              </div>
+          </div>
+
+          <div className="card p-6 bg-blue-50 border-blue-100">
+            <div className="flex gap-3">
+              <Info className="w-5 h-5 text-safety-blue flex-shrink-0" />
+              <p className="text-xs text-blue-800 font-medium font-medium leading-relaxed">
+                <strong>Financial Fact:</strong> Skilled trades often offer "paid-to-learn" apprenticeships.
+              </p>
+            </div>
+          </div>
+        </aside>
+
+        {/* First Graph Section */}
+        <section className="flex-1 card p-8 bg-white shadow-xl border-none min-w-0">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
             <div>
               <div className="flex items-center gap-2 mb-2">
@@ -278,12 +367,7 @@ export default function PayPage() {
                 <span className="text-xs font-black text-safety-blue uppercase tracking-widest">Annual Earnings</span>
               </div>
               <h3 className="text-3xl font-black text-industrial-900 tracking-tight">40-Year Career Projection</h3>
-              <p className="text-sm text-industrial-500 mt-1 font-medium">Estimated salary trajectory adjusted for {regionMultiplier !== 1 ? 'Regional Pay' : 'National Averages'}.</p>
-            </div>
-            <div className="flex gap-3">
-              <div className="px-4 py-2 bg-industrial-900 text-white rounded-xl text-xs font-black uppercase tracking-widest shadow-lg shadow-industrial-900/20">
-                LIFETIME ROI: 4.2X
-              </div>
+              <p className="text-sm text-industrial-500 mt-1 font-medium italic">trajectory based on {regionMultiplier !== 1 ? 'Regional Pay' : 'National Averages'}.</p>
             </div>
           </div>
 
@@ -297,301 +381,102 @@ export default function PayPage() {
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                <XAxis 
-                  dataKey="year" 
-                  axisLine={false} 
-                  tickLine={false} 
-                  tick={{fill: '#94a3b8', fontSize: 11}} 
-                  label={{ value: 'Years in Career', position: 'insideBottom', offset: -5, fontSize: 10, fill: '#64748b' }}
-                />
-                <YAxis 
-                  axisLine={false} 
-                  tickLine={false} 
-                  tick={{fill: '#94a3b8', fontSize: 11}} 
-                  tickFormatter={(value) => `$${value/1000}k`} 
-                />
+                <XAxis dataKey="year" axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 11}} />
+                <YAxis axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 11}} tickFormatter={(value) => `$${value/1000}k`} />
                 <Tooltip 
-                  formatter={(value) => [`$${value.toLocaleString()}`, 'Annual Salary']}
-                  labelFormatter={(label) => `Year ${label}`}
-                  contentStyle={{
-                    borderRadius: '12px', 
-                    border: 'none', 
-                    boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)',
-                    maxWidth: 'none',
-                    whiteSpace: 'pre-wrap'
-                  }}
+                  formatter={(value) => [`$${value.toLocaleString()}`, 'Salary']}
+                  contentStyle={{borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)', maxWidth: 'none', whiteSpace: 'pre-wrap'}}
                 />
-                {showAllEthnicities ? (
-                  ETHNICITIES.map(e => (
-                    <Area 
-                      key={e.id}
-                      type="monotone" 
-                      dataKey={e.id} 
-                      stroke={e.color} 
-                      strokeWidth={2} 
-                      fillOpacity={1} 
-                      fill={`url(#color${e.id})`} 
-                      animationDuration={1500} 
-                    />
-                  ))
-                ) : (
-                    <Area 
-                      type="monotone" 
-                      dataKey="baseline" 
-                      stroke={ETHNICITIES.find(e => e.id === selectedEthnicity)?.color || "#1e293b"} 
-                      strokeWidth={4} 
-                      fillOpacity={1} 
-                      fill="url(#colorMain)" 
-                      animationDuration={1500} 
-                    />
-                )}
-                {useRegionalPay && (
-                   <Area type="monotone" dataKey="regionalShift" stroke="#10b981" strokeWidth={3} fillOpacity={0} animationDuration={1500} />
-                )}
-                {showGenderGap && (
-                   <Area type="monotone" dataKey="genderGap" stroke="#fb7185" strokeWidth={2} strokeDasharray="5 5" fillOpacity={0} animationDuration={1500} />
-                )}
+                <Area type="monotone" dataKey="baseline" stroke={ETHNICITIES.find(e => e.id === selectedEthnicity)?.color || "#1e293b"} strokeWidth={4} fillOpacity={1} fill="url(#colorMain)" animationDuration={1500} />
+                {useRegionalPay && <Area type="monotone" dataKey="regionalShift" stroke="#10b981" strokeWidth={3} fillOpacity={0} animationDuration={1500} />}
+                {showGenderGap && <Area type="monotone" dataKey="genderGap" stroke="#fb7185" strokeWidth={2} strokeDasharray="5 5" fillOpacity={0} animationDuration={1500} />}
               </AreaChart>
             </ResponsiveContainer>
           </div>
         </section>
+      </div>
 
-        {/* Quick Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-           <div className="card p-6 bg-industrial-900 text-white border-none shadow-xl shadow-industrial-900/10">
-              <div className="flex items-center gap-2 mb-3">
+      {/* Full Width Middle Section: Quick Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="card p-6 bg-industrial-900 text-white border-none shadow-xl">
+            <div className="flex items-center gap-2 mb-3">
+              <Coins className="w-4 h-4 text-safety-blue" />
+              <span className="text-[10px] font-black uppercase tracking-wider text-industrial-400">Total Career Potential</span>
+            </div>
+            <h4 className="text-3xl font-black text-white">$3,310,667</h4>
+          </div>
+          <div className="card p-6 border-industrial-100 bg-white">
+            <h4 className="text-2xl font-black text-industrial-900 mb-1">{tradeData.demand}</h4>
+            <p className="text-xs text-industrial-500 font-medium italic">National Market Demand</p>
+          </div>
+          <div className="card p-6 border-industrial-100 bg-white">
+            <p className="text-xs text-industrial-500 leading-relaxed font-medium">
+              Baseline Wealth Parity: <span className="font-black text-rose-600">0% gap</span>.
+            </p>
+          </div>
+      </div>
+
+      {/* Full Width Bottom Section: True Wealth */}
+      <section className="space-y-8 pb-12">
+        <div className="card p-8 bg-industrial-50 border-industrial-200">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
                 <Coins className="w-4 h-4 text-safety-blue" />
-                <span className="text-[10px] font-black uppercase tracking-wider text-industrial-400">Total Career Potential</span>
+                <span className="text-xs font-black text-safety-blue uppercase tracking-widest">ROI Analysis</span>
               </div>
-              <h4 className="text-3xl font-black text-white leading-none mb-4">
-                $3,310,667
-              </h4>
-              <p className="text-xs text-industrial-400 leading-relaxed font-medium">
-                40-year cumulative estimate for {tradeData.name}s.
+              <h3 className="text-2xl font-black text-industrial-900">The "True Wealth" Comparison</h3>
+              <p className="text-xs text-industrial-500 max-w-2xl mt-1 leading-relaxed font-medium">
+                Benchmarking <span className="font-bold text-industrial-900 uppercase">{tradeData.name}</span> training against a <span className="font-bold text-blue-600 uppercase">{comparablePath.name}</span>.
               </p>
-           </div>
-           
-           <div className="card p-6 border-industrial-100 bg-white">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-emerald-100/50 rounded-lg">
-                  <Briefcase className="w-5 h-5 text-emerald-600" />
-                </div>
-                <span className="text-[10px] font-black uppercase tracking-widest text-industrial-500">Market Demand</span>
-              </div>
-              <h4 className="text-2xl font-black text-industrial-900 mb-1">{tradeData.demand}</h4>
-              <p className="text-xs text-industrial-500 font-medium leading-relaxed">Industrial growth projected at <span className="text-emerald-600 font-bold">{tradeData.growth}</span> through 2030.</p>
-           </div>
+            </div>
+            <div className="p-3 bg-white rounded-xl border border-industrial-200 shadow-sm text-[10px] font-black uppercase">
+                Crossover Year: <span className="text-safety-blue text-sm">{breakEvenYear || 'N/A'}</span>
+            </div>
+          </div>
 
-           <div className="card p-6 border-industrial-100 bg-white">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-rose-50 rounded-lg">
-                  <Users className="w-5 h-5 text-rose-500" />
-                </div>
-                <span className="text-[10px] font-black uppercase tracking-widest text-industrial-500">Wealth Gap Alert</span>
-              </div>
-              <p className="text-xs text-industrial-500 leading-relaxed font-medium">
-                Baseline parity for this role: <span className="font-black text-rose-600">0%</span>. 
-                Navigate systemic pay disparities with specialized tools.
-              </p>
-           </div>
-        </div>
-
-        {/* True Wealth Section */}
-        <section className="space-y-8 pb-12">
-          <div className="card p-8 bg-industrial-50 border-industrial-200">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <Coins className="w-4 h-4 text-safety-blue" />
-                  <span className="text-xs font-black text-safety-blue uppercase tracking-widest">ROI Analysis</span>
-                </div>
-                <h3 className="text-2xl font-black text-industrial-900">The "True Wealth" Comparison</h3>
-                <p className="text-xs text-industrial-500 max-w-2xl mt-1 leading-relaxed">
-                  Benchmarking the cumulative earnings of <span className="font-bold text-industrial-900">{tradeData.name}</span> training against a <span className="font-bold text-blue-600">{comparablePath.name}</span>.
-                </p>
-              </div>
-              <div className="p-3 bg-white rounded-xl border border-industrial-200 shadow-sm">
-                <div className="text-[10px] font-black text-industrial-600 uppercase">
-                   Crossover Year: <span className="text-safety-blue text-sm">{breakEvenYear ? breakEvenYear : 'N/A'}</span>
-                </div>
+          <div className="flex flex-col xl:flex-row gap-8">
+            <div className="flex-1 min-w-0">
+              <div className="h-[500px] w-full bg-white/40 rounded-[2.5rem] p-6 border border-white">
+                <ResponsiveContainer width="100%" height="100%">
+                  <ComposedChart data={comparisonDataResults}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
+                    <XAxis dataKey="year" axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 11}} />
+                    <YAxis axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 11}} tickFormatter={(val) => `$${val/1000}k`} />
+                    <Tooltip contentStyle={{borderRadius: '16px', border: 'none', boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)', maxWidth: 'none', whiteSpace: 'pre-wrap'}} />
+                    <Area type="monotone" dataKey="tradeCumulative" stroke="#1e293b" fill="#1e293b" fillOpacity={0.03} strokeWidth={4} />
+                    <Area type="monotone" dataKey="degreeCumulative" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.03} strokeWidth={4} />
+                  </ComposedChart>
+                </ResponsiveContainer>
               </div>
             </div>
 
-            <div className="flex flex-col xl:flex-row gap-8">
-              {/* Chart */}
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-6 mb-6 text-[10px] font-bold uppercase tracking-widest">
-                  <div className="flex items-center gap-1.5"><div className="w-8 h-2 bg-industrial-900 rounded-full" /> {tradeData.name} Wealth</div>
-                  <div className="flex items-center gap-1.5"><div className="w-8 h-2 bg-blue-500 rounded-full" /> {comparablePath.name} Wealth</div>
-                </div>
-
-                <div className="h-[500px] w-full bg-white/40 rounded-[2.5rem] p-6 border border-white">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <ComposedChart data={comparisonDataResults} margin={{ top: 10, right: 10, left: 10, bottom: 20 }}>
-                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                      <XAxis 
-                        dataKey="year" 
-                        axisLine={false} 
-                        tickLine={false} 
-                        tick={{fill: '#94a3b8', fontSize: 11}} 
-                      />
-                      <YAxis 
-                        axisLine={false} 
-                        tickLine={false} 
-                        tick={{fill: '#94a3b8', fontSize: 11}} 
-                        tickFormatter={(value) => `$${value/1000}k`} 
-                      />
-                      <Tooltip 
-                        contentStyle={{borderRadius: '16px', border: 'none', boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)', maxWidth: 'none', whiteSpace: 'pre-wrap'}}
-                        formatter={(value) => [`$${value.toLocaleString()}`, 'Net Worth']}
-                      />
-                      <Area type="monotone" dataKey="tradeCumulative" stroke="#1e293b" fill="#1e293b" fillOpacity={0.03} strokeWidth={4} />
-                      <Area type="monotone" dataKey="degreeCumulative" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.03} strokeWidth={4} />
-                    </ComposedChart>
-                  </ResponsiveContainer>
-                </div>
+            <div className="w-full xl:w-80 flex flex-col gap-5">
+              <div className="card p-6 bg-white border-industrial-100/60 shadow-sm">
+                <h4 className="text-xs font-black text-industrial-900 uppercase mb-4">Hidden Cost</h4>
+                <p className="text-xs text-industrial-500 leading-relaxed font-medium">
+                  Degree debt: <span className="font-black text-rose-600">${degreeDebt.toLocaleString()}</span>. Total lifetime cost: <span className="font-black text-industrial-900">{comparablePath.avgCost}</span>.
+                </p>
               </div>
-
-              {/* Insights on Right */}
-              <div className="w-full xl:w-80 flex flex-col gap-5">
-                <div className="card p-6 bg-white border-industrial-100/60 shadow-sm">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-rose-50 rounded-lg"><GraduationCap className="w-5 h-5 text-rose-600" /></div>
-                    <h4 className="text-xs font-black text-industrial-900 uppercase">Hidden Cost</h4>
-                  </div>
-                  <p className="text-xs text-industrial-500 leading-relaxed font-medium">
-                    Typical degree debt enters at <span className="font-black text-rose-600">${degreeDebt.toLocaleString()}</span>. Total lifetime cost inclusive of lost early wages exceeds <span className="font-black text-industrial-900">{comparablePath.avgCost}</span>.
-                  </p>
-                </div>
-
-                <div className="card p-6 bg-white border-industrial-100/60 shadow-sm">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-emerald-50 rounded-lg"><Zap className="w-5 h-5 text-emerald-600" /></div>
-                    <h4 className="text-xs font-black text-industrial-900 uppercase">Early Start</h4>
-                  </div>
-                  <p className="text-xs text-industrial-500 leading-relaxed font-medium">
-                    Trade students start earning 4 years sooner. This "Head Start" creates an immediate wealth gap that degree paths struggle to close.
-                  </p>
-                </div>
-
-                <div 
-                  onClick={() => setIsROIModalOpen(true)}
-                  className="card p-6 mt-auto bg-industrial-900 text-white border-none flex flex-col justify-center gap-3 group cursor-pointer hover:bg-industrial-800 transition-all shadow-xl shadow-industrial-900/10"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 bg-indigo-500/20 rounded-lg"><Target className="w-5 h-5 text-indigo-400" /></div>
-                      <span className="text-xs font-black uppercase tracking-widest leading-none">Your Path ROI</span>
-                    </div>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                  <p className="text-[10px] text-industrial-400 font-bold uppercase tracking-wider">Expand Full Wealth Projection</p>
+              <div className="card p-6 bg-white border-industrial-100/60 shadow-sm">
+                <h4 className="text-xs font-black text-industrial-900 uppercase mb-4">Early Start</h4>
+                <p className="text-xs text-industrial-500 leading-relaxed font-medium">
+                  Trade paths earn 4 years sooner, creating an immediate wealth lead.
+                </p>
+              </div>
+              <div 
+                onClick={() => setIsROIModalOpen(true)}
+                className="card p-6 mt-auto bg-industrial-900 text-white border-none flex flex-col justify-center gap-3 group cursor-pointer hover:bg-industrial-800 transition-all shadow-xl"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-black uppercase tracking-widest leading-none">Your Path ROI</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             </div>
           </div>
-        </section>
-      </div>
-
-      {/* Control Panel (Sidebar on Right) */}
-      <aside className="w-full lg:w-80 flex-shrink-0 space-y-6 lg:sticky lg:top-8 self-start">
-        <div className={`card p-6 border-none shadow-sm ${isStudent ? 'bg-white rounded-[2rem]' : 'bg-white'}`}>
-            <div className="flex items-center gap-2 mb-6">
-              <Filter className={`w-5 h-5 ${isStudent ? 'text-indigo-600' : 'text-safety-blue'}`} />
-              <span className={`font-black uppercase tracking-widest text-xs ${isStudent ? 'text-indigo-900' : 'text-industrial-900'}`}>Control Panel</span>
-            </div>
-
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <label className="text-[10px] font-black text-industrial-400 uppercase tracking-widest">Career Path</label>
-                <select 
-                  value={selectedTrade}
-                  onChange={(e) => setSelectedTrade(e.target.value)}
-                  className={`input-field py-3 text-sm appearance-none cursor-pointer ${isStudent ? 'bg-indigo-50/50 border-indigo-100 rounded-2xl text-indigo-900 font-bold' : 'bg-industrial-50 border-industrial-200'}`}
-                >
-                  {Object.entries(
-                    TRADE_CAREERS.reduce((acc, t) => {
-                      const sector = t.sector || 'Other';
-                      if (!acc[sector]) acc[sector] = [];
-                      acc[sector].push(t);
-                      return acc;
-                    }, {})
-                  ).map(([sector, trades]) => (
-                    <optgroup key={sector} label={sector}>
-                      {trades.map(t => (
-                        <option key={t.id} value={t.id}>{t.name}</option>
-                      ))}
-                    </optgroup>
-                  ))}
-                </select>
-              </div>
-
-              <div className="pt-4 border-t border-industrial-100 space-y-4">
-                 <div className="flex items-center justify-between">
-                   <span className="text-sm font-bold text-industrial-700">Region Pay</span>
-                   <button 
-                    onClick={() => setUseRegionalPay(!useRegionalPay)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${useRegionalPay ? 'bg-emerald-500' : 'bg-industrial-200'}`}
-                   >
-                     <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${useRegionalPay ? 'translate-x-6' : 'translate-x-1'}`} />
-                   </button>
-                 </div>
-                 
-                 <div className="space-y-2">
-                   <label className="text-[9px] font-black text-industrial-400 uppercase tracking-widest">Override Location</label>
-                   <select 
-                     value={selectedCustomState}
-                     onChange={(e) => { setSelectedCustomState(e.target.value); if (e.target.value) setUseRegionalPay(true); }}
-                     className={`w-full py-2 px-3 text-xs border rounded-xl appearance-none cursor-pointer ${isStudent ? 'bg-indigo-50/50 border-indigo-100' : 'bg-industrial-50 border-industrial-100'}`}
-                   >
-                     <option value="">Current Profile Location</option>
-                     <optgroup label="Core States">
-                       <option value="CA">California (+25%)</option>
-                       <option value="NY">New York (+25%)</option>
-                       <option value="TX">Texas (+10%)</option>
-                       <option value="FL">Florida (+10%)</option>
-                       <option value="AR">Arkansas (-8%)</option>
-                     </optgroup>
-                     <option value="all">View All States...</option>
-                   </select>
-                 </div>
-              </div>
-
-              <div className="pt-4 border-t border-industrial-100">
-                 <div className="flex items-center justify-between mb-2">
-                   <span className="text-sm font-bold text-industrial-700">Gender Equity</span>
-                   <button 
-                    onClick={() => setShowGenderGap(!showGenderGap)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${showGenderGap ? 'bg-safety-blue' : 'bg-industrial-200'}`}
-                   >
-                     <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${showGenderGap ? 'translate-x-6' : 'translate-x-1'}`} />
-                   </button>
-                 </div>
-                 <p className="text-[10px] text-industrial-400 leading-tight">Apply gender-based wage gap analysis to projections.</p>
-              </div>
-
-              {userType === 'counselor' && (
-                 <div className="pt-4 border-t border-industrial-100">
-                    <button 
-                      onClick={() => setShowAllEthnicities(!showAllEthnicities)}
-                      className="w-full py-3 rounded-xl border border-industrial-200 text-xs font-black uppercase tracking-widest text-industrial-600 hover:bg-industrial-50 transition-colors"
-                    >
-                      {showAllEthnicities ? 'Hide Group Comparison' : 'Compare Ethnicities'}
-                    </button>
-                 </div>
-              )}
-            </div>
         </div>
-
-        <div className="card p-6 bg-blue-50 border-blue-100">
-           <div className="flex gap-3">
-             <Info className="w-5 h-5 text-safety-blue flex-shrink-0" />
-             <p className="text-xs text-blue-800 leading-relaxed font-medium">
-               <strong>Financial Fact:</strong> Skilled trades often offer "paid-to-learn" apprenticeships with zero debt.
-             </p>
-           </div>
-        </div>
-      </aside>
+      </section>
 
       <ROIPathModal 
         isOpen={isROIModalOpen} 
