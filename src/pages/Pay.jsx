@@ -12,86 +12,102 @@ import { TRADE_CAREERS, ETHNICITIES, CITY_PAY_ADJUSTMENTS } from '../data/mockDa
 import { fetchCareerWages, getLocalizedMultiplier } from '../services/CareerOneStop';
 import { useUser } from '../context/UserContext';
 
-// ROI Path Modal Component
-const ROIPathModal = ({ isOpen, onClose, tradeData, ethnicity, comparisonData, comparablePath }) => {
+// Milestone Component for ROI Modal
+const Milestone = ({ year, title, desc, icon }) => (
+    <div className="flex gap-4 p-5 rounded-3xl bg-industrial-50 border border-industrial-100 group hover:border-indigo-200 transition-all">
+        <div className="w-12 h-12 rounded-2xl bg-white border border-industrial-100 flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform">
+            {icon}
+        </div>
+        <div className="space-y-0.5">
+            <div className="flex items-center gap-2">
+                <span className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">{year}</span>
+                <h5 className="text-sm font-black text-industrial-900">{title}</h5>
+            </div>
+            <p className="text-xs text-industrial-500 font-medium leading-relaxed">{desc}</p>
+        </div>
+    </div>
+);
+
+// ROI Path Modal Component (Restored to original detailed version)
+const ROIPathModal = ({ isOpen, onClose, tradeData, ethnicity, comparisonData }) => {
   if (!isOpen) return null;
 
+  const lastPoint = comparisonData[comparisonData.length - 1];
+  const totalTradeWealth = lastPoint.tradeCumulative;
+  const totalDegreeWealth = lastPoint.degreeCumulative;
+  const wealthDifference = totalTradeWealth - totalDegreeWealth;
+
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-industrial-900/60 backdrop-blur-sm animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
       <motion.div 
-        initial={{ opacity: 0, scale: 0.95, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        className="bg-white rounded-[2.5rem] shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+        className="absolute inset-0 bg-indigo-950/40 backdrop-blur-md"
+      />
+      <motion.div 
+        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        className="relative bg-white rounded-[3rem] w-full max-w-2xl overflow-hidden shadow-2xl border border-white/20"
       >
-        <div className="p-8 border-b border-industrial-100 flex justify-between items-center bg-industrial-50/50">
-          <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="px-2 py-0.5 bg-safety-blue/10 text-safety-blue text-[10px] font-black uppercase rounded-full tracking-wider">Depth Analysis</span>
-              <h2 className="text-2xl font-black text-industrial-900 leading-none">Full Wealth Projection</h2>
-            </div>
-            <p className="text-sm text-industrial-500 font-medium tracking-tight">
-              40-Year Cumulative ROI: {tradeData.name} vs {comparablePath.name}
-            </p>
-          </div>
-          <button 
-            onClick={onClose}
-            className="p-3 hover:bg-white rounded-2xl transition-all border border-transparent hover:border-industrial-200"
-          >
-            <X className="w-5 h-5 text-industrial-400" />
+        <div className="bg-indigo-600 p-10 text-white relative">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-400 rounded-full blur-[80px] opacity-30 -mr-20 -mt-20" />
+          <button onClick={onClose} className="absolute top-8 right-8 text-white/60 hover:text-white transition-colors">
+            <X className="w-6 h-6" />
           </button>
+          <div className="relative z-10 space-y-2">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-indigo-300" />
+              <span className="text-xs font-black uppercase tracking-[0.2em] text-indigo-200">Financial Roadmap</span>
+            </div>
+            <h2 className="text-4xl font-black tracking-tight leading-tight">Your {tradeData.name} ROI Path</h2>
+          </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-10 space-y-10 custom-scrollbar">
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="p-6 rounded-[2rem] bg-industrial-900 text-white shadow-xl">
-                <p className="text-[10px] font-black uppercase tracking-widest text-industrial-400 mb-2">Trade Advantage</p>
-                <h4 className="text-2xl font-black leading-none mb-2">+$182,500</h4>
-                <p className="text-[10px] text-industrial-400 leading-snug">Average cumulative wealth lead at Year 10 due to zero student debt.</p>
-              </div>
-              <div className="p-6 rounded-[2rem] bg-emerald-50 border border-emerald-100">
-                <p className="text-[10px] font-black uppercase tracking-widest text-emerald-600 mb-2">Break-Even Point</p>
-                <h4 className="text-2xl font-black text-industrial-900 leading-none mb-2">Year 32</h4>
-                <p className="text-[10px] text-industrial-500 leading-snug">The year average degree earnings finally catch up to trade wealth.</p>
-              </div>
-              <div className="p-6 rounded-[2rem] bg-indigo-50 border border-indigo-100">
-                <p className="text-[10px] font-black uppercase tracking-widest text-indigo-600 mb-2">Lifetime Difference</p>
-                <h4 className="text-2xl font-black text-industrial-900 leading-none mb-2">Comparable</h4>
-                <p className="text-[10px] text-industrial-500 leading-snug">Projected lifetime earnings within 5% of technical management roles.</p>
-              </div>
-           </div>
+        <div className="p-10 space-y-8">
+          <div className="grid grid-cols-2 gap-6">
+            <div className="space-y-1">
+              <p className="text-[10px] font-black uppercase text-industrial-400 tracking-widest leading-none">40-Year Trade Wealth</p>
+              <p className="text-4xl font-black text-indigo-900">${totalTradeWealth.toLocaleString()}</p>
+            </div>
+            <div className="space-y-1">
+              <p className="text-[10px] font-black uppercase text-industrial-400 tracking-widest leading-none">Net Wealth Advantage</p>
+              <p className={`text-4xl font-black ${wealthDifference > 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+                {wealthDifference > 0 ? '+' : ''}${wealthDifference.toLocaleString()}
+              </p>
+            </div>
+          </div>
 
-           <div className="space-y-6">
-             <div className="flex items-center justify-between">
-                <h3 className="text-lg font-black text-industrial-900 tracking-tight uppercase border-l-4 border-safety-blue pl-4">Cumulative Wealth Over Time</h3>
-                <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest">
-                  <div className="flex items-center gap-1.5"><div className="w-6 h-1 bg-industrial-900 rounded-full" /> Trade</div>
-                  <div className="flex items-center gap-1.5"><div className="w-6 h-1 bg-safety-blue rounded-full" /> Degree</div>
-                </div>
+          <div className="space-y-4">
+             <h4 className="text-sm font-black uppercase tracking-widest text-industrial-900 border-l-4 border-indigo-500 pl-4">Path Milestones</h4>
+             <div className="space-y-3">
+                <Milestone 
+                    year="Year 1" 
+                    title="Debt-Free Start" 
+                    desc={`Unlike college, you start earning ~$${tradeData.base.toLocaleString()} immediately with near-zero student debt.`}
+                    icon={<Zap className="w-4 h-4 text-amber-500" />}
+                />
+                <Milestone 
+                    year="Year 4" 
+                    title="The Accumulation Gap" 
+                    desc={`While degree students enter the workforce, you've already earned ~$${Math.round(totalTradeWealth * 0.1).toLocaleString()} in cumulative income.`}
+                    icon={<TrendingUp className="w-4 h-4 text-indigo-500" />}
+                />
+                <Milestone 
+                    year="Year 10" 
+                    title={`The ${tradeData.sector} Mastery`} 
+                    desc="Your specialized experience puts you in the top 15% of earners locally as a seasoned professional."
+                    icon={<Coins className="w-4 h-4 text-emerald-500" />}
+                />
              </div>
-             <div className="h-[300px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={comparisonData}>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                    <XAxis dataKey="year" axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 10}} />
-                    <YAxis axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 10}} tickFormatter={(val) => `$${val/1000}k`} />
-                    <Tooltip 
-                      contentStyle={{borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)'}}
-                      formatter={(val) => [`$${val.toLocaleString()}`, 'Cumulative Wealth']}
-                    />
-                    <Area type="monotone" dataKey="tradeCumulative" stroke="#1e293b" fill="#1e293b" fillOpacity={0.05} strokeWidth={3} />
-                    <Area type="monotone" dataKey="degreeCumulative" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.05} strokeWidth={3} />
-                  </AreaChart>
-                </ResponsiveContainer>
-             </div>
-           </div>
-        </div>
+          </div>
 
-        <div className="p-8 bg-industrial-50/50 border-t border-industrial-100">
           <button 
             onClick={onClose}
-            className="w-full py-4 bg-industrial-900 text-white rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-industrial-800 transition-all shadow-xl shadow-industrial-900/20"
+            className="w-full py-5 bg-indigo-600 text-white rounded-[1.5rem] font-black uppercase tracking-widest text-xs hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-600/20"
           >
-            Close ROI Roadmap
+            Got it, Let's Go!
           </button>
         </div>
       </motion.div>
