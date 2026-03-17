@@ -140,7 +140,45 @@ export default function PayPage() {
     }
   }, [profile.selectedTrade, profile.ethnicity, userType]);
 
-  const tradeData = TRADE_CAREERS.find(t => t.id === selectedTrade) || TRADE_CAREERS[0];
+  const tradeCareers = TRADE_CAREERS;
+  
+  const allTradesAverage = useMemo(() => {
+    const coreTrades = tradeCareers.filter(t => t.id !== 'undecided');
+    const years = ["1", "5", "10", "15", "20", "25", "30", "35", "40"];
+    
+    const avgPayGrowth = years.map(yearStr => {
+      const yearResult = { year: yearStr };
+      ETHNICITIES.forEach(eth => {
+        const sum = coreTrades.reduce((acc, trade) => {
+          const point = trade.payGrowth.find(p => p.year === yearStr);
+          return acc + (point ? point[eth.id] : trade.base);
+        }, 0);
+        yearResult[eth.id] = Math.round(sum / coreTrades.length);
+      });
+      return yearResult;
+    });
+
+    return {
+      id: 'all-trades',
+      name: 'All Trades Average',
+      sector: 'Averages',
+      base: Math.round(coreTrades.reduce((acc, t) => acc + t.base, 0) / coreTrades.length),
+      demand: 'High',
+      growth: '6%',
+      payGrowth: avgPayGrowth,
+      comparableJob: {
+        name: 'General Bachelor\'s Degree',
+        startingSalary: 62000,
+        avgCost: '$120,000'
+      }
+    };
+  }, [tradeCareers]);
+
+  const tradeData = useMemo(() => {
+    if (selectedTrade === 'all-trades') return allTradesAverage;
+    return tradeCareers.find(t => t.id === selectedTrade) || tradeCareers[0];
+  }, [selectedTrade, allTradesAverage, tradeCareers]);
+
   const [currentWageData, setCurrentWageData] = useState(null);
 
   useEffect(() => {
@@ -306,8 +344,9 @@ export default function PayPage() {
                     onChange={(e) => setSelectedTrade(e.target.value)}
                     className={`input-field py-3 text-sm appearance-none cursor-pointer ${isStudent ? 'bg-indigo-50/50 border-indigo-100 rounded-2xl text-indigo-900 font-bold' : 'bg-industrial-50 border-industrial-200'}`}
                   >
+                    <option value="all-trades">All Trades Average</option>
                     {Object.entries(
-                      TRADE_CAREERS.reduce((acc, t) => {
+                      tradeCareers.reduce((acc, t) => {
                         const sector = t.sector || 'Other';
                         if (!acc[sector]) acc[sector] = [];
                         acc[sector].push(t);
