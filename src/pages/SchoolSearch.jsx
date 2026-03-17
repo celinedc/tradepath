@@ -8,7 +8,12 @@ import { useUser } from '../context/UserContext';
 export default function SchoolSearchPage() {
   const [searchParams] = useSearchParams();
   const { profile, toggleStarSchool } = useUser();
-  const [selectedTrade, setSelectedTrade] = useState(profile.selectedTrade || 'all');
+  const getInitialTrade = () => {
+    if (searchParams.get('trade')) return searchParams.get('trade');
+    if (profile.selectedTrade === 'undecided') return 'all';
+    return profile.selectedTrade || 'all';
+  };
+  const [selectedTrade, setSelectedTrade] = useState(getInitialTrade());
   const [priceRange, setPriceRange] = useState(50000);
   const [selectedState, setSelectedState] = useState('All');
   const [selectedType, setSelectedType] = useState('All');
@@ -20,10 +25,16 @@ export default function SchoolSearchPage() {
     const tradeParam = searchParams.get('trade');
     const stateParam = searchParams.get('state');
     const locationParam = searchParams.get('location');
-    if (tradeParam) setSelectedTrade(tradeParam);
+    
+    if (tradeParam) {
+      setSelectedTrade(tradeParam);
+    } else {
+      setSelectedTrade(profile.selectedTrade === 'undecided' ? 'all' : (profile.selectedTrade || 'all'));
+    }
+    
     if (stateParam) setSelectedState(stateParam);
     if (locationParam) setSearchQuery(locationParam);
-  }, [searchParams]);
+  }, [searchParams, profile.selectedTrade]);
 
   const statesList = [
     { label: 'Northeast', states: ['CT', 'DE', 'ME', 'MD', 'MA', 'NH', 'NJ', 'NY', 'PA', 'RI', 'VT'] },
