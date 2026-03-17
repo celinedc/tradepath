@@ -9,7 +9,8 @@ export default function SchoolSearchPage() {
   const [searchParams] = useSearchParams();
   const { profile, toggleStarSchool } = useUser();
   const getInitialTrade = () => {
-    if (searchParams.get('trade')) return searchParams.get('trade');
+    const tradeParam = searchParams.get('trade');
+    if (tradeParam) return tradeParam === 'undecided' ? 'all' : tradeParam;
     if (profile.selectedTrade === 'undecided') return 'all';
     return profile.selectedTrade || 'all';
   };
@@ -27,7 +28,7 @@ export default function SchoolSearchPage() {
     const locationParam = searchParams.get('location');
     
     if (tradeParam) {
-      setSelectedTrade(tradeParam);
+      setSelectedTrade(tradeParam === 'undecided' ? 'all' : tradeParam);
     } else {
       setSelectedTrade(profile.selectedTrade === 'undecided' ? 'all' : (profile.selectedTrade || 'all'));
     }
@@ -81,12 +82,14 @@ export default function SchoolSearchPage() {
               >
                 <option value="all">All Trades</option>
                 {Object.entries(
-                  TRADE_CAREERS.reduce((acc, t) => {
-                    const sector = t.sector || 'Other';
-                    if (!acc[sector]) acc[sector] = [];
-                    acc[sector].push(t);
-                    return acc;
-                  }, {})
+                  TRADE_CAREERS
+                    .filter(t => t.id !== 'undecided')
+                    .reduce((acc, t) => {
+                      const sector = t.sector || 'Other';
+                      if (!acc[sector]) acc[sector] = [];
+                      acc[sector].push(t);
+                      return acc;
+                    }, {})
                 ).map(([sector, trades]) => (
                   <optgroup key={sector} label={sector}>
                     {trades.map(t => (

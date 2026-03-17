@@ -29,7 +29,7 @@ export const ETHNICITIES = [
 export const TRADE_CAREERS = [
   {
     "id": "undecided",
-    "name": "Career Discovery (Exploring)",
+    "name": "Exploring",
     "sector": "Exploring",
     "base": 48250,
     "demand": "Very High",

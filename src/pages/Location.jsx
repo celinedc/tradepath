@@ -18,11 +18,11 @@ export default function LocationPage() {
   const { profile, userType } = useUser();
   const [tooltipContent, setTooltipContent] = useState("");
   const [selectedState, setSelectedState] = useState(null);
-  const [selectedTrade, setSelectedTrade] = useState(profile.selectedTrade || 'all');
+  const [selectedTrade, setSelectedTrade] = useState(profile.selectedTrade === 'undecided' ? 'all' : (profile.selectedTrade || 'all'));
 
   useEffect(() => {
     if (profile.selectedTrade) {
-      setSelectedTrade(profile.selectedTrade);
+      setSelectedTrade(profile.selectedTrade === 'undecided' ? 'all' : profile.selectedTrade);
     }
   }, [profile.selectedTrade]);
 
@@ -73,12 +73,14 @@ export default function LocationPage() {
             >
               <option value="all">All Skilled Trades</option>
               {Object.entries(
-                TRADE_CAREERS.reduce((acc, t) => {
-                  const sector = t.sector || 'Other';
-                  if (!acc[sector]) acc[sector] = [];
-                  acc[sector].push(t);
-                  return acc;
-                }, {})
+                TRADE_CAREERS
+                  .filter(t => t.id !== 'undecided')
+                  .reduce((acc, t) => {
+                    const sector = t.sector || 'Other';
+                    if (!acc[sector]) acc[sector] = [];
+                    acc[sector].push(t);
+                    return acc;
+                  }, {})
               ).map(([sector, trades]) => (
                 <optgroup key={sector} label={sector}>
                   {trades.map(t => (

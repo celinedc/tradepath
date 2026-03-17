@@ -122,7 +122,7 @@ const ROIPathModal = ({ isOpen, onClose, tradeData, ethnicity, comparisonData })
 
 export default function PayPage() {
   const { profile, userType } = useUser();
-  const [selectedTrade, setSelectedTrade] = useState(profile.selectedTrade || 'electrician');
+  const [selectedTrade, setSelectedTrade] = useState(profile.selectedTrade === 'undecided' ? 'all-trades' : (profile.selectedTrade || 'electrician'));
   const [selectedEthnicity, setSelectedEthnicity] = useState(profile.ethnicity || 'white');
   const [showAllEthnicities, setShowAllEthnicities] = useState(false);
   const [showGenderGap, setShowGenderGap] = useState(false);
@@ -133,7 +133,7 @@ export default function PayPage() {
   // Sync with global profile when it changes
   useEffect(() => {
     if (profile.selectedTrade) {
-      setSelectedTrade(profile.selectedTrade);
+      setSelectedTrade(profile.selectedTrade === 'undecided' ? 'all-trades' : profile.selectedTrade);
     }
     if (userType === 'student' && profile.ethnicity) {
       setSelectedEthnicity(profile.ethnicity);
@@ -346,12 +346,14 @@ export default function PayPage() {
                   >
                     <option value="all-trades">All Trades Average</option>
                     {Object.entries(
-                      tradeCareers.reduce((acc, t) => {
-                        const sector = t.sector || 'Other';
-                        if (!acc[sector]) acc[sector] = [];
-                        acc[sector].push(t);
-                        return acc;
-                      }, {})
+                      tradeCareers
+                        .filter(t => t.id !== 'undecided')
+                        .reduce((acc, t) => {
+                          const sector = t.sector || 'Other';
+                          if (!acc[sector]) acc[sector] = [];
+                          acc[sector].push(t);
+                          return acc;
+                        }, {})
                     ).map(([sector, trades]) => (
                       <optgroup key={sector} label={sector}>
                         {trades.map(t => (

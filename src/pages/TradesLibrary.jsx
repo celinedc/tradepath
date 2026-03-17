@@ -44,6 +44,7 @@ export default function TradesLibrary() {
 
   const filteredTrades = useMemo(() => {
     return TRADE_CAREERS.filter(trade => {
+      if (trade.id === 'undecided') return false;
       const matchesSearch = trade.name.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesSector = selectedSector === 'all' || trade.sector === selectedSector;
       
@@ -255,7 +256,8 @@ export default function TradesLibrary() {
                   <button 
                     onClick={() => {
                         const state = (profile.location || '').split(',').pop()?.trim() || '';
-                        navigate(`/schools?trade=${selectedTrade.id}&location=${encodeURIComponent(state)}`);
+                        const tradeId = selectedTrade.id === 'undecided' ? 'all' : selectedTrade.id;
+                        navigate(`/schools?trade=${tradeId}&location=${encodeURIComponent(state)}`);
                     }}
                     className="w-full md:w-auto px-8 py-4 bg-safety-blue text-white rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20"
                   >
