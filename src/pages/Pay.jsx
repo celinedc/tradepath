@@ -148,8 +148,11 @@ export default function PayPage() {
     const comparablePath = getComparablePath();
     const degreeStartSalary = comparablePath.startingSalary;
     const degreeCost = parseInt(comparablePath.avgCost.replace(/[^0-9]/g, '')) || 120000;
-    const degreeDebt = Math.round(degreeCost * 0.4); // Standard student debt load
-    const degreeGrowth = 0.042; // Degree paths often have slightly steeper growth later in career
+    
+    // Adjusted to reflect actual student loan debt (National avg ~$28k - $32k)
+    // rather than the total sticker price of the degree which includes grants/scholarships
+    const degreeDebt = Math.min(Math.round(degreeCost * 0.25), 32000); 
+    const degreeGrowth = 0.042;
 
     let tradeCumulative = -tradeDebt;
     let degreeCumulative = -degreeDebt;
@@ -181,13 +184,14 @@ export default function PayPage() {
         tradeCumulative: Math.round(tradeCumulative),
         degreeCumulative: Math.round(degreeCumulative),
         comparablePathName: comparablePath.name,
-        comparablePathCost: comparablePath.avgCost
+        comparablePathCost: comparablePath.avgCost,
+        comparablePathDebt: degreeDebt
       });
     }
-    return { data, breakEvenYear, comparablePath };
+    return { data, breakEvenYear, comparablePath, degreeDebt };
   }, [tradeData]);
 
-  const { data: comparisonDataResults, breakEvenYear, comparablePath } = comparisonData;
+  const { data: comparisonDataResults, breakEvenYear, comparablePath, degreeDebt } = comparisonData;
 
   const isStudent = userType === 'student';
 
@@ -200,6 +204,7 @@ export default function PayPage() {
         tradeData={tradeData}
         ethnicity={selectedEthnicity}
         comparisonData={comparisonDataResults}
+        comparablePath={comparablePath}
       />
 
       {/* Sidebar Filters - Back on Left */}
@@ -596,7 +601,7 @@ export default function PayPage() {
                     <div className="w-8 h-2 bg-industrial-900 rounded-full" /> {tradeData.name} (Cumulative)
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <div className="w-8 h-2 bg-blue-500 rounded-full" /> {(tradeData.comparableJob?.name) || 'Degree Path'} (Cumulative)
+                    <div className="w-8 h-2 bg-blue-500 rounded-full" /> {comparablePath.name} (Cumulative)
                   </div>
                 </div>
 
@@ -615,7 +620,7 @@ export default function PayPage() {
                         axisLine={false} 
                         tickLine={false} 
                         tick={{fill: '#94a3b8', fontSize: 11}} 
-                        tickFormatter={(value) => `$${value/1000}k`} 
+                        tickFormatter={(value) => value >= 1000000 ? `$${(value/1000000).toFixed(1)}M` : `$${value/1000}k`} 
                       />
                       <Tooltip 
                         contentStyle={{borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)'}}
@@ -657,7 +662,7 @@ export default function PayPage() {
                     <h4 className="text-sm font-black text-industrial-900 uppercase">Hidden Cost of Debt</h4>
                   </div>
                   <p className="text-xs text-industrial-500 leading-relaxed">
-                    A typical <span className="font-bold">{comparablePath.name}</span> graduate enters the market <span className="font-bold text-rose-600">{comparablePath.avgCost}</span> in debt. Total opportunity cost (lost wages during school) exceeds <span className="font-bold text-industrial-900">$280k</span>.
+                    A typical <span className="font-bold">{comparablePath.name}</span> graduate enters the market <span className="font-bold text-rose-600">${degreeDebt.toLocaleString()}</span> in student debt. Total cost of education including lost wages (opportunity cost) exceeds <span className="font-bold text-industrial-900">{comparablePath.avgCost}</span>.
                   </p>
                 </div>
 
@@ -694,7 +699,7 @@ export default function PayPage() {
   );
 }
 
-function ROIPathModal({ isOpen, onClose, tradeData, ethnicity, comparisonData }) {
+function ROIPathModal({ isOpen, onClose, tradeData, ethnicity, comparisonData, comparablePath }) {
   if (!isOpen) return null;
 
   const totalTradeWealth = comparisonData[comparisonData.length - 1].tradeCumulative;
