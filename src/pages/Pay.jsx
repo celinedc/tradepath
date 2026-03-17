@@ -38,42 +38,42 @@ const ROIPathModal = ({ isOpen, onClose, tradeData, ethnicity, comparisonData })
   const wealthDifference = totalTradeWealth - totalDegreeWealth;
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center p-6">
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="absolute inset-0 bg-indigo-950/40 backdrop-blur-md"
+        className="absolute inset-0 bg-indigo-950/60 backdrop-blur-xl"
       />
       <motion.div 
         initial={{ scale: 0.9, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
-        className="relative bg-white rounded-[3rem] w-full max-w-2xl overflow-hidden shadow-2xl border border-white/20"
+        className="relative bg-white rounded-[2.5rem] w-full max-w-lg overflow-hidden shadow-2xl border border-white/20"
       >
-        <div className="bg-indigo-600 p-10 text-white relative">
+        <div className="bg-indigo-600 p-8 text-white relative">
           <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-400 rounded-full blur-[80px] opacity-30 -mr-20 -mt-20" />
-          <button onClick={onClose} className="absolute top-8 right-8 text-white/60 hover:text-white transition-colors">
-            <X className="w-6 h-6" />
+          <button onClick={onClose} className="absolute top-6 right-6 text-white/60 hover:text-white transition-colors">
+            <X className="w-5 h-5" />
           </button>
-          <div className="relative z-10 space-y-2">
+          <div className="relative z-10 space-y-1.5">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-indigo-300" />
-              <span className="text-xs font-black uppercase tracking-[0.2em] text-indigo-200">Financial Roadmap</span>
+              <Sparkles className="w-4 h-4 text-indigo-300" />
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-200">Financial Roadmap</span>
             </div>
-            <h2 className="text-4xl font-black tracking-tight leading-tight">Your {tradeData.name} ROI Path</h2>
+            <h2 className="text-3xl font-black tracking-tight leading-tight">Your {tradeData.name} ROI Path</h2>
           </div>
         </div>
 
-        <div className="p-10 space-y-8">
-          <div className="grid grid-cols-2 gap-6">
+        <div className="p-8 space-y-6">
+          <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1">
               <p className="text-[10px] font-black uppercase text-industrial-400 tracking-widest leading-none">40-Year Trade Wealth</p>
-              <p className="text-4xl font-black text-indigo-900">${totalTradeWealth.toLocaleString()}</p>
+              <p className="text-3xl font-black text-indigo-900">${totalTradeWealth.toLocaleString()}</p>
             </div>
             <div className="space-y-1">
-              <p className="text-[10px] font-black uppercase text-industrial-400 tracking-widest leading-none">Net Wealth Advantage</p>
-              <p className={`text-4xl font-black ${wealthDifference > 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
+              <p className="text-[10px] font-black uppercase text-industrial-400 tracking-widest leading-none">Net Advantage</p>
+              <p className={`text-3xl font-black ${wealthDifference > 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
                 {wealthDifference > 0 ? '+' : ''}${wealthDifference.toLocaleString()}
               </p>
             </div>
