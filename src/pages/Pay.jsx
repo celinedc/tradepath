@@ -154,32 +154,59 @@ export default function PayPage() {
     const degreeDebt = Math.min(Math.round(degreeCost * 0.25), 32000); 
     const degreeGrowth = 0.042;
 
+    const getTradeSalaryForYear = (targetYear) => {
+      const points = tradeData.payGrowth;
+      let prev = points[0];
+      let next = points[points.length - 1];
+      
+      for (let i = 0; i < points.length; i++) {
+        const y = parseInt(points[i].year);
+        if (y <= targetYear) prev = points[i];
+        if (y >= targetYear) {
+          next = points[i];
+          break;
+        }
+      }
+      
+      const valPrev = prev[selectedEthnicity] || tradeData.base;
+      const valNext = next[selectedEthnicity] || tradeData.base;
+      const yearPrev = parseInt(prev.year);
+      const yearNext = parseInt(next.year);
+      
+      if (yearPrev === yearNext) return valPrev;
+      const ratio = (targetYear - yearPrev) / (yearNext - yearPrev);
+      return Math.round(valPrev + ratio * (valNext - valPrev));
+    };
+
     let tradeCumulative = -tradeDebt;
     let degreeCumulative = -degreeDebt;
     let breakEvenYear = null;
 
     for (let year = 1; year <= 40; year++) {
-      // Trade Path Calculation
-      const tradeSalary = tradeStartSalary * Math.pow(1 + tradeGrowth, year - 1);
+      // Trade Path Calculation (Directly from Data)
+      const tradeSalary = getTradeSalaryForYear(year);
       tradeCumulative += tradeSalary;
 
-      // Academic Degree Path Calculation
+      // Academic Degree Path Calculation (Salary vs Tuition Debt)
       let degreeSalary = 0;
-      if (year > 4) {
-        degreeSalary = degreeStartSalary * Math.pow(1 + degreeGrowth, year - 5);
-        degreeCumulative += degreeSalary;
+      if (year <= 4) {
+        // Show the annual cost of education as negative to visualize the "debt hole"
+        degreeSalary = -(degreeCost / 4);
       } else {
-        // Net cost during school years
-        degreeCumulative -= 8000; 
+        degreeSalary = degreeStartSalary * Math.pow(1 + degreeGrowth, year - 5);
       }
+      
+      // We still track cumulative for the crossover calculation
+      if (year > 4) degreeCumulative += degreeSalary;
+      else degreeCumulative -= (degreeCost / 4);
 
-      if (breakEvenYear === null && degreeCumulative > tradeCumulative) {
+      if (breakEvenYear === null && degreeCumulative > tradeCumulative && year > 4) {
         breakEvenYear = year;
       }
 
       data.push({
         year,
-        tradeSalary: Math.round(tradeSalary),
+        tradeSalary, 
         degreeSalary: Math.round(degreeSalary),
         tradeCumulative: Math.round(tradeCumulative),
         degreeCumulative: Math.round(degreeCumulative),
@@ -189,7 +216,7 @@ export default function PayPage() {
       });
     }
     return { data, breakEvenYear, comparablePath, degreeDebt };
-  }, [tradeData]);
+  }, [tradeData, selectedEthnicity]);
 
   const { data: comparisonDataResults, breakEvenYear, comparablePath, degreeDebt } = comparisonData;
 
@@ -598,10 +625,10 @@ export default function PayPage() {
               <div className="flex-1">
                 <div className="flex items-center gap-6 mb-4 text-[10px] font-bold uppercase tracking-widest">
                   <div className="flex items-center gap-1.5">
-                    <div className="w-8 h-2 bg-industrial-900 rounded-full" /> {tradeData.name} (Cumulative)
+                    <div className="w-8 h-2 bg-industrial-900 rounded-full" /> {tradeData.name} (Annual)
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <div className="w-8 h-2 bg-blue-500 rounded-full" /> {comparablePath.name} (Cumulative)
+                    <div className="w-8 h-2 bg-blue-500 rounded-full" /> {comparablePath.name} (Annual + Education Cost)
                   </div>
                 </div>
 
@@ -616,36 +643,36 @@ export default function PayPage() {
                         tick={{fill: '#94a3b8', fontSize: 11}} 
                         label={{ value: 'Years Since High School', position: 'insideBottom', offset: -5, fontSize: 10, fill: '#64748b' }}
                       />
-                      <YAxis 
+                       <YAxis 
                         axisLine={false} 
                         tickLine={false} 
                         tick={{fill: '#94a3b8', fontSize: 11}} 
-                        tickFormatter={(value) => value >= 1000000 ? `$${(value/1000000).toFixed(1)}M` : `$${value/1000}k`} 
+                        tickFormatter={(value) => `$${value/1000}k`} 
                       />
                       <Tooltip 
                         contentStyle={{borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)'}}
                         formatter={(value, name) => [
                           `$${value.toLocaleString()}`, 
-                          name.includes('trade') ? `${tradeData.name} Cumulative` : `${comparablePath.name} Cumulative`
+                          name.includes('trade') ? `${tradeData.name} Income` : `${comparablePath.name} Net`
                         ]}
                       />
                       <Area 
                         type="monotone" 
-                        dataKey="tradeCumulative" 
+                        dataKey="tradeSalary" 
                         stroke="#1e293b" 
-                        strokeWidth={3} 
+                        strokeWidth={4} 
                         fill="#1e293b" 
                         fillOpacity={0.05} 
-                        name="tradeCumulative"
+                        name="tradeSalary"
                       />
                       <Area 
                         type="monotone" 
-                        dataKey="degreeCumulative" 
+                        dataKey="degreeSalary" 
                         stroke="#3b82f6" 
-                        strokeWidth={3} 
+                        strokeWidth={4} 
                         fill="#3b82f6" 
                         fillOpacity={0.05} 
-                        name="degreeCumulative"
+                        name="degreeSalary"
                       />
                     </ComposedChart>
                   </ResponsiveContainer>
