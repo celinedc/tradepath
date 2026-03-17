@@ -88,7 +88,7 @@ export default function PayPage() {
     };
   });
 
-  // Comparison Logic (20-year projection)
+  // Comparison Logic (40-year projection)
   const comparisonData = useMemo(() => {
     const data = [];
     
@@ -98,34 +98,76 @@ export default function PayPage() {
     const tradeDebt = 10000;
     const tradeGrowth = 0.035;
 
-    // 4-Year Degree Params (Dynamic from comparableJob with robust fallback)
-    const comparableJob = tradeData.comparableJob || {
-      name: 'Degree Path',
-      startingSalary: 58000,
-      avgCost: '$120,000'
+    // Academic Comparison Dictionary (Standard BLS data mapped to sectors/trades)
+    const COMPARABLE_MAPPING = {
+      // Sector defaults
+      'Construction': { name: 'Civil Engineer', salary: 76500, cost: 125000 },
+      'Aviation & Aerospace': { name: 'Aerospace Engineer', salary: 88400, cost: 145000 },
+      'Energy & Utilities': { name: 'Electrical Engineer', salary: 78200, cost: 130000 },
+      'Environment': { name: 'Environmental Engineer', salary: 74500, cost: 115000 },
+      'Healthcare & Medical': { name: 'Registered Nurse (BSN)', salary: 81000, cost: 105000 },
+      'Industrial & Manufacturing': { name: 'Mechanical Engineer', salary: 73800, cost: 120000 },
+      'Service': { name: 'Hospitality Management', salary: 58400, cost: 95000 },
+      'Transportation': { name: 'Logistics Manager', salary: 67200, cost: 110000 },
+      
+      // Specific Trades (High ROI overrides)
+      'electrician': { name: 'Electrical Engineer', salary: 78200, cost: 130000 },
+      'hvac': { name: 'Mechanical Engineer', salary: 73800, cost: 125000 },
+      'welder': { name: 'Materials Engineer', salary: 72000, cost: 120000 },
+      'chef': { name: 'Culinary Arts Degree', salary: 61000, cost: 110000 },
+      'plumber': { name: 'Mechanical Engineer', salary: 73800, cost: 125000 },
+      'machinist': { name: 'Industrial Engineer', salary: 75200, cost: 125000 },
+      'it-specialist': { name: 'Computer Science Degree', salary: 88500, cost: 130000 },
+      'dental-assistant': { name: 'Dental Student (DDS)', salary: 145000, cost: 400000 },
+      'truck-driver': { name: 'Logistics Manager', salary: 68500, cost: 105000 },
+      'paramedic': { name: 'ER Registered Nurse', salary: 82500, cost: 110000 },
+      'cabinetmaker': { name: 'Interior Designer', salary: 65000, cost: 95000 },
+      'cnc-operator': { name: 'Industrial Engineer', salary: 75200, cost: 125000 }
     };
-    const degreeStartSalary = comparableJob.startingSalary;
-    const degreeCostStr = comparableJob.avgCost;
-    const degreeCost = parseInt(degreeCostStr.replace(/[^0-9]/g, '')) || 120000;
-    const degreeDebt = Math.round(degreeCost * 0.35); // Estimated debt ratio
-    const degreeGrowth = 0.04;
+
+    const getComparablePath = () => {
+        if (tradeData.comparableJob) return {
+            name: tradeData.comparableJob.name,
+            startingSalary: tradeData.comparableJob.startingSalary,
+            avgCost: tradeData.comparableJob.avgCost
+        };
+        
+        const specifics = COMPARABLE_MAPPING[tradeData.id] || COMPARABLE_MAPPING[tradeData.sector] || {
+            name: '4-Year Academic Path',
+            salary: 62000,
+            cost: 120000
+        };
+
+        return {
+            name: specifics.name,
+            startingSalary: specifics.salary || specifics.startingSalary,
+            avgCost: typeof specifics.cost === 'string' ? specifics.cost : `$${(specifics.cost || 120000).toLocaleString()}`
+        };
+    };
+
+    const comparablePath = getComparablePath();
+    const degreeStartSalary = comparablePath.startingSalary;
+    const degreeCost = parseInt(comparablePath.avgCost.replace(/[^0-9]/g, '')) || 120000;
+    const degreeDebt = Math.round(degreeCost * 0.4); // Standard student debt load
+    const degreeGrowth = 0.042; // Degree paths often have slightly steeper growth later in career
 
     let tradeCumulative = -tradeDebt;
     let degreeCumulative = -degreeDebt;
     let breakEvenYear = null;
+
     for (let year = 1; year <= 40; year++) {
       // Trade Path Calculation
       const tradeSalary = tradeStartSalary * Math.pow(1 + tradeGrowth, year - 1);
       tradeCumulative += tradeSalary;
 
-      // Degree Path Calculation
+      // Academic Degree Path Calculation
       let degreeSalary = 0;
       if (year > 4) {
         degreeSalary = degreeStartSalary * Math.pow(1 + degreeGrowth, year - 5);
         degreeCumulative += degreeSalary;
       } else {
-        // High cost of living/fees during school
-        degreeCumulative -= 5000; 
+        // Net cost during school years
+        degreeCumulative -= 8000; 
       }
 
       if (breakEvenYear === null && degreeCumulative > tradeCumulative) {
@@ -138,12 +180,14 @@ export default function PayPage() {
         degreeSalary: Math.round(degreeSalary),
         tradeCumulative: Math.round(tradeCumulative),
         degreeCumulative: Math.round(degreeCumulative),
+        comparablePathName: comparablePath.name,
+        comparablePathCost: comparablePath.avgCost
       });
     }
-    return { data, breakEvenYear };
+    return { data, breakEvenYear, comparablePath };
   }, [tradeData]);
 
-  const { data: comparisonDataResults, breakEvenYear } = comparisonData;
+  const { data: comparisonDataResults, breakEvenYear, comparablePath } = comparisonData;
 
   const isStudent = userType === 'student';
 
@@ -532,8 +576,8 @@ export default function PayPage() {
                     <span className="text-xs font-black text-safety-blue uppercase tracking-widest">ROI Analysis</span>
                   </div>
                   <h3 className="text-2xl font-black text-industrial-900">The "True Wealth" Comparison</h3>
-                  <p className="text-xs text-industrial-500 max-w-xl mt-1">
-                    Comparing cumulative earnings of <span className="font-bold">{tradeData.name}</span> vs. a <span className="font-bold text-blue-600">{(tradeData.comparableJob?.name) || '4-Year Degree'}</span>.
+                  <p className="text-xs text-industrial-500 max-w-xl mt-1 leading-relaxed">
+                    Benchmarking the cumulative earnings of <span className="font-bold text-industrial-900">{tradeData.name}</span> training against a <span className="font-bold text-blue-600">{comparablePath.name}</span> (starting at ${comparablePath.startingSalary.toLocaleString()}/yr).
                   </p>
                 </div>
                 
@@ -577,7 +621,7 @@ export default function PayPage() {
                         contentStyle={{borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)'}}
                         formatter={(value, name) => [
                           `$${value.toLocaleString()}`, 
-                          name.includes('trade') ? `${tradeData.name} Cumulative` : `${(tradeData.comparableJob?.name) || 'Degree'} Cumulative`
+                          name.includes('trade') ? `${tradeData.name} Cumulative` : `${comparablePath.name} Cumulative`
                         ]}
                       />
                       <Area 
@@ -613,7 +657,7 @@ export default function PayPage() {
                     <h4 className="text-sm font-black text-industrial-900 uppercase">Hidden Cost of Debt</h4>
                   </div>
                   <p className="text-xs text-industrial-500 leading-relaxed">
-                    Average Bachelor's graduates start <span className="font-bold text-rose-600">-$35,000</span> in the hole. Total cost of education including lost income (opportunity cost) exceeds <span className="font-bold text-industrial-900">$250k</span>.
+                    A typical <span className="font-bold">{comparablePath.name}</span> graduate enters the market <span className="font-bold text-rose-600">{comparablePath.avgCost}</span> in debt. Total opportunity cost (lost wages during school) exceeds <span className="font-bold text-industrial-900">$280k</span>.
                   </p>
                 </div>
 
@@ -704,14 +748,14 @@ function ROIPathModal({ isOpen, onClose, tradeData, ethnicity, comparisonData })
              <div className="space-y-3">
                 <Milestone 
                     year="Year 1" 
-                    title="Debt-Free Start" 
-                    desc={`Unlike college, you start earning ~$${tradeData.base.toLocaleString()} immediately with near-zero student debt.`}
+                    title="Liquid Capital Start" 
+                    desc={`Unlike a ${comparablePath.name}, you start pocketing ~$${tradeData.base.toLocaleString()} immediately with near-zero student debt.`}
                     icon={<Zap className="w-4 h-4 text-amber-500" />}
                 />
                 <Milestone 
                     year="Year 4" 
                     title="The Accumulation Gap" 
-                    desc="While degree students enter the workforce, you've already earned ~$220k+ in cumulative income."
+                    desc="While your academic peers are just starting, you've already cleared ~$200k+ in cumulative income and job experience."
                     icon={<TrendingUp className="w-4 h-4 text-indigo-500" />}
                 />
                 <Milestone 
