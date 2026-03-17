@@ -140,7 +140,7 @@ export default function Layout({ children }) {
           </div>
         </header>
         
-        <div className={userType === 'student' ? 'animate-in fade-in slide-in-from-bottom-4 duration-700' : ''}>
+        <div className={userType === 'student' ? 'animate-in fade-in duration-700' : ''}>
           {children}
         </div>
       </main>

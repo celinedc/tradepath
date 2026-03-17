@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { 
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
   Legend, LineChart, Line, ComposedChart, Bar
@@ -28,7 +29,6 @@ const Milestone = ({ year, title, desc, icon }) => (
     </div>
 );
 
-// ROI Path Modal Component (Restored to original detailed version)
 const ROIPathModal = ({ isOpen, onClose, tradeData, ethnicity, comparisonData }) => {
   if (!isOpen) return null;
 
@@ -37,15 +37,19 @@ const ROIPathModal = ({ isOpen, onClose, tradeData, ethnicity, comparisonData })
   const totalDegreeWealth = lastPoint.degreeCumulative;
   const wealthDifference = totalTradeWealth - totalDegreeWealth;
 
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-6">
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={onClose}
-        className="absolute inset-0 bg-indigo-950/60 backdrop-blur-xl"
-      />
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="absolute inset-0 bg-indigo-950/60 backdrop-blur-xl"
+          />
+        )}
+      </AnimatePresence>
       <motion.div 
         initial={{ scale: 0.9, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -111,7 +115,8 @@ const ROIPathModal = ({ isOpen, onClose, tradeData, ethnicity, comparisonData })
           </button>
         </div>
       </motion.div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
