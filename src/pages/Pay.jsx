@@ -265,92 +265,10 @@ export default function PayPage() {
   const isStudent = userType === 'student';
 
   return (
-    <div className="flex flex-col gap-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-      {/* Top Filter Bar (Horizontal) - Replaces Sidebar */}
-      <div className={`card p-6 border-none shadow-sm flex flex-col md:flex-row items-center gap-6 ${isStudent ? 'bg-white rounded-[2rem]' : 'bg-white'}`}>
-          <div className="flex items-center gap-2 pr-6 border-r border-industrial-100 hidden md:flex">
-            <Filter className={`w-5 h-5 ${isStudent ? 'text-indigo-600' : 'text-safety-blue'}`} />
-            <span className={`font-black uppercase tracking-widest text-xs ${isStudent ? 'text-indigo-900' : 'text-industrial-900'}`}>Control Panel</span>
-          </div>
-
-          <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-4 gap-6 items-end">
-            <div className="space-y-1.5">
-              <label className="text-[10px] font-black text-industrial-400 uppercase tracking-widest">Career Path</label>
-              <select 
-                value={selectedTrade}
-                onChange={(e) => setSelectedTrade(e.target.value)}
-                className={`input-field py-2 text-sm appearance-none cursor-pointer ${isStudent ? 'bg-indigo-50/50 border-indigo-100 rounded-xl text-indigo-900 font-bold' : 'bg-industrial-50 border-industrial-200'}`}
-              >
-                {Object.entries(
-                  TRADE_CAREERS.reduce((acc, t) => {
-                    const sector = t.sector || 'Other';
-                    if (!acc[sector]) acc[sector] = [];
-                    acc[sector].push(t);
-                    return acc;
-                  }, {})
-                ).map(([sector, trades]) => (
-                  <optgroup key={sector} label={sector}>
-                    {trades.map(t => (
-                      <option key={t.id} value={t.id}>{t.name}</option>
-                    ))}
-                  </optgroup>
-                ))}
-              </select>
-            </div>
-
-            <div className="flex items-center gap-4 h-11 border-l border-industrial-100 pl-6">
-               <div className="flex flex-col gap-1">
-                 <span className="text-[10px] font-black text-industrial-400 uppercase">Region Analysis</span>
-                 <button 
-                  onClick={() => setUseRegionalPay(!useRegionalPay)}
-                  className={`relative inline-flex h-5 w-10 items-center rounded-full transition-colors ${useRegionalPay ? 'bg-emerald-500' : 'bg-industrial-200'}`}
-                 >
-                   <span className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform ${useRegionalPay ? 'translate-x-6' : 'translate-x-1'}`} />
-                 </button>
-               </div>
-               <div className="flex flex-col gap-1">
-                 <span className="text-[10px] font-black text-industrial-400 uppercase">Gender Equity</span>
-                 <button 
-                  onClick={() => setShowGenderGap(!showGenderGap)}
-                  className={`relative inline-flex h-5 w-10 items-center rounded-full transition-colors ${showGenderGap ? 'bg-safety-blue' : 'bg-industrial-200'}`}
-                 >
-                   <span className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform ${showGenderGap ? 'translate-x-6' : 'translate-x-1'}`} />
-                 </button>
-               </div>
-            </div>
-
-            <div className="space-y-1.5 md:col-span-2 flex items-end gap-3">
-                <div className="flex-1">
-                  <label className="text-[10px] font-black text-industrial-400 uppercase tracking-widest">Override Location</label>
-                  <select 
-                    value={selectedCustomState}
-                    onChange={(e) => { setSelectedCustomState(e.target.value); if (e.target.value) setUseRegionalPay(true); }}
-                    className={`w-full py-2 px-3 text-sm border rounded-xl appearance-none cursor-pointer ${isStudent ? 'bg-indigo-50/50 border-indigo-100' : 'bg-industrial-50 border-industrial-100'}`}
-                  >
-                    <option value="">Current Profile Location</option>
-                    <optgroup label="Core States">
-                      <option value="CA">California (+25%)</option>
-                      <option value="NY">New York (+25%)</option>
-                      <option value="TX">Texas (+10%)</option>
-                      <option value="FL">Florida (+10%)</option>
-                      <option value="AR">Arkansas (-8%)</option>
-                    </optgroup>
-                    <option value="all">View All States...</option>
-                  </select>
-                </div>
-                {userType === 'counselor' && (
-                   <button 
-                    onClick={() => setShowAllEthnicities(!showAllEthnicities)}
-                    className="h-10 px-4 rounded-xl border border-industrial-200 text-[10px] font-black uppercase tracking-widest text-industrial-600 hover:bg-industrial-50 transition-colors"
-                   >
-                     {showAllEthnicities ? 'Hide Groups' : 'Compare Groupings'}
-                   </button>
-                )}
-            </div>
-          </div>
-      </div>
-
-      <div className="space-y-8">
+    <div className="flex flex-col lg:flex-row gap-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+      
+      {/* Main Analysis Content (Left Side) */}
+      <div className="flex-1 space-y-8 min-w-0">
         {/* Main 40-Year Projection */}
         <section className="card p-8 bg-white shadow-xl border-none">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
@@ -369,7 +287,7 @@ export default function PayPage() {
             </div>
           </div>
 
-          <div className="h-[450px] w-full">
+          <div className="h-[450px] w-full bg-white/40 rounded-3xl p-4">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={processedChartData}>
                 <defs>
@@ -500,7 +418,7 @@ export default function PayPage() {
             </div>
 
             <div className="flex flex-col xl:flex-row gap-8">
-              {/* Chart - Now much wider */}
+              {/* Chart */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-6 mb-6 text-[10px] font-bold uppercase tracking-widest">
                   <div className="flex items-center gap-1.5"><div className="w-8 h-2 bg-industrial-900 rounded-full" /> {tradeData.name} Wealth</div>
@@ -574,6 +492,106 @@ export default function PayPage() {
           </div>
         </section>
       </div>
+
+      {/* Control Panel (Sidebar on Right) */}
+      <aside className="w-full lg:w-80 flex-shrink-0 space-y-6 lg:sticky lg:top-8 self-start">
+        <div className={`card p-6 border-none shadow-sm ${isStudent ? 'bg-white rounded-[2rem]' : 'bg-white'}`}>
+            <div className="flex items-center gap-2 mb-6">
+              <Filter className={`w-5 h-5 ${isStudent ? 'text-indigo-600' : 'text-safety-blue'}`} />
+              <span className={`font-black uppercase tracking-widest text-xs ${isStudent ? 'text-indigo-900' : 'text-industrial-900'}`}>Control Panel</span>
+            </div>
+
+            <div className="space-y-6">
+              <div className="space-y-2">
+                <label className="text-[10px] font-black text-industrial-400 uppercase tracking-widest">Career Path</label>
+                <select 
+                  value={selectedTrade}
+                  onChange={(e) => setSelectedTrade(e.target.value)}
+                  className={`input-field py-3 text-sm appearance-none cursor-pointer ${isStudent ? 'bg-indigo-50/50 border-indigo-100 rounded-2xl text-indigo-900 font-bold' : 'bg-industrial-50 border-industrial-200'}`}
+                >
+                  {Object.entries(
+                    TRADE_CAREERS.reduce((acc, t) => {
+                      const sector = t.sector || 'Other';
+                      if (!acc[sector]) acc[sector] = [];
+                      acc[sector].push(t);
+                      return acc;
+                    }, {})
+                  ).map(([sector, trades]) => (
+                    <optgroup key={sector} label={sector}>
+                      {trades.map(t => (
+                        <option key={t.id} value={t.id}>{t.name}</option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
+              </div>
+
+              <div className="pt-4 border-t border-industrial-100 space-y-4">
+                 <div className="flex items-center justify-between">
+                   <span className="text-sm font-bold text-industrial-700">Region Pay</span>
+                   <button 
+                    onClick={() => setUseRegionalPay(!useRegionalPay)}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${useRegionalPay ? 'bg-emerald-500' : 'bg-industrial-200'}`}
+                   >
+                     <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${useRegionalPay ? 'translate-x-6' : 'translate-x-1'}`} />
+                   </button>
+                 </div>
+                 
+                 <div className="space-y-2">
+                   <label className="text-[9px] font-black text-industrial-400 uppercase tracking-widest">Override Location</label>
+                   <select 
+                     value={selectedCustomState}
+                     onChange={(e) => { setSelectedCustomState(e.target.value); if (e.target.value) setUseRegionalPay(true); }}
+                     className={`w-full py-2 px-3 text-xs border rounded-xl appearance-none cursor-pointer ${isStudent ? 'bg-indigo-50/50 border-indigo-100' : 'bg-industrial-50 border-industrial-100'}`}
+                   >
+                     <option value="">Current Profile Location</option>
+                     <optgroup label="Core States">
+                       <option value="CA">California (+25%)</option>
+                       <option value="NY">New York (+25%)</option>
+                       <option value="TX">Texas (+10%)</option>
+                       <option value="FL">Florida (+10%)</option>
+                       <option value="AR">Arkansas (-8%)</option>
+                     </optgroup>
+                     <option value="all">View All States...</option>
+                   </select>
+                 </div>
+              </div>
+
+              <div className="pt-4 border-t border-industrial-100">
+                 <div className="flex items-center justify-between mb-2">
+                   <span className="text-sm font-bold text-industrial-700">Gender Equity</span>
+                   <button 
+                    onClick={() => setShowGenderGap(!showGenderGap)}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${showGenderGap ? 'bg-safety-blue' : 'bg-industrial-200'}`}
+                   >
+                     <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${showGenderGap ? 'translate-x-6' : 'translate-x-1'}`} />
+                   </button>
+                 </div>
+                 <p className="text-[10px] text-industrial-400 leading-tight">Apply gender-based wage gap analysis to projections.</p>
+              </div>
+
+              {userType === 'counselor' && (
+                 <div className="pt-4 border-t border-industrial-100">
+                    <button 
+                      onClick={() => setShowAllEthnicities(!showAllEthnicities)}
+                      className="w-full py-3 rounded-xl border border-industrial-200 text-xs font-black uppercase tracking-widest text-industrial-600 hover:bg-industrial-50 transition-colors"
+                    >
+                      {showAllEthnicities ? 'Hide Group Comparison' : 'Compare Ethnicities'}
+                    </button>
+                 </div>
+              )}
+            </div>
+        </div>
+
+        <div className="card p-6 bg-blue-50 border-blue-100">
+           <div className="flex gap-3">
+             <Info className="w-5 h-5 text-safety-blue flex-shrink-0" />
+             <p className="text-xs text-blue-800 leading-relaxed font-medium">
+               <strong>Financial Fact:</strong> Skilled trades often offer "paid-to-learn" apprenticeships with zero debt.
+             </p>
+           </div>
+        </div>
+      </aside>
 
       <ROIPathModal 
         isOpen={isROIModalOpen} 
