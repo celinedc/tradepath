@@ -46,7 +46,7 @@ const ROIPathModal = ({ isOpen, onClose, tradeData, ethnicity, comparisonData, c
               <div className="p-6 rounded-[2rem] bg-industrial-900 text-white shadow-xl">
                 <p className="text-[10px] font-black uppercase tracking-widest text-industrial-400 mb-2">Trade Advantage</p>
                 <h4 className="text-2xl font-black leading-none mb-2">+$182,500</h4>
-                <p className="text-[10px] text-industrial-500 leading-snug">Average cumulative wealth lead at Year 10 due to zero student debt.</p>
+                <p className="text-[10px] text-industrial-400 leading-snug">Average cumulative wealth lead at Year 10 due to zero student debt.</p>
               </div>
               <div className="p-6 rounded-[2rem] bg-emerald-50 border border-emerald-100">
                 <p className="text-[10px] font-black uppercase tracking-widest text-emerald-600 mb-2">Break-Even Point</p>
@@ -62,7 +62,7 @@ const ROIPathModal = ({ isOpen, onClose, tradeData, ethnicity, comparisonData, c
 
            <div className="space-y-6">
              <div className="flex items-center justify-between">
-                <h3 className="text-lg font-black text-industrial-900 tracking-tight uppercase">Cumulative Wealth Over Time</h3>
+                <h3 className="text-lg font-black text-industrial-900 tracking-tight uppercase border-l-4 border-safety-blue pl-4">Cumulative Wealth Over Time</h3>
                 <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest">
                   <div className="flex items-center gap-1.5"><div className="w-6 h-1 bg-industrial-900 rounded-full" /> Trade</div>
                   <div className="flex items-center gap-1.5"><div className="w-6 h-1 bg-safety-blue rounded-full" /> Degree</div>
@@ -269,7 +269,7 @@ export default function PayPage() {
       
       {/* Top Row: Sidebar + 40-Year Graph */}
       <div className="flex flex-col lg:flex-row gap-8">
-        {/* Control Panel (Sidebar on Left) - Fixed height parent to prevent scrolling down with page */}
+        {/* Control Panel (Sidebar on Left) */}
         <aside className="w-full lg:w-80 flex-shrink-0 space-y-6">
           <div className={`card p-6 border-none shadow-sm ${isStudent ? 'bg-white rounded-[2rem]' : 'bg-white'}`}>
               <div className="flex items-center gap-2 mb-6">
@@ -314,7 +314,7 @@ export default function PayPage() {
                   </div>
                   
                   <div className="space-y-2">
-                    <label className="text-[9px] font-black text-industrial-400 uppercase tracking-widest">Override Location</label>
+                     <p className="text-[10px] text-industrial-400 leading-tight">Adjust earnings for specific state cost of living and local demand.</p>
                     <select 
                       value={selectedCustomState}
                       onChange={(e) => { setSelectedCustomState(e.target.value); if (e.target.value) setUseRegionalPay(true); }}
@@ -343,7 +343,7 @@ export default function PayPage() {
                       <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${showGenderGap ? 'translate-x-6' : 'translate-x-1'}`} />
                     </button>
                   </div>
-                  <p className="text-[10px] text-industrial-400 leading-tight">Apply gender-based wage gap analysis.</p>
+                  <p className="text-[10px] text-industrial-400 leading-tight">View potential wage gaps to better navigate career negotiations.</p>
                 </div>
               </div>
           </div>
@@ -351,8 +351,8 @@ export default function PayPage() {
           <div className="card p-6 bg-blue-50 border-blue-100">
             <div className="flex gap-3">
               <Info className="w-5 h-5 text-safety-blue flex-shrink-0" />
-              <p className="text-xs text-blue-800 font-medium font-medium leading-relaxed">
-                <strong>Financial Fact:</strong> Skilled trades often offer "paid-to-learn" apprenticeships.
+              <p className="text-xs text-blue-800 font-medium leading-relaxed">
+                <strong>Financial Fact:</strong> Skilled trades often offer "paid-to-learn" apprenticeships, meaning zero student debt and immediate income.
               </p>
             </div>
           </div>
@@ -367,7 +367,12 @@ export default function PayPage() {
                 <span className="text-xs font-black text-safety-blue uppercase tracking-widest">Annual Earnings</span>
               </div>
               <h3 className="text-3xl font-black text-industrial-900 tracking-tight">40-Year Career Projection</h3>
-              <p className="text-sm text-industrial-500 mt-1 font-medium italic">trajectory based on {regionMultiplier !== 1 ? 'Regional Pay' : 'National Averages'}.</p>
+              <p className="text-sm text-industrial-500 mt-1 font-medium italic">Estimated salary trajectory based on {regionMultiplier !== 1 ? 'Regional Pay' : 'National Averages'}.</p>
+            </div>
+            <div className="flex gap-3">
+              <div className="px-4 py-2 bg-industrial-900 text-white rounded-xl text-xs font-black uppercase tracking-widest shadow-lg shadow-industrial-900/20">
+                LIFETIME ROI: 4.2X
+              </div>
             </div>
           </div>
 
@@ -381,13 +386,54 @@ export default function PayPage() {
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                <XAxis dataKey="year" axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 11}} />
-                <YAxis axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 11}} tickFormatter={(value) => `$${value/1000}k`} />
-                <Tooltip 
-                  formatter={(value) => [`$${value.toLocaleString()}`, 'Salary']}
-                  contentStyle={{borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)', maxWidth: 'none', whiteSpace: 'pre-wrap'}}
+                <XAxis 
+                  dataKey="year" 
+                  axisLine={false} 
+                  tickLine={false} 
+                  tick={{fill: '#94a3b8', fontSize: 11}} 
+                  label={{ value: 'Years in Career', position: 'insideBottom', offset: -5, fontSize: 10, fill: '#64748b' }}
                 />
-                <Area type="monotone" dataKey="baseline" stroke={ETHNICITIES.find(e => e.id === selectedEthnicity)?.color || "#1e293b"} strokeWidth={4} fillOpacity={1} fill="url(#colorMain)" animationDuration={1500} />
+                <YAxis 
+                  axisLine={false} 
+                  tickLine={false} 
+                  tick={{fill: '#94a3b8', fontSize: 11}} 
+                  tickFormatter={(value) => `$${value/1000}k`} 
+                />
+                <Tooltip 
+                  formatter={(value) => [`$${value.toLocaleString()}`, 'Annual Salary']}
+                  labelFormatter={(label) => `Year ${label}`}
+                  contentStyle={{
+                    borderRadius: '12px', 
+                    border: 'none', 
+                    boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)',
+                    maxWidth: 'none',
+                    whiteSpace: 'pre-wrap'
+                  }}
+                />
+                {showAllEthnicities ? (
+                  ETHNICITIES.map(e => (
+                    <Area 
+                      key={e.id}
+                      type="monotone" 
+                      dataKey={e.id} 
+                      stroke={e.color} 
+                      strokeWidth={2} 
+                      fillOpacity={1} 
+                      fill={`url(#color${e.id})`} 
+                      animationDuration={1500} 
+                    />
+                  ))
+                ) : (
+                    <Area 
+                      type="monotone" 
+                      dataKey="baseline" 
+                      stroke={ETHNICITIES.find(e => e.id === selectedEthnicity)?.color || "#1e293b"} 
+                      strokeWidth={4} 
+                      fillOpacity={1} 
+                      fill="url(#colorMain)" 
+                      animationDuration={1500} 
+                    />
+                )}
                 {useRegionalPay && <Area type="monotone" dataKey="regionalShift" stroke="#10b981" strokeWidth={3} fillOpacity={0} animationDuration={1500} />}
                 {showGenderGap && <Area type="monotone" dataKey="genderGap" stroke="#fb7185" strokeWidth={2} strokeDasharray="5 5" fillOpacity={0} animationDuration={1500} />}
               </AreaChart>
@@ -398,20 +444,47 @@ export default function PayPage() {
 
       {/* Full Width Middle Section: Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="card p-6 bg-industrial-900 text-white border-none shadow-xl">
+          <div className="card p-6 bg-industrial-900 text-white border-none shadow-xl shadow-industrial-900/10">
             <div className="flex items-center gap-2 mb-3">
               <Coins className="w-4 h-4 text-safety-blue" />
               <span className="text-[10px] font-black uppercase tracking-wider text-industrial-400">Total Career Potential</span>
             </div>
-            <h4 className="text-3xl font-black text-white">$3,310,667</h4>
+            <h4 className="text-3xl font-black text-white leading-none mb-4">
+              ${Math.round(tradeData.payGrowth.reduce((acc, curr) => acc + curr[selectedEthnicity], 0) * 5 / 1.5).toLocaleString()}
+            </h4>
+            <p className="text-xs text-industrial-400 leading-relaxed font-medium">
+              40-year cumulative estimate for {ETHNICITIES.find(e => e.id === selectedEthnicity)?.name} {tradeData.name}s.
+            </p>
           </div>
+          
           <div className="card p-6 border-industrial-100 bg-white">
-            <h4 className="text-2xl font-black text-industrial-900 mb-1">{tradeData.demand}</h4>
-            <p className="text-xs text-industrial-500 font-medium italic">National Market Demand</p>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-2 bg-emerald-100/50 rounded-lg">
+                <Briefcase className="w-5 h-5 text-emerald-600" />
+              </div>
+              <span className="text-[10px] font-black uppercase tracking-widest text-industrial-500">Market Demand</span>
+            </div>
+            <div className="flex items-center gap-2">
+               <h4 className="text-2xl font-black text-industrial-900 mb-1">{tradeData.demand}</h4>
+               <div className="text-[8px] font-black text-industrial-400 leading-tight border-l border-industrial-200 pl-2 uppercase">
+                 Source: BLS / O*NET 2025
+               </div>
+            </div>
+            <p className="text-xs text-industrial-500 font-medium italic mt-2">National Market Growth: {tradeData.growth}</p>
           </div>
+
           <div className="card p-6 border-industrial-100 bg-white">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-2 bg-rose-50 rounded-lg">
+                <Users className="w-5 h-5 text-rose-500" />
+              </div>
+              <span className="text-[10px] font-black uppercase tracking-widest text-industrial-500">Wealth Gap Alert</span>
+            </div>
             <p className="text-xs text-industrial-500 leading-relaxed font-medium">
-              Baseline Wealth Parity: <span className="font-black text-rose-600">0% gap</span>.
+              Baseline Wealth Parity: <span className="font-black text-rose-600">
+                {Math.round((1 - (tradeData.payGrowth[0][selectedEthnicity] / tradeData.payGrowth[0].white)) * 100)}% gap
+              </span>.
+              Navigate systemic pay disparities with our specialized negotiation tools.
             </p>
           </div>
       </div>
@@ -427,51 +500,79 @@ export default function PayPage() {
               </div>
               <h3 className="text-2xl font-black text-industrial-900">The "True Wealth" Comparison</h3>
               <p className="text-xs text-industrial-500 max-w-2xl mt-1 leading-relaxed font-medium">
-                Benchmarking <span className="font-bold text-industrial-900 uppercase">{tradeData.name}</span> training against a <span className="font-bold text-blue-600 uppercase">{comparablePath.name}</span>.
+                Benchmarking the cumulative earnings of <span className="font-bold text-industrial-900 uppercase">{tradeData.name}</span> training against a <span className="font-bold text-blue-600 uppercase">{comparablePath.name}</span> (starting at ${comparablePath.startingSalary.toLocaleString()}/yr).
               </p>
             </div>
-            <div className="p-3 bg-white rounded-xl border border-industrial-200 shadow-sm text-[10px] font-black uppercase">
-                Crossover Year: <span className="text-safety-blue text-sm">{breakEvenYear || 'N/A'}</span>
+            <div className="p-4 bg-white rounded-xl border border-industrial-200 shadow-sm text-[10px] font-black uppercase">
+                Crossover Year: <span className="text-safety-blue text-sm block">{breakEvenYear ? 'Year ' + breakEvenYear : 'N/A'}</span>
             </div>
           </div>
 
           <div className="flex flex-col xl:flex-row gap-8">
+            {/* Extended Chart Area */}
             <div className="flex-1 min-w-0">
               <div className="h-[500px] w-full bg-white/40 rounded-[2.5rem] p-6 border border-white">
                 <ResponsiveContainer width="100%" height="100%">
-                  <ComposedChart data={comparisonDataResults}>
+                  <ComposedChart data={comparisonDataResults} margin={{ top: 10, right: 10, left: 10, bottom: 20 }}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" />
-                    <XAxis dataKey="year" axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 11}} />
-                    <YAxis axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 11}} tickFormatter={(val) => `$${val/1000}k`} />
+                    <XAxis 
+                      dataKey="year" 
+                      axisLine={false} 
+                      tickLine={false} 
+                      tick={{fill: '#94a3b8', fontSize: 11}} 
+                    />
+                    <YAxis 
+                      axisLine={false} 
+                      tickLine={false} 
+                      tick={{fill: '#94a3b8', fontSize: 11}} 
+                      tickFormatter={(val) => `$${val/1000}k`} 
+                    />
                     <Tooltip contentStyle={{borderRadius: '16px', border: 'none', boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)', maxWidth: 'none', whiteSpace: 'pre-wrap'}} />
-                    <Area type="monotone" dataKey="tradeCumulative" stroke="#1e293b" fill="#1e293b" fillOpacity={0.03} strokeWidth={4} />
-                    <Area type="monotone" dataKey="degreeCumulative" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.03} strokeWidth={4} />
+                    <Area type="monotone" dataKey="tradeCumulative" stroke="#1e293b" fill="#1e293b" fillOpacity={0.03} strokeWidth={4} name={`${tradeData.name} Wealth`} />
+                    <Area type="monotone" dataKey="degreeCumulative" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.03} strokeWidth={4} name={`${comparablePath.name} Wealth`} />
                   </ComposedChart>
                 </ResponsiveContainer>
               </div>
             </div>
 
+            {/* Restored Insight Column */}
             <div className="w-full xl:w-80 flex flex-col gap-5">
-              <div className="card p-6 bg-white border-industrial-100/60 shadow-sm">
-                <h4 className="text-xs font-black text-industrial-900 uppercase mb-4">Hidden Cost</h4>
+              <div className="card p-6 bg-white border-industrial-100/60 shadow-sm hover:shadow-md transition-all group">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-rose-50 rounded-lg group-hover:bg-rose-100 transition-colors">
+                    <GraduationCap className="w-5 h-5 text-rose-600" />
+                  </div>
+                  <h4 className="text-xs font-black text-industrial-900 uppercase">Hidden Cost of Debt</h4>
+                </div>
                 <p className="text-xs text-industrial-500 leading-relaxed font-medium">
-                  Degree debt: <span className="font-black text-rose-600">${degreeDebt.toLocaleString()}</span>. Total lifetime cost: <span className="font-black text-industrial-900">{comparablePath.avgCost}</span>.
+                  A typical <span className="font-black">{comparablePath.name}</span> graduate enters the market <span className="font-black text-rose-600">${degreeDebt.toLocaleString()}</span> in student debt. Total cost including lost wages exceeds <span className="font-black text-industrial-900">{comparablePath.avgCost}</span>.
                 </p>
               </div>
-              <div className="card p-6 bg-white border-industrial-100/60 shadow-sm">
-                <h4 className="text-xs font-black text-industrial-900 uppercase mb-4">Early Start</h4>
+
+              <div className="card p-6 bg-white border-industrial-100/60 shadow-sm hover:shadow-md transition-all group">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-emerald-50 rounded-lg group-hover:bg-emerald-100 transition-colors">
+                    <Zap className="w-5 h-5 text-emerald-600" />
+                  </div>
+                  <h4 className="text-xs font-black text-industrial-900 uppercase">Early Entry Benefit</h4>
+                </div>
                 <p className="text-xs text-industrial-500 leading-relaxed font-medium">
-                  Trade paths earn 4 years sooner, creating an immediate wealth lead.
+                  Trade paths earn 4 years sooner. This "Head Start" creates an immediate wealth lead that degree paths struggle to close.
                 </p>
               </div>
+
               <div 
                 onClick={() => setIsROIModalOpen(true)}
-                className="card p-6 mt-auto bg-industrial-900 text-white border-none flex flex-col justify-center gap-3 group cursor-pointer hover:bg-industrial-800 transition-all shadow-xl"
+                className="card p-6 mt-auto bg-industrial-900 text-white border-none flex flex-col justify-center gap-3 group cursor-pointer hover:bg-industrial-800 transition-all shadow-xl shadow-industrial-900/20"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-black uppercase tracking-widest leading-none">Your Path ROI</span>
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-indigo-500/20 rounded-lg"><Target className="w-5 h-5 text-indigo-400" /></div>
+                    <span className="text-xs font-black uppercase tracking-widest leading-none">Your Path ROI</span>
+                  </div>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </div>
+                <p className="text-[10px] text-industrial-400 font-bold uppercase tracking-wider">Expand Full Wealth Projection</p>
               </div>
             </div>
           </div>
