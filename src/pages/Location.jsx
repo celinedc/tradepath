@@ -207,62 +207,59 @@ export default function LocationPage() {
           )}
 
           {!selectedState && (
-            <>
-              {/* High Growth Regions - Only Visible when no state selected */}
-              <div className={`card p-5 text-white border-none shadow-xl ${isStudent ? 'bg-indigo-900 rounded-[1.5rem]' : 'bg-industrial-900'}`}>
-                <h4 className="flex items-center gap-3 text-sm font-black tracking-tight mb-3 text-white/90">
-                  <TrendingUp className={`w-4 h-4 ${isStudent ? 'text-indigo-400' : 'text-safety-blue'}`} />
-                  High Growth Regions
-                </h4>
-                <div className="space-y-1.5">
-                   {[
-                     { name: "Texas", demand: "98%", growth: "+12%" },
-                     { name: "California", demand: "95%", growth: "+8%" },
-                     { name: "New York", demand: "94%", growth: "+7%" },
-                     { name: "Florida", demand: "92%", growth: "+10%" },
-                   ].map((region, i) => (
-                     <div key={i} className="flex justify-between items-center p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
-                       <div>
-                         <p className="font-black text-sm group-hover:text-indigo-300 transition-colors tracking-tight">{region.name}</p>
-                         <p className="text-[8px] font-black uppercase tracking-widest text-indigo-400">Demand: {region.demand}</p>
-                       </div>
-                       <div className="text-right">
-                         <span className="text-emerald-400 font-black text-[10px]">{region.growth}</span>
-                       </div>
+            <div className={`card p-5 text-white border-none shadow-xl ${isStudent ? 'bg-indigo-900 rounded-[1.5rem]' : 'bg-industrial-900'}`}>
+              <h4 className="flex items-center gap-3 text-sm font-black tracking-tight mb-3 text-white/90">
+                <TrendingUp className={`w-4 h-4 ${isStudent ? 'text-indigo-400' : 'text-safety-blue'}`} />
+                High Growth Regions
+              </h4>
+              <div className="space-y-1.5">
+                 {[
+                   { name: "Texas", demand: "98%", growth: "+12%" },
+                   { name: "California", demand: "95%", growth: "+8%" },
+                   { name: "New York", demand: "94%", growth: "+7%" },
+                   { name: "Florida", demand: "92%", growth: "+10%" },
+                 ].map((region, i) => (
+                   <div key={i} className="flex justify-between items-center p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
+                     <div>
+                       <p className="font-black text-sm group-hover:text-indigo-300 transition-colors tracking-tight">{region.name}</p>
+                       <p className="text-[8px] font-black uppercase tracking-widest text-indigo-400">Demand: {region.demand}</p>
                      </div>
-                   ))}
-                </div>
-              </div>
-
-              <div className={`card p-4 border-none shadow-sm ${isStudent ? 'bg-white rounded-[1.5rem]' : 'bg-white border-industrial-100'}`}>
-                 <div className="flex items-center gap-3 mb-4">
-                   <div className={`p-2 rounded-xl border border-indigo-50 ${isStudent ? 'bg-indigo-50' : 'bg-blue-50'}`}>
-                     <MapPin className={`w-5 h-5 ${isStudent ? 'text-indigo-600' : 'text-safety-blue'}`} />
+                     <div className="text-right">
+                       <span className="text-emerald-400 font-black text-[10px]">{region.growth}</span>
+                     </div>
                    </div>
-                   <h4 className={`text-sm font-black uppercase tracking-widest ${isStudent ? 'text-indigo-900' : 'text-industrial-900'}`}>Market Intel</h4>
-                 </div>
-                 <div className="space-y-4">
-                    <div className="space-y-1">
-                       <p className="text-[10px] font-black uppercase text-industrial-400 tracking-widest">Data Context</p>
-                       <p className={`text-sm font-black ${isStudent ? 'text-indigo-950' : 'text-industrial-700'}`}>
-                         {selectedTrade === 'all' ? 'All Skilled Trades' : TRADE_CAREERS.find(t => t.id === selectedTrade)?.name}
-                       </p>
-                    </div>
-                    <div className="space-y-1">
-                       <p className="text-[10px] font-black uppercase text-industrial-400 tracking-widest">Baseline</p>
-                       <p className={`text-xs font-bold leading-tight ${isStudent ? 'text-indigo-900/70' : 'text-industrial-700'}`}>
-                         National Bureau of Labor Statistics (BLS) • 2025 Forecast
-                       </p>
-                    </div>
-                 </div>
-                 <button 
-                   onClick={() => window.open('https://www.bls.gov/ooh/', '_blank')}
-                   className={`w-full mt-6 py-3 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all ${isStudent ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/20' : 'btn-primary shadow-md'}`}>
-                   Geo-Data Insight
-                 </button>
+                 ))}
               </div>
-            </>
+            </div>
           )}
+
+          <div className={`card p-4 border-none shadow-sm ${isStudent ? 'bg-white rounded-[1.5rem]' : 'bg-white border-industrial-100'}`}>
+             <div className="flex items-center gap-3 mb-4">
+               <div className={`p-2 rounded-xl border border-indigo-50 ${isStudent ? 'bg-indigo-50' : 'bg-blue-50'}`}>
+                 <MapPin className={`w-5 h-5 ${isStudent ? 'text-indigo-600' : 'text-safety-blue'}`} />
+               </div>
+               <h4 className={`text-sm font-black uppercase tracking-widest ${isStudent ? 'text-indigo-900' : 'text-industrial-900'}`}>Market Intel</h4>
+             </div>
+             <div className="space-y-4">
+                <div className="space-y-1">
+                   <p className="text-[10px] font-black uppercase text-industrial-400 tracking-widest">Data Context</p>
+                   <p className={`text-sm font-black ${isStudent ? 'text-indigo-950' : 'text-industrial-700'}`}>
+                     {selectedTrade === 'all' ? 'All Skilled Trades' : TRADE_CAREERS.find(t => t.id === selectedTrade)?.name}
+                   </p>
+                </div>
+                <div className="space-y-1">
+                   <p className="text-[10px] font-black uppercase text-industrial-400 tracking-widest">Baseline</p>
+                   <p className={`text-xs font-bold leading-tight ${isStudent ? 'text-indigo-900/70' : 'text-industrial-700'}`}>
+                     {selectedState?.source || 'National Bureau of Labor Statistics (BLS) • 2025 Forecast'}
+                   </p>
+                </div>
+             </div>
+             <button 
+               onClick={() => window.open('https://www.bls.gov/ooh/', '_blank')}
+               className={`w-full mt-6 py-3 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all ${isStudent ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/20' : 'btn-primary shadow-md'}`}>
+               Geo-Data Insight
+             </button>
+          </div>
         </div>
       </div>
 
