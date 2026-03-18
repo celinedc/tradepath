@@ -32,7 +32,7 @@ export const SkillsMatcher = {
       functionVsAesthetic = '',
       steadyHandHobby = '',
       wifiFix = '',
-      sandingVsSoldering = '',
+      grindVsClutch = '',
       structureVsTinker = ''
     } = profile;
 
@@ -78,9 +78,14 @@ export const SkillsMatcher = {
         rawAptitudeScore += 5;
       }
 
-      // Interest Pivot (Tech vs Building)
-      if (techVsBookshelf === 'Set up tech' && (job.keywords.includes('computers') || job.keywords.includes('technology'))) rawAptitudeScore += 4;
-      if (techVsBookshelf === 'Build a bookshelf' && (job.keywords.includes('building') || job.keywords.includes('making'))) rawAptitudeScore += 4;
+      // Interest Pivot (Tech vs Building vs Creative)
+      if (techVsBookshelf === 'Setting up tech/software' && (job.keywords.includes('computers') || job.keywords.includes('technology'))) rawAptitudeScore += 5;
+      if (techVsBookshelf === 'Building a bookshelf/furniture' && (job.keywords.includes('building') || job.keywords.includes('making'))) rawAptitudeScore += 5;
+      if (techVsBookshelf === 'Designing a creative project/art' && (job.keywords.includes('art') || job.keywords.includes('design') || job.keywords.includes('aesthetic'))) rawAptitudeScore += 6;
+
+      // Grind vs Clutch (Personality/Performance Type)
+      if (grindVsClutch === 'The long, satisfying grind' && (job.keywords.includes('precision') || job.keywords.includes('detail') || job.keywords.includes('building'))) rawAptitudeScore += 4;
+      if (grindVsClutch === 'The high-pressure clutch moment' && (job.keywords.includes('safety') || job.keywords.includes('diagnostic') || job.keywords.includes('emergency'))) rawAptitudeScore += 4;
 
       // Protocol vs Creative
       if (protocolsVsWinging === 'Follow protocols' && (job.keywords.includes('safety') || job.keywords.includes('security'))) rawAptitudeScore += 4;
@@ -172,11 +177,11 @@ export const SkillsMatcher = {
       const structuralTrades = ['tower-tech', 'millwright', 'ironworker'];
 
       matches.forEach(m => {
-        if (isAesthetic && aestheticTrades.includes(m.id)) {
-          m.matchScore += 80;
+        if (isAesthetic && (m.keywords.includes('art') || m.keywords.includes('aesthetic') || m.keywords.includes('precision') || aestheticTrades.includes(m.id))) {
+          m.matchScore += 85;
           m.matchPercentage = Math.max(m.matchPercentage, 92);
           m.isSafetyNetMatch = true;
-          m.safetyNetCategory = "Precision & Aesthetic Pivot";
+          m.safetyNetCategory = "Creative Artisan Pivot";
         }
         if (isStrategy && strategyTrades.includes(m.id)) {
           m.matchScore += 80;

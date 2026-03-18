@@ -7,8 +7,9 @@ import {
   Building2, Ship, Plane, Cpu, Wrench, HardHat,
   Anchor, Stethoscope, Sparkles, Wind, Car, Leaf, Box, Star
 } from 'lucide-react';
-import { TRADE_CAREERS } from '../data/mockData';
+import { TRADE_CAREERS, DEMAND_DATA } from '../data/mockData';
 import { useUser } from '../context/UserContext';
+import { createPortal } from 'react-dom';
 
 const INTEREST_KEYWORDS = [
   { id: 'all', name: 'All Interests' },
@@ -43,79 +44,123 @@ export default function TradesLibrary() {
   }, []);
 
   const filteredTrades = useMemo(() => {
-    return TRADE_CAREERS.filter(trade => {
-      if (trade.id === 'undecided') return false;
-      const matchesSearch = trade.name.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesSector = selectedSector === 'all' || trade.sector === selectedSector;
+    // Interest Buckets Logic mapping helper
+    const getInterests = (trade) => {
+      const interests = [];
+      const content = (trade.name + ' ' + (trade.sector || '') + ' ' + (trade.aptitude || '')).toLowerCase();
       
-      let matchesWord = true;
-      if (selectedWord !== 'all') {
-        const content = (trade.name + ' ' + (trade.aptitude || '') + ' ' + (trade.keywords?.join(' ') || '')).toLowerCase();
-        matchesWord = content.includes(selectedWord.toLowerCase());
-      }
+      if (content.match(/chef|carpenter|cabinetmaker|designer|fabrication|creative|architect/)) interests.push('creativity');
+      if (content.match(/precision|technical|logic|wiring|welder|machinist|cnc|operator|electrician|aerospace|engineer/)) interests.push('precision');
+      if (content.match(/healthcare|medical|nurse|paramedic|dental|hospitality|service|people|client|teaching|helping/)) interests.push('helping');
+      if (content.match(/aviation|marine|adventure|diver|travel|flight|transport|engine|high-stakes/)) interests.push('adventure');
       
-      const matchesDemand = selectedDemand === 'all' || trade.demand === selectedDemand;
+      // Sector Based rules
+      if (trade.sector === 'Healthcare & Medical' || trade.sector === 'Service') interests.push('indoor');
+      if (trade.sector === 'Construction' || trade.sector === 'Environment' || trade.name.toLowerCase().includes('driver')) interests.push('outdoor');
+      if (['Industrial & Manufacturing', 'Energy & Utilities', 'Aviation & Aerospace'].includes(trade.sector)) interests.push('indoor');
 
-      return matchesSearch && matchesSector && matchesWord && matchesDemand;
-    });
-  }, [searchTerm, selectedSector, selectedWord, selectedDemand]);
+      return interests;
+    };
+
+    const userStateData = DEMAND_DATA.find(d => d.id === profile.schoolState);
+    const topTradeInState = userStateData?.topTrade;
+
+    return TRADE_CAREERS
+      .filter(trade => {
+        if (trade.id === 'undecided') return false;
+        
+        const matchesSearch = trade.name.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesSector = selectedSector === 'all' || trade.sector === selectedSector;
+        const matchesDemand = selectedDemand === 'all' || trade.demand === selectedDemand;
+        
+        let matchesInterest = true;
+        if (selectedWord !== 'all') {
+          matchesInterest = getInterests(trade).includes(selectedWord);
+        }
+
+        return matchesSearch && matchesSector && matchesInterest && matchesDemand;
+      })
+      .sort((a, b) => {
+        // 1. Starred always first
+        const aStarred = profile.starredTrades?.includes(a.id);
+        const bStarred = profile.starredTrades?.includes(b.id);
+        if (aStarred && !bStarred) return -1;
+        if (!aStarred && bStarred) return 1;
+
+        // 2. State-specific Top Trade high priority
+        const aIsTopInState = a.name === topTradeInState || a.id === topTradeInState;
+        const bIsTopInState = b.name === topTradeInState || b.id === topTradeInState;
+        if (aIsTopInState && !bIsTopInState) return -1;
+        if (!aIsTopInState && bIsTopInState) return 1;
+
+        // 3. Demand Order
+        const demandOrder = { 'Critical': 5, 'Very High': 4, 'High': 3, 'Moderate': 2, 'Stable': 1 };
+        const aDemand = demandOrder[a.demand] || 0;
+        const bDemand = demandOrder[b.demand] || 0;
+        if (aDemand !== bDemand) return bDemand - aDemand;
+
+        return a.name.localeCompare(b.name);
+      });
+  }, [searchTerm, selectedSector, selectedWord, selectedDemand, profile.starredTrades, profile.schoolState]);
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <header>
         <h3 className="text-3xl font-black text-industrial-900 tracking-tight">Trade Careers Library</h3>
         <p className="text-industrial-500 font-medium italic">Explore the 200+ specialized career paths available in the trades.</p>
       </header>
 
-      {/* Filters */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="md:col-span-2 relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-industrial-400" />
+      {/* Filters Area */}
+      <div className="space-y-3">
+        <div className="relative">
+          <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-6 h-6 text-industrial-400" />
           <input 
             type="text" 
             placeholder="Search by career name..." 
-            className="input-field pl-12 py-3 bg-white shadow-inner"
+            className="input-field pl-16 py-5 bg-white shadow-xl border-none rounded-[2rem] text-lg font-bold placeholder:text-industrial-300 transition-all focus:ring-4 focus:ring-safety-blue/10"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
         
-        <select 
-          className="input-field py-3 bg-white shadow-inner font-bold text-industrial-700 text-[11px] md:text-sm truncate"
-          value={selectedSector}
-          onChange={(e) => setSelectedSector(e.target.value)}
-        >
-          {sectors.map(s => (
-            <option key={s} value={s}>{s === 'all' ? 'All Sectors' : s}</option>
-          ))}
-        </select>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <select 
+            className="input-field py-4 bg-white shadow-sm border-none rounded-2xl font-black uppercase tracking-widest text-[10px] text-industrial-900 appearance-none px-6 cursor-pointer hover:bg-industrial-50 transition-colors"
+            value={selectedSector}
+            onChange={(e) => setSelectedSector(e.target.value)}
+          >
+            {sectors.map(s => (
+              <option key={s} value={s}>{s === 'all' ? 'All Sectors' : s}</option>
+            ))}
+          </select>
 
-        <select 
-          className="input-field py-3 bg-white shadow-inner font-bold text-industrial-700 text-[11px] md:text-sm truncate"
-          value={selectedDemand}
-          onChange={(e) => setSelectedDemand(e.target.value)}
-        >
-          <option value="all">Market Demand</option>
-          <option value="Critical">Critical ⚡</option>
-          <option value="Very High">Very High ↑</option>
-          <option value="High">High</option>
-          <option value="Moderate">Moderate</option>
-          <option value="Stable">Stable</option>
-        </select>
+          <select 
+            className="input-field py-4 bg-white shadow-sm border-none rounded-2xl font-black uppercase tracking-widest text-[10px] text-industrial-900 appearance-none px-6 cursor-pointer hover:bg-industrial-50 transition-colors"
+            value={selectedDemand}
+            onChange={(e) => setSelectedDemand(e.target.value)}
+          >
+            <option value="all">Any Market Demand</option>
+            <option value="Critical">Critical ⚡</option>
+            <option value="Very High">Very High ↑</option>
+            <option value="High">High</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Stable">Stable</option>
+          </select>
 
-        <select 
-          className="input-field py-3 bg-white shadow-inner font-bold text-industrial-700 text-[11px] md:text-sm truncate"
-          value={selectedWord}
-          onChange={(e) => setSelectedWord(e.target.value)}
-        >
-          {INTEREST_KEYWORDS.map(w => (
-            <option key={w.id} value={w.id}>{w.name}</option>
-          ))}
-        </select>
+          <select 
+            className="input-field py-4 bg-white shadow-sm border-none rounded-2xl font-black uppercase tracking-widest text-[10px] text-industrial-900 appearance-none px-6 cursor-pointer hover:bg-industrial-50 transition-colors"
+            value={selectedWord}
+            onChange={(e) => setSelectedWord(e.target.value)}
+          >
+            {INTEREST_KEYWORDS.map(w => (
+              <option key={w.id} value={w.id}>{w.name}</option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredTrades.map(trade => (
           <motion.div
             layout
@@ -182,93 +227,111 @@ export default function TradesLibrary() {
           </div>
         )}
       </div>
-
       {/* Detail Modal */}
-      <AnimatePresence>
-        {selectedTrade && (
-          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedTrade(null)}
-              className="absolute inset-0 bg-industrial-900/60 backdrop-blur-sm"
-            />
-            
-            <motion.div
-              layoutId={selectedTrade.id}
-              className="bg-white rounded-[2.5rem] w-full max-w-4xl max-h-[90vh] overflow-y-auto relative shadow-2xl custom-scrollbar"
-            >
-              <button 
+      {createPortal(
+        <AnimatePresence>
+          {selectedTrade && (
+            <div key="trade-modal-portal" className="fixed inset-0 z-[1000] flex items-center justify-center p-4 md:p-8">
+              <motion.div 
+                key="modal-backdrop"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 onClick={() => setSelectedTrade(null)}
-                className="absolute top-6 right-6 p-4 hover:bg-industrial-100 rounded-full transition-all z-[210] group"
-                title="Close (Esc)"
+                className="absolute inset-0 bg-industrial-950/80 backdrop-blur-md"
+              />
+              
+              <motion.div
+                key="modal-content"
+                layoutId={selectedTrade.id}
+                initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                className="bg-white rounded-[2.5rem] w-full max-w-4xl max-h-[90vh] overflow-y-auto relative shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)] custom-scrollbar z-[1001]"
               >
-                <X className="w-8 h-8 text-industrial-400 group-hover:text-industrial-900" />
-              </button>
+                <button 
+                  onClick={() => setSelectedTrade(null)}
+                  className="absolute top-6 right-6 p-4 hover:bg-industrial-100 rounded-full transition-all z-[1010] group"
+                  title="Close (Esc)"
+                >
+                  <X className="w-8 h-8 text-industrial-400 group-hover:text-industrial-900" />
+                </button>
 
-              <div className="p-8 md:p-12 space-y-12">
-                <header className="space-y-4">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-safety-blue/10 text-safety-blue rounded-full border border-safety-blue/20">
-                    <span className="text-[10px] font-black uppercase tracking-widest">{selectedTrade.sector}</span>
-                  </div>
-                  <h2 className="text-5xl font-black text-industrial-900 tracking-tight">{selectedTrade.name}</h2>
-                  <p className="text-xl text-industrial-500 font-medium italic leading-relaxed">
-                    {selectedTrade.aptitude}
-                  </p>
-                </header>
+                <div className="p-5 md:p-8 space-y-6">
+                  <header className="space-y-2">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-safety-blue/10 text-safety-blue rounded-full border border-safety-blue/20">
+                      <span className="text-[10px] font-black uppercase tracking-widest">{selectedTrade.sector}</span>
+                    </div>
+                    <h2 className="text-5xl font-black text-industrial-900 tracking-tight">{selectedTrade.name}</h2>
+                    <p className="text-xl text-industrial-500 font-medium italic leading-relaxed">
+                      {selectedTrade.aptitude}
+                    </p>
+                  </header>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div className="p-6 bg-industrial-50 rounded-2xl space-y-2">
-                    <span className="text-[10px] font-black uppercase text-industrial-400 tracking-widest">Starting Salary</span>
-                    <p className="text-3xl font-black text-industrial-900">${selectedTrade.base?.toLocaleString()}</p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="p-4 bg-industrial-50 rounded-2xl space-y-1">
+                      <span className="text-[10px] font-black uppercase text-industrial-400 tracking-widest">Starting Salary</span>
+                      <p className="text-3xl font-black text-industrial-900">${selectedTrade.base?.toLocaleString()}</p>
+                    </div>
+                    <div className="p-4 bg-industrial-50 rounded-2xl space-y-1">
+                      <span className="text-[10px] font-black uppercase text-industrial-400 tracking-widest">Market Demand</span>
+                      <p className="text-3xl font-black text-industrial-900">{selectedTrade.demand}</p>
+                    </div>
+                    <div className="p-4 bg-industrial-50 rounded-2xl space-y-1">
+                      <span className="text-[10px] font-black uppercase text-industrial-400 tracking-widest">Job Growth</span>
+                      <p className="text-3xl font-black text-industrial-900">{selectedTrade.growth}</p>
+                    </div>
                   </div>
-                  <div className="p-6 bg-industrial-50 rounded-2xl space-y-2">
-                    <span className="text-[10px] font-black uppercase text-industrial-400 tracking-widest">Market Demand</span>
-                    <p className="text-3xl font-black text-industrial-900">{selectedTrade.demand}</p>
-                  </div>
-                  <div className="p-6 bg-industrial-50 rounded-2xl space-y-2">
-                    <span className="text-[10px] font-black uppercase text-industrial-400 tracking-widest">Job Growth</span>
-                    <p className="text-3xl font-black text-industrial-900">{selectedTrade.growth}</p>
-                  </div>
-                </div>
 
-                <div className="space-y-6">
-                  <h5 className="text-sm font-black uppercase tracking-widest text-industrial-900 border-l-4 border-safety-blue pl-4">Core Competencies</h5>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {selectedTrade.competencies?.map((comp, i) => (
-                      <div key={i} className="p-4 border border-industrial-100 rounded-xl space-y-2">
-                        <div className={`p-2 rounded-lg w-fit ${comp.color || 'bg-industrial-100 text-industrial-400'}`}>
-                          <CheckCircle2 className="w-4 h-4" />
+                  <div className="space-y-4">
+                    <h5 className="text-sm font-black uppercase tracking-widest text-industrial-900 border-l-4 border-safety-blue pl-4">Core Competencies</h5>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {selectedTrade.competencies?.map((comp, i) => (
+                        <div key={i} className="p-4 border border-industrial-100 rounded-xl space-y-2">
+                          <div className={`p-2 rounded-lg w-fit ${comp.color || 'bg-industrial-100 text-industrial-400'}`}>
+                            <CheckCircle2 className="w-4 h-4" />
+                          </div>
+                          <h6 className="font-black text-industrial-900">{comp.title}</h6>
+                          <p className="text-xs text-industrial-500 font-medium leading-relaxed">{comp.desc}</p>
                         </div>
-                        <h6 className="font-black text-industrial-900">{comp.title}</h6>
-                        <p className="text-xs text-industrial-500 font-medium leading-relaxed">{comp.desc}</p>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                <div className="pt-8 border-t border-industrial-100 flex flex-col md:flex-row justify-between items-center gap-6">
-                  <div className="space-y-1 text-center md:text-left">
-                    <p className="text-sm font-bold text-industrial-900 italic">Interested in this path?</p>
-                    <p className="text-xs text-industrial-400 font-medium">Talk to your career counselor about local training programs.</p>
+                  <div className="pt-4 border-t border-industrial-100 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div className="space-y-1 text-center md:text-left">
+                      <p className="text-sm font-bold text-industrial-900 italic">Interested in this path?</p>
+                      <p className="text-xs text-industrial-400 font-medium">Talk to your career counselor about local training programs.</p>
+                    </div>
+                    <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
+                      <button 
+                        onClick={() => {
+                            const tradeName = encodeURIComponent(selectedTrade.name);
+                            window.open(`https://www.apprenticeship.gov/apprenticeship-job-finder?occupation=${tradeName}`, '_blank');
+                        }}
+                        className="w-full md:w-auto px-8 py-4 bg-white text-industrial-900 border-2 border-industrial-900 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-industrial-50 transition-all shadow-lg"
+                      >
+                        Search Apprenticeships.gov
+                      </button>
+                      <button 
+                        onClick={() => {
+                            const { schoolState } = profile;
+                            const tradeId = selectedTrade.id === 'undecided' ? 'all' : selectedTrade.id;
+                            navigate(`/schools?trade=${tradeId}&state=${schoolState || ''}`);
+                        }}
+                        className="w-full md:w-auto px-8 py-4 bg-safety-blue text-white rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20"
+                      >
+                        Find Training Programs Near Me
+                      </button>
+                    </div>
                   </div>
-                  <button 
-                    onClick={() => {
-                        const state = (profile.location || '').split(',').pop()?.trim() || '';
-                        const tradeId = selectedTrade.id === 'undecided' ? 'all' : selectedTrade.id;
-                        navigate(`/schools?trade=${tradeId}&location=${encodeURIComponent(state)}`);
-                    }}
-                    className="w-full md:w-auto px-8 py-4 bg-safety-blue text-white rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20"
-                  >
-                    Find Training Programs Near Me
-                  </button>
                 </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </div>
   );
 }

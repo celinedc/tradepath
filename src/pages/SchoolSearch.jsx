@@ -4,6 +4,7 @@ import { Search, Filter, MapPin, DollarSign, School, Info, ArrowRight, Graduatio
 import { motion, AnimatePresence } from 'framer-motion';
 import { SCHOOLS, TRADE_CAREERS } from '../data/mockData';
 import { useUser } from '../context/UserContext';
+import { fetchTrainingPrograms } from '../services/CareerOneStop';
 
 export default function SchoolSearchPage() {
   const [searchParams] = useSearchParams();
@@ -21,6 +22,8 @@ export default function SchoolSearchPage() {
   const [selectedStatus, setSelectedStatus] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [showStarredOnly, setShowStarredOnly] = useState(false);
+  const [apiSchools, setApiSchools] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const tradeParam = searchParams.get('trade');
@@ -37,17 +40,42 @@ export default function SchoolSearchPage() {
     if (locationParam) setSearchQuery(locationParam);
   }, [searchParams, profile.selectedTrade]);
 
+  useEffect(() => {
+    const loadApiSchools = async () => {
+      // Fetch if at least one parameter is specific, default to profile values otherwise
+      const trade = (selectedTrade === 'all' ? (profile.selectedTrade || 'electrician') : selectedTrade);
+      const state = (selectedState === 'All' ? (profile.schoolState || 'AR') : selectedState);
+
+      if (trade !== 'undecided') {
+        setIsLoading(true);
+        try {
+          const programs = await fetchTrainingPrograms(trade, state);
+          setApiSchools(programs);
+        } catch (err) {
+          console.error("Failed to load CareerOneStop programs", err);
+        } finally {
+          setIsLoading(false);
+        }
+      } else {
+        setApiSchools([]);
+      }
+    };
+    loadApiSchools();
+  }, [selectedTrade, selectedState, profile.selectedTrade, profile.schoolState]);
+  
+  const allAvailableSchools = useMemo(() => [...SCHOOLS, ...apiSchools], [apiSchools]);
+
   const statesList = [
     { label: 'Northeast', states: ['CT', 'DE', 'ME', 'MD', 'MA', 'NH', 'NJ', 'NY', 'PA', 'RI', 'VT'] },
     { label: 'South', states: ['AL', 'AR', 'FL', 'GA', 'KY', 'LA', 'MS', 'NC', 'OK', 'SC', 'TN', 'TX', 'VA', 'WV'] },
     { label: 'Midwest', states: ['IL', 'IN', 'IA', 'KS', 'MI', 'MN', 'MO', 'NE', 'ND', 'OH', 'SD', 'WI'] },
     { label: 'West', states: ['AK', 'AZ', 'CA', 'CO', 'HI', 'ID', 'MT', 'NV', 'NM', 'OR', 'UT', 'WA', 'WY'] }
   ];
-  const types = ['All', 'Program', 'Apprenticeship', 'Other'];
+  const types = ['All', 'Public', 'Private', 'Apprenticeship'];
   const statuses = ['All', 'Non-profit', 'Joint Labor-Management', 'Private/For-Profit'];
 
   const filteredSchools = useMemo(() => {
-    return SCHOOLS.filter(school => {
+    return allAvailableSchools.filter(school => {
       const matchTrade = selectedTrade === 'all' || school.trade === selectedTrade;
       const matchPrice = school.tuition <= priceRange;
       const matchState = selectedState === 'All' || school.state === selectedState;
@@ -59,21 +87,21 @@ export default function SchoolSearchPage() {
       
       return matchTrade && matchPrice && matchState && matchType && matchStatus && matchSearch && matchStarred;
     });
-  }, [selectedTrade, priceRange, selectedState, selectedType, selectedStatus, searchQuery, showStarredOnly, profile.starredSchools]);
+  }, [allAvailableSchools, selectedTrade, priceRange, selectedState, selectedType, selectedStatus, searchQuery, showStarredOnly, profile.starredSchools]);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="flex flex-col lg:flex-row gap-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
       {/* Sidebar Filters */}
-      <aside className="w-full lg:w-72 flex-shrink-0 space-y-6">
+      <aside className="w-full lg:w-72 flex-shrink-0 space-y-4">
         <div className="card p-6 sticky top-8">
           <div className="flex items-center gap-2 mb-6">
             <Filter className="w-5 h-5 text-safety-blue" />
             <h3 className="font-bold text-industrial-900 uppercase tracking-wider text-sm">School Filters</h3>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             {/* Career Trade */}
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label className="text-xs font-black text-industrial-500 uppercase">Career Trade</label>
               <select 
                 value={selectedTrade}
@@ -101,7 +129,7 @@ export default function SchoolSearchPage() {
             </div>
 
             {/* Price Range */}
-            <div className="space-y-3">
+            <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <label className="text-xs font-black text-industrial-500 uppercase">Max Tuition</label>
                 <span className="text-xs font-bold text-safety-blue">${priceRange.toLocaleString()}</span>
@@ -141,7 +169,7 @@ export default function SchoolSearchPage() {
             </div>
 
             {/* School Type */}
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label className="text-xs font-black text-industrial-500 uppercase">School Type</label>
               <select 
                 value={selectedType}
@@ -149,6 +177,18 @@ export default function SchoolSearchPage() {
                 className="input-field py-2 text-sm bg-industrial-50 border-industrial-200"
               >
                 {types.map(t => <option key={t} value={t}>{t}</option>)}
+              </select>
+            </div>
+
+            {/* School Affiliation */}
+            <div className="space-y-1">
+              <label className="text-xs font-black text-industrial-500 uppercase">Affiliation</label>
+              <select 
+                value={selectedStatus}
+                onChange={(e) => setSelectedStatus(e.target.value)}
+                className="input-field py-2 text-sm bg-industrial-50 border-industrial-200"
+              >
+                {statuses.map(s => <option key={s} value={s}>{s}</option>)}
               </select>
             </div>
 
@@ -185,7 +225,7 @@ export default function SchoolSearchPage() {
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 space-y-6">
+      <div className="flex-1 space-y-4">
         {/* Search Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="relative flex-1 w-full max-w-md">
@@ -200,12 +240,12 @@ export default function SchoolSearchPage() {
           </div>
           <div className="text-right">
             <p className="text-xs font-black text-industrial-400 uppercase tracking-widest">Results Found</p>
-            <p className="text-2xl font-black text-industrial-900">{filteredSchools.length}</p>
+            <p className="text-2xl font-black text-industrial-900">{isLoading ? '...' : filteredSchools.length}</p>
           </div>
         </div>
 
         {/* Results Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <AnimatePresence mode='popLayout'>
             {filteredSchools.length > 0 ? (
               filteredSchools.map((school) => (
@@ -218,7 +258,15 @@ export default function SchoolSearchPage() {
                   className="card group hover:shadow-xl transition-all border-none overflow-hidden"
                 >
                     <div className="h-48 overflow-hidden relative">
-                      <img src={school.image} alt={school.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <img 
+                        src={school.image} 
+                        alt={school.name} 
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 font-black text-xs text-industrial-400" 
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800";
+                        }}
+                      />
                       <div className="absolute top-4 left-4 flex gap-2">
                         <span className="bg-industrial-900/90 backdrop-blur text-white text-[9px] font-black uppercase px-2 py-1 rounded">
                           {school.type}
@@ -226,6 +274,16 @@ export default function SchoolSearchPage() {
                         <span className="bg-safety-blue/90 backdrop-blur text-white text-[9px] font-black uppercase px-2 py-1 rounded">
                           {school.duration}
                         </span>
+                        {school.source === 'Apprenticeship.gov' && (
+                          <span className="bg-emerald-500/90 backdrop-blur text-white text-[9px] font-black uppercase px-2 py-1 rounded flex items-center gap-1">
+                            <Star className="w-2.5 h-2.5 fill-current" /> Apprenticeship.gov
+                          </span>
+                        )}
+                        {school.source === 'CareerOneStop' && (
+                          <span className="bg-safety-blue/90 backdrop-blur text-white text-[9px] font-black uppercase px-2 py-1 rounded flex items-center gap-1">
+                            <Star className="w-2.5 h-2.5 fill-current" /> CareerOneStop
+                          </span>
+                        )}
                       </div>
                       
                       <button 
@@ -246,11 +304,11 @@ export default function SchoolSearchPage() {
                       <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-lg shadow-lg">
                       <p className="text-[8px] font-black text-industrial-400 uppercase leading-none mb-0.5">Total Tuition</p>
                       <p className="text-sm font-black text-industrial-900">
-                        {school.tuition === 0 ? 'COVERED / FREE' : `$${school.tuition.toLocaleString()}`}
+                        {school.tuition === 0 ? (school.type === 'Apprenticeship' ? 'EARN WHILE YOU LEARN' : 'COVERED / FREE') : `$${school.tuition.toLocaleString()}`}
                       </p>
                     </div>
                   </div>
-                  <div className="p-6">
+                  <div className="p-5">
                     <div className="flex justify-between items-start mb-2">
                       <div>
                         <h4 className="font-black text-industrial-900 text-lg group-hover:text-safety-blue transition-colors">{school.name}</h4>
@@ -261,7 +319,7 @@ export default function SchoolSearchPage() {
                       </div>
                     </div>
                     
-                    <div className="grid grid-cols-2 gap-3 mt-6">
+                    <div className="grid grid-cols-2 gap-2 mt-4">
                       <div className="p-3 bg-industrial-50 rounded-xl border border-industrial-100">
                         <div className="flex items-center gap-2 mb-1">
                           <Building2 className="w-3.5 h-3.5 text-industrial-400" />
@@ -285,9 +343,10 @@ export default function SchoolSearchPage() {
                         const url = school.url || `https://www.google.com/search?q=${encodeURIComponent(school.name)}`;
                         window.open(url, '_blank');
                       }}
-                      className="w-full mt-6 py-3 bg-industrial-900 text-white font-black text-[10px] uppercase tracking-[0.2em] rounded-xl hover:bg-industrial-800 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-industrial-900/10"
+                      className="w-full mt-4 py-3 bg-industrial-900 text-white font-black text-[10px] uppercase tracking-[0.2em] rounded-xl hover:bg-industrial-800 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-industrial-900/10"
                     >
-                      View Program Details <ArrowRight className="w-4 h-4" />
+                      {school.source === 'Apprenticeship.gov' ? 'View on Apprenticeship.gov' : 
+                       school.source === 'CareerOneStop' ? 'View on CareerOneStop' : 'View Program Details'} <ArrowRight className="w-4 h-4" />
                     </button>
                   </div>
                 </motion.div>

@@ -38,8 +38,8 @@ const MultiStepIntake = ({ onComplete, initialData, studentName }) => {
   const currentQ = INTAKE_QUESTIONS[step];
 
   return (
-    <div className="max-w-2xl mx-auto py-12 px-6">
-      <div className="mb-12">
+    <div className="max-w-2xl mx-auto py-6 px-6">
+      <div className="mb-6">
         <div className="flex justify-between mb-4">
           {INTAKE_QUESTIONS.map((_, i) => (
             <div 
@@ -59,7 +59,7 @@ const MultiStepIntake = ({ onComplete, initialData, studentName }) => {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -20 }}
-          className="space-y-8"
+          className="space-y-4"
         >
           <div className="space-y-4">
             <h2 className="text-3xl font-black text-industrial-900 leading-tight">
@@ -128,7 +128,7 @@ const MatchingView = ({ studentName }) => (
   <motion.div 
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
-    className="max-w-xl mx-auto py-24 px-6 text-center space-y-8"
+    className="max-w-xl mx-auto py-12 px-6 text-center space-y-6"
   >
     <div className="relative w-24 h-24 mx-auto">
       <motion.div 
@@ -207,23 +207,23 @@ const CareerCard = ({ job, studentName, gender, onClick, isStarred, onStarToggle
                     alt={`${studentName} the ${job.name}`}
                     className="h-[90%] w-auto relative z-20 transition-transform duration-500 group-hover:scale-110 object-contain translate-y-2"
                 />
-                <div className="absolute bottom-4 left-4 z-30 flex gap-2">
-                     <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-[10px] font-black uppercase text-industrial-700 border border-industrial-200 shadow-sm">
+                <div className="absolute bottom-4 left-4 z-30 flex flex-nowrap items-center gap-1.5 overflow-hidden">
+                     <span className="px-2 py-0.5 bg-white/90 backdrop-blur-sm rounded-full text-[9px] font-black uppercase text-industrial-700 border border-industrial-200 shadow-sm whitespace-nowrap">
                         {job.demand} Demand
                      </span>
                      {job.matchPercentage && (
-                        <span className="px-3 py-1 bg-safety-blue text-white rounded-full text-[10px] font-black uppercase shadow-sm">
+                        <span className="px-2 py-0.5 bg-safety-blue text-white rounded-full text-[9px] font-black uppercase shadow-sm whitespace-nowrap">
                             {job.matchPercentage}% Match
                         </span>
                      )}
                 </div>
             </div>
-            <div className="p-6">
+            <div className="p-5">
                 <h4 className="text-xl font-black text-industrial-900 group-hover:text-safety-blue transition-colors">
                     {studentName} the {job.title.split(' ').slice(1).join(' ')}
                 </h4>
                 <p className="text-xs text-industrial-500 font-bold uppercase tracking-wider mt-1">{job.name}</p>
-                <div className="mt-4 pt-4 border-t border-industrial-50 flex items-center justify-between">
+                <div className="mt-3 pt-3 border-t border-industrial-50 flex items-center justify-between">
                      <div className="flex items-center gap-1.5 text-emerald-600">
                         <DollarSign className="w-3 h-3" />
                         <span className="text-xs font-black">${job.startingSalary.toLocaleString()}</span>
@@ -244,7 +244,7 @@ const JobDetailModal = ({ job, studentName, onClose }) => {
     // Helper component for aligned rows
     const ComparisonRow = ({ title, tradeContent, degreeContent, icon: Icon, type = "default" }) => (
         <div className="grid grid-cols-2 gap-0 border-b border-industrial-100/50 last:border-0">
-            <div className={`p-8 md:p-12 ${type === 'dark' ? 'bg-industrial-50' : 'bg-white'}`}>
+            <div className={`p-5 md:p-8 ${type === 'dark' ? 'bg-industrial-50' : 'bg-white'}`}>
                 <div className="space-y-3">
                     <p className="text-[10px] font-black uppercase text-industrial-400 flex items-center gap-2">
                         {Icon && <Icon className="w-3 h-3 text-safety-blue" />} {title}
@@ -252,7 +252,7 @@ const JobDetailModal = ({ job, studentName, onClose }) => {
                     {tradeContent}
                 </div>
             </div>
-            <div className={`p-8 md:p-12 ${type === 'dark' ? 'bg-industrial-800' : 'bg-industrial-900'} text-white`}>
+            <div className={`p-5 md:p-8 ${type === 'dark' ? 'bg-industrial-800' : 'bg-industrial-900'} text-white`}>
                 <div className="space-y-3">
                     <p className="text-[10px] font-black uppercase text-white/30 flex items-center gap-2">
                         {Icon && <Icon className="w-3 h-3 text-safety-blue" />} {title}
@@ -264,34 +264,34 @@ const JobDetailModal = ({ job, studentName, onClose }) => {
     );
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 md:p-12 overflow-hidden">
             <motion.div 
                 initial={{ opacity: 0 }} 
                 animate={{ opacity: 1 }} 
                 exit={{ opacity: 0 }}
                 onClick={onClose}
-                className="absolute inset-0 bg-industrial-900/60 backdrop-blur-md"
+                className="fixed inset-0 bg-industrial-900/40 backdrop-blur-xl"
             />
             <motion.div 
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="relative bg-white w-full max-w-6xl max-h-[95vh] overflow-y-auto rounded-3xl shadow-2xl overflow-x-hidden"
+                className="relative bg-white w-full max-w-5xl max-h-full overflow-y-auto rounded-3xl shadow-2xl overflow-x-hidden border border-white/20"
             >
                 {/* Header Row */}
-                <div className="grid grid-cols-2 sticky top-0 z-20 shadow-xl">
-                    <div className="p-8 md:p-12 bg-white border-r border-industrial-100 flex flex-col justify-center">
-                        <div className="flex items-center gap-3 mb-4">
-                            <span className="px-3 py-1 bg-blue-100 text-safety-blue text-[10px] font-black rounded-full uppercase tracking-widest">Trade Path</span>
-                            <span className="px-3 py-1 bg-emerald-100 text-emerald-600 text-[10px] font-black rounded-full uppercase tracking-widest">{job.demand} Demand</span>
+                <div className="grid grid-cols-2 z-20 border-b border-industrial-100">
+                    <div className="p-5 md:p-8 bg-white border-r border-industrial-100 flex flex-col justify-center">
+                        <div className="flex flex-nowrap items-center gap-1.5 mb-4 overflow-hidden">
+                            <span className="px-2 py-0.5 bg-blue-100 text-safety-blue text-[9px] font-black rounded-full uppercase tracking-widest whitespace-nowrap">Trade Path</span>
+                            <span className="px-2 py-0.5 bg-emerald-100 text-emerald-600 text-[9px] font-black rounded-full uppercase tracking-widest whitespace-nowrap">{job.demand} Demand</span>
                             {job.matchPercentage && (
-                                <span className="px-3 py-1 bg-safety-blue text-white text-[10px] font-black rounded-full uppercase tracking-widest">{job.matchPercentage}% Personalized Match</span>
+                                <span className="px-2 py-0.5 bg-safety-blue text-white text-[9px] font-black rounded-full uppercase tracking-widest whitespace-nowrap">{job.matchPercentage}% Personalized Match</span>
                             )}
                         </div>
                         <h2 className="text-4xl font-black text-industrial-900 leading-tight">{job.name}</h2>
                         <p className="text-industrial-400 text-xs mt-2 italic font-medium">"{job.relevanceMatch}"</p>
                     </div>
-                    <div className="p-8 md:p-12 bg-industrial-900 text-white flex flex-col justify-center relative">
+                    <div className="p-5 md:p-8 bg-industrial-900 text-white flex flex-col justify-center relative">
                         <button 
                             onClick={onClose}
                             className="absolute top-6 right-6 p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors z-30"
@@ -342,38 +342,38 @@ const JobDetailModal = ({ job, studentName, onClose }) => {
                     title="Financial Outlook"
                     icon={DollarSign}
                     tradeContent={
-                        <div className="space-y-6">
-                            <div className="grid grid-cols-2 gap-4">
-                                <div>
-                                    <p className="text-2xl font-black text-emerald-600">${job.startingSalary.toLocaleString()}</p>
-                                    <p className="text-[10px] font-bold text-industrial-400 uppercase mt-1">Starting Salary</p>
-                                </div>
-                                <div>
-                                    <p className="text-2xl font-black text-industrial-900">${job.medianSalary10yr.toLocaleString()}</p>
-                                    <p className="text-[10px] font-bold text-industrial-400 uppercase mt-1">10-Year Median</p>
-                                </div>
+                        <div className="space-y-4">
+                            <div className="p-4 bg-emerald-50 rounded-[1.5rem] border-2 border-emerald-100 shadow-inner">
+                                <p className="text-xl font-black text-emerald-700">Avg. Training Cost: {training.avgCost}</p>
+                                <p className="text-xs text-emerald-600 mt-1 uppercase font-black tracking-widest">Faster ROI potential</p>
                             </div>
-                            <div className="p-4 bg-emerald-50 rounded-xl border border-emerald-100">
-                                <p className="text-xs font-bold text-emerald-700">Avg. Training Cost: {training.avgCost}</p>
-                                <p className="text-[9px] text-emerald-600 mt-1 uppercase font-black">Faster ROI potential</p>
+                            <div className="grid grid-cols-2 gap-6 px-2">
+                                <div>
+                                    <p className="text-xl font-black text-emerald-600">${job.startingSalary.toLocaleString()}</p>
+                                    <p className="text-[10px] font-bold text-industrial-400 uppercase mt-1 tracking-widest font-black">Starting Salary</p>
+                                </div>
+                                <div>
+                                    <p className="text-xl font-black text-industrial-900">${job.medianSalary10yr.toLocaleString()}</p>
+                                    <p className="text-[10px] font-bold text-industrial-400 uppercase mt-1 tracking-widest font-black">10-Year Median</p>
+                                </div>
                             </div>
                         </div>
                     }
                     degreeContent={
-                        <div className="space-y-6">
-                            <div className="grid grid-cols-2 gap-4">
-                                <div>
-                                    <p className="text-2xl font-black text-white">${degreeJob.startingSalary.toLocaleString()}</p>
-                                    <p className="text-[10px] font-bold text-white/30 uppercase mt-1">Starting Salary</p>
-                                </div>
-                                <div>
-                                    <p className="text-2xl font-black text-white">${degreeJob.medianSalary10yr.toLocaleString()}</p>
-                                    <p className="text-[10px] font-bold text-white/30 uppercase mt-1">10-Year Median</p>
-                                </div>
+                        <div className="space-y-4">
+                            <div className="p-4 bg-rose-500/10 rounded-[1.5rem] border-2 border-rose-500/30 shadow-inner">
+                                <p className="text-xl font-black text-rose-300">Avg. Education Cost: {degreeJob.avgCost}</p>
+                                <p className="text-xs text-rose-400/80 mt-1 uppercase font-black tracking-widest">Longer debt cycle predicted</p>
                             </div>
-                            <div className="p-4 bg-rose-500/20 rounded-xl border border-rose-500/30">
-                                <p className="text-xs font-bold text-rose-300">Avg. Education Cost: {degreeJob.avgCost}</p>
-                                <p className="text-[9px] text-rose-400 mt-1 uppercase font-black">Longer debt cycle predicted</p>
+                            <div className="grid grid-cols-2 gap-6 px-2">
+                                <div>
+                                    <p className="text-xl font-black text-white/90">${degreeJob.startingSalary.toLocaleString()}</p>
+                                    <p className="text-[10px] font-bold text-white/30 uppercase mt-1 tracking-widest font-black">Starting Salary</p>
+                                </div>
+                                <div>
+                                    <p className="text-xl font-black text-white/90">${degreeJob.medianSalary10yr.toLocaleString()}</p>
+                                    <p className="text-[10px] font-bold text-white/30 uppercase mt-1 tracking-widest font-black">10-Year Median</p>
+                                </div>
                             </div>
                         </div>
                     }
@@ -385,47 +385,35 @@ const JobDetailModal = ({ job, studentName, onClose }) => {
                     icon={Briefcase}
                     type="dark"
                     tradeContent={
-                        <p className="text-sm text-industrial-600 leading-relaxed italic">"{job.dayInLife}"</p>
+                        <div className="space-y-4">
+                            <p className="text-lg font-black text-industrial-900">Experience a typical shift:</p>
+                            <p className="text-base text-industrial-600 leading-relaxed italic">"{job.dayInLife} Every project presents a new challenge, testing your problem-solving skills and technical mastery while delivering visible results by the day's end."</p>
+                        </div>
                     }
                     degreeContent={
-                        <p className="text-sm text-white/70 leading-relaxed italic">"{degreeJob.dayInLife}"</p>
+                        <div className="space-y-4">
+                            <p className="text-lg font-black text-white">Experience a typical day:</p>
+                            <p className="text-base text-white/70 leading-relaxed italic">"{degreeJob.dayInLife} You'll focus on long-term strategy and system-wide improvements, often seeing the fruits of your labor over weeks or months of development cycle."</p>
+                        </div>
                     }
                 />
 
                 {/* Skills/Impact Row */}
                 <ComparisonRow 
-                    title="Skills & Impact"
+                    title="Impact & Values"
                     icon={Target}
                     tradeContent={
-                        <div className="space-y-6">
-                            <div>
-                                <h4 className="text-[10px] font-black uppercase text-industrial-400 mb-2">Core Skills</h4>
-                                <div className="flex flex-wrap gap-2">
-                                    {job.skills.map(s => (
-                                        <span key={s} className="px-2 py-1 bg-industrial-100 rounded text-[10px] font-black text-industrial-700 uppercase">{s}</span>
-                                    ))}
-                                </div>
-                            </div>
-                            <div>
-                                <h4 className="text-[10px] font-black uppercase text-industrial-400 mb-2">Community Value</h4>
-                                <p className="text-xs text-industrial-600 leading-relaxed font-medium">{job.impact}</p>
-                            </div>
+                        <div className="space-y-4">
+                            <h4 className="text-[10px] font-black uppercase text-industrial-400 mb-1">Community Value</h4>
+                            <p className="text-lg text-industrial-900 leading-relaxed font-black">{job.impact}</p>
+                            <p className="text-sm text-industrial-500 leading-relaxed">Your work is vital infrastructure. You keep the physical systems of our society running safely and efficiently.</p>
                         </div>
                     }
                     degreeContent={
-                        <div className="space-y-6">
-                            <div>
-                                <h4 className="text-[10px] font-black uppercase text-white/30 mb-2">Technical Skills</h4>
-                                <div className="flex flex-wrap gap-2">
-                                    {degreeJob.skills.map(s => (
-                                        <span key={s} className="px-2 py-1 bg-white/10 rounded text-[10px] font-black text-white/80 uppercase">{s}</span>
-                                    ))}
-                                </div>
-                            </div>
-                            <div>
-                                <h4 className="text-[10px] font-black uppercase text-white/30 mb-2">Societal Contribution</h4>
-                                <p className="text-xs text-white/60 leading-relaxed font-medium">{degreeJob.impact}</p>
-                            </div>
+                        <div className="space-y-4">
+                            <h4 className="text-[10px] font-black uppercase text-white/30 mb-1">Societal Contribution</h4>
+                            <p className="text-lg text-white leading-relaxed font-black">{degreeJob.impact}</p>
+                            <p className="text-sm text-white/50 leading-relaxed">You design the high-level architectures and innovations that define how we move forward as a digital society.</p>
                         </div>
                     }
                 />
@@ -451,6 +439,10 @@ export default function CareerDiscovery() {
       setView('results');
       setMatchedResults(profile.discoveryResults.matches);
       setSurveyData(profile.discoveryResults.formData);
+    } else {
+      setView('opening');
+      setMatchedResults(null);
+      setSurveyData(null);
     }
   }, [profile.discoveryResults]);
 
@@ -568,7 +560,7 @@ export default function CareerDiscovery() {
             key="results"
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
-            className="space-y-12 py-12 px-6"
+            className="space-y-6 py-6 px-6"
           >
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 max-w-7xl mx-auto">
                 <div className="space-y-2">
@@ -593,7 +585,7 @@ export default function CareerDiscovery() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-7xl mx-auto">
                 {matchedResults.map((job) => (
                     <CareerCard 
                         key={job.id} 

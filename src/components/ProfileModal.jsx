@@ -70,9 +70,13 @@ export default function ProfileModal({ isOpen, onClose }) {
                >
                  <X className="w-6 h-6" />
                </button>
-               <div className="absolute -bottom-8 left-8 p-1 bg-white rounded-2xl shadow-xl">
-                 <div className="w-20 h-20 bg-industrial-200 rounded-xl flex items-center justify-center border border-industrial-100">
-                   <User className="w-10 h-10 text-industrial-600" />
+               <div className="absolute -bottom-8 left-8 p-1.5 bg-white rounded-2xl shadow-xl border border-industrial-100/50">
+                 <div className="w-20 h-20 bg-industrial-100 rounded-xl flex items-center justify-center overflow-hidden">
+                   <img 
+                    src={userType === 'student' ? '/assets/avatars/student.png' : '/assets/avatars/counselor.png'} 
+                    alt="Profile" 
+                    className="w-full h-full object-cover"
+                   />
                  </div>
                </div>
             </div>
@@ -147,9 +151,9 @@ export default function ProfileModal({ isOpen, onClose }) {
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-2 gap-x-4 gap-y-3 items-center">
                           <label className="text-[10px] uppercase font-black text-industrial-400 flex items-center gap-1.5 ml-1">
-                            <GraduationCap className="w-3 h-3" /> Education Status
+                             <GraduationCap className="w-3 h-3" /> Education Status
                           </label>
                           <select 
                             name="educationStatus"
@@ -161,21 +165,20 @@ export default function ProfileModal({ isOpen, onClose }) {
                             <option value="HS Senior">HS Senior</option>
                             <option value="HS Graduate">HS Graduate</option>
                           </select>
-                        <div className="space-y-1.5">
+
                           <label className="text-[10px] uppercase font-black text-industrial-400 flex items-center gap-1.5 ml-1">
-                             Target Career Path
+                             <Briefcase className="w-3 h-3" /> Target Career
                           </label>
                           <select 
                             name="selectedTrade"
                             value={formData.selectedTrade} 
                             onChange={handleChange}
-                            className="input-field text-sm p-3 bg-white appearance-none font-bold"
+                            className="input-field text-sm p-3 bg-white appearance-none font-bold shadow-sm"
                           >
                             {TRADE_CAREERS.map(t => (
                               <option key={t.id} value={t.id}>{t.name}</option>
                             ))}
                           </select>
-                        </div>
                       </div>
 
                       {/* Locked School Affiliation */}

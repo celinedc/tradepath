@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   TrendingUp, Users, DollarSign, CheckCircle2, ArrowRight, 
   GraduationCap, Calendar, Clock, BarChart3, Bell, UserPlus, Star
@@ -23,15 +23,119 @@ const DEADLINES = [
 
 export default function Dashboard() {
   const { profile, userType } = useUser();
+  const [showSchedulePrompt, setShowSchedulePrompt] = React.useState(null);
+  const [showScheduler, setShowScheduler] = React.useState(false);
   
   if (userType === 'counselor') {
     return <CounselorDashboard profile={profile} />;
   }
   
-  return <StudentDashboard profile={profile} />;
+  return (
+    <>
+      <StudentDashboard 
+        profile={profile} 
+        onScheduleClick={(stepId) => setShowSchedulePrompt(stepId)} 
+      />
+      
+      <AnimatePresence>
+        {showSchedulePrompt && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className="bg-white p-6 rounded-[2rem] shadow-2xl max-w-sm w-full text-center space-y-4"
+            >
+              <div className="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mx-auto">
+                <Calendar className="w-8 h-8 text-indigo-600" />
+              </div>
+              <h3 className="text-xl font-black text-indigo-950">Next Step: Counselor Sync</h3>
+              <p className="text-indigo-500 text-sm font-medium leading-relaxed">
+                To move forward with your {showSchedulePrompt === 3 ? "applications" : "acceptance"}, you'll need to review details with your guidance counselor.
+              </p>
+              <div className="space-y-2">
+                <button 
+                  onClick={() => {
+                    setShowSchedulePrompt(null);
+                    setShowScheduler(true);
+                  }}
+                  className="w-full py-4 bg-indigo-600 text-white rounded-xl font-black uppercase tracking-widest hover:bg-indigo-700 transition-all shadow-lg"
+                >
+                  Schedule an appointment
+                </button>
+                <button 
+                  onClick={() => setShowSchedulePrompt(null)}
+                  className="w-full py-3 text-indigo-400 font-bold hover:text-indigo-600 transition-all"
+                >
+                  Maybe later
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+
+        {showScheduler && (
+          <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-indigo-950/60 backdrop-blur-md">
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 50 }}
+              className="bg-white rounded-[2.5rem] shadow-2xl max-w-2xl w-full overflow-hidden"
+            >
+              <div className="p-8 border-b border-indigo-50 flex justify-between items-center bg-indigo-50/50">
+                <div>
+                  <h2 className="text-2xl font-black text-indigo-950">Schedule Meeting</h2>
+                  <p className="text-indigo-500 font-bold text-xs uppercase tracking-widest mt-1">Select a time with Mrs. Guthrie</p>
+                </div>
+                <button onClick={() => setShowScheduler(false)} className="p-2 hover:bg-white rounded-xl transition-all">
+                  <ArrowRight className="w-6 h-6 text-indigo-400 rotate-180" />
+                </button>
+              </div>
+              
+              <div className="p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-6">
+                  <h4 className="text-xs font-black uppercase tracking-widest text-indigo-900 border-b border-indigo-100 pb-2">Available Dates</h4>
+                  <div className="grid grid-cols-4 gap-2">
+                    {[20, 21, 22, 23, 24, 25, 26, 27].map(day => (
+                      <button key={day} className={`p-3 rounded-xl border-2 font-black transition-all ${day === 22 ? 'bg-indigo-600 border-indigo-600 text-white' : 'border-indigo-50 text-indigo-900 hover:border-indigo-200'}`}>
+                        {day}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="space-y-6">
+                  <h4 className="text-xs font-black uppercase tracking-widest text-indigo-900 border-b border-indigo-100 pb-2">Select Time</h4>
+                  <div className="space-y-2">
+                    {['9:00 AM', '10:30 AM', '1:00 PM', '2:45 PM'].map(time => (
+                      <button key={time} className="w-full p-4 rounded-xl border border-indigo-50 bg-indigo-50/30 text-indigo-900 font-bold hover:bg-indigo-50 transition-all text-left flex justify-between items-center group">
+                        {time}
+                        <Clock className="w-4 h-4 text-indigo-300 group-hover:text-indigo-600" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              
+              <div className="p-8 border-t border-indigo-50 bg-indigo-50/20 flex gap-4">
+                <button 
+                  onClick={() => {
+                    alert('Appointment Requested! Mrs. Guthrie will confirm via email.');
+                    setShowScheduler(false);
+                  }}
+                  className="flex-1 py-4 bg-indigo-600 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-indigo-700 transition-all shadow-xl"
+                >
+                  Confirm Appointment
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    </>
+  );
 }
 
-function StudentDashboard({ profile }) {
+function StudentDashboard({ profile, onScheduleClick }) {
   const hasCompletedDiscovery = !!profile.discoveryResults?.matches;
   const currentTrade = TRADE_CAREERS.find(t => t.id === profile.selectedTrade) || TRADE_CAREERS[0];
   const tradeName = hasCompletedDiscovery ? currentTrade.name : "High-Demand Trades";
@@ -43,12 +147,12 @@ function StudentDashboard({ profile }) {
   });
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
       {/* Hero / Progress Section - Teen Friendly */}
-      <section className="relative overflow-hidden p-8 rounded-[2.5rem] bg-indigo-600 text-white shadow-2xl shadow-indigo-500/20">
+      <section className="relative overflow-hidden p-5 rounded-[2.5rem] bg-indigo-600 text-white shadow-2xl shadow-indigo-500/20">
         <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-400 rounded-full blur-[100px] opacity-50 -mr-32 -mt-32" />
         <div className="relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-6">
             <div className="space-y-2">
               <div className="flex items-center gap-3">
                 <div className="bg-white/20 backdrop-blur-md p-2 rounded-xl">
@@ -92,30 +196,48 @@ function StudentDashboard({ profile }) {
                />
             </div>
             
-            {dynamicSteps.map((step) => (
-              <Link key={step.id} to={step.path} className="relative z-10 flex flex-col items-center group">
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center border-2 transition-all transform group-hover:scale-110 ${
-                  step.status === 'complete' 
-                    ? 'bg-white border-white text-indigo-600 shadow-xl' 
-                    : step.status === 'current'
-                    ? 'bg-indigo-600 border-white text-white ring-8 ring-white/10'
-                    : 'bg-indigo-700 border-indigo-500 text-indigo-300'
-                }`}>
-                  {step.status === 'complete' ? <CheckCircle2 className="w-6 h-6" /> : <span className="text-lg font-black">{step.id}</span>}
+            {dynamicSteps.map((step) => {
+              const isSchedulingStep = step.id === 3 || step.id === 4;
+              
+              const StepContent = (
+                <div className="relative z-10 flex flex-col items-center group cursor-pointer">
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center border-2 transition-all transform group-hover:scale-110 ${
+                    step.status === 'complete' 
+                      ? 'bg-white border-white text-indigo-600 shadow-xl' 
+                      : step.status === 'current'
+                      ? 'bg-indigo-600 border-white text-white ring-8 ring-white/10'
+                      : 'bg-indigo-700 border-indigo-500 text-indigo-300'
+                  }`}>
+                    {step.status === 'complete' ? <CheckCircle2 className="w-6 h-6" /> : <span className="text-lg font-black">{step.id}</span>}
+                  </div>
+                  <span className={`mt-3 text-[10px] font-black uppercase tracking-widest ${
+                    step.status === 'complete' || step.status === 'current' ? 'text-white' : 'text-indigo-300'
+                  }`}>
+                    {step.title}
+                  </span>
                 </div>
-                <span className={`mt-3 text-[10px] font-black uppercase tracking-widest ${
-                  step.status === 'complete' || step.status === 'current' ? 'text-white' : 'text-indigo-300'
-                }`}>
-                  {step.title}
-                </span>
-              </Link>
-            ))}
+              );
+
+              if (isSchedulingStep) {
+                return (
+                  <div key={step.id} onClick={() => onScheduleClick(step.id)}>
+                    {StepContent}
+                  </div>
+                );
+              }
+
+              return (
+                <Link key={step.id} to={step.path}>
+                  {StepContent}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Main Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <MetricCard 
           title="Starting Salary" 
           value={`$${currentTrade.base.toLocaleString()}`}
@@ -142,7 +264,7 @@ function StudentDashboard({ profile }) {
         />
       </div>
 
-      <section className="space-y-4">
+      <section className="space-y-3">
         <div className="flex justify-between items-center">
           <h3 className="text-2xl font-black text-indigo-950 tracking-tight">
             {currentTrade.id === 'undecided' ? "Top-Rated Programs" : `Best Schools for ${currentTrade.name}s`}
@@ -151,7 +273,7 @@ function StudentDashboard({ profile }) {
             Explore All <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-1">
            {profile.starredSchools && profile.starredSchools.length > 0 ? (
              profile.starredSchools.slice(0, 4).map(schoolId => {
                const school = SCHOOLS.find(s => s.id === schoolId);
@@ -164,6 +286,7 @@ function StudentDashboard({ profile }) {
                    image={school.image}
                    tuition={school.tuition === 0 ? "FREE" : `$${school.tuition.toLocaleString()}`}
                    location={school.location}
+                   url={school.url}
                  />
                );
              })
@@ -177,22 +300,27 @@ function StudentDashboard({ profile }) {
                     image={school.image}
                     tuition={school.tuition === 0 ? "FREE" : `$${school.tuition.toLocaleString()}`}
                     location={school.location}
+                    url={school.url}
                   />
                ))}
                {/* Final fallback if no trade match */}
                {SCHOOLS.filter(s => s.trade === profile.selectedTrade).length === 0 && (
                  <>
                    <SchoolPreview 
+                    schoolId={1}
                     name="Northwest Technical Institute"
                     image="/images/schools/electrician_training_lab_premium_1773773106054.png"
                     tuition="$8,500"
                     location="Springdale, AR"
+                    url="https://www.nwti.edu/"
                   />
                   <SchoolPreview 
+                    schoolId={2}
                     name="Apex Technical School"
                     image="/images/schools/hvac_lab_training_premium_1773773122562.png"
                     tuition="$12,000"
                     location="Long Island City, NY"
+                    url="https://apexschool.com/"
                   />
                  </>
                )}
@@ -311,12 +439,21 @@ function StudentStatRow({ trade, count, growth, color }) {
   );
 }
 
-function SchoolPreview({ name, image, tuition, location, schoolId }) {
+function SchoolPreview({ name, image, tuition, location, schoolId, url }) {
   const { profile, toggleStarSchool } = useUser();
   const isStarred = profile.starredSchools?.includes(schoolId);
 
   return (
-    <div className="card group cursor-pointer hover:shadow-xl transition-all border-none bg-white overflow-hidden rounded-[2rem]">
+    <div 
+      onClick={() => {
+        if (url) window.open(url, '_blank');
+        else {
+          const foundUrl = SCHOOLS.find(s => s.id === schoolId)?.url;
+          if (foundUrl) window.open(foundUrl, '_blank');
+        }
+      }}
+      className="card group cursor-pointer hover:shadow-xl transition-all border-none bg-white overflow-hidden rounded-[2rem]"
+    >
       <div className="h-44 overflow-hidden relative">
          <img src={image} alt={name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
          <div className="absolute top-4 left-4 bg-indigo-600/90 backdrop-blur px-3 py-1.5 rounded-xl text-xs font-black text-white shadow-lg">

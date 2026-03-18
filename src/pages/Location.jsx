@@ -57,19 +57,19 @@ export default function LocationPage() {
   const isStudent = userType === 'student';
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
         <div>
-          <h3 className={`text-3xl font-black tracking-tight ${isStudent ? 'text-indigo-950' : 'text-industrial-900'}`}>Market Demand Heatmap</h3>
-          <p className="text-industrial-500 font-medium">Live job opening density across the United States</p>
+          <h3 className={`text-2xl font-black tracking-tight ${isStudent ? 'text-indigo-950' : 'text-industrial-900'}`}>Market Demand Heatmap</h3>
+          <p className="text-industrial-500 text-xs font-medium">Live job opening density across the United States</p>
         </div>
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-2">
           <div className="relative">
-            <Briefcase className={`absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 ${isStudent ? 'text-indigo-400' : 'text-industrial-400'}`} />
+            <Briefcase className={`absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 ${isStudent ? 'text-indigo-400' : 'text-industrial-400'}`} />
             <select 
               value={selectedTrade}
               onChange={(e) => setSelectedTrade(e.target.value)}
-              className={`input-field pl-12 py-2.5 w-64 appearance-none cursor-pointer ${isStudent ? 'bg-white border-indigo-100 rounded-2xl text-indigo-900 font-bold shadow-sm' : 'bg-white text-sm'}`}
+              className={`input-field pl-10 py-2 w-56 appearance-none cursor-pointer text-xs ${isStudent ? 'bg-white border-indigo-100 rounded-xl text-indigo-900 font-bold shadow-sm' : 'bg-white text-sm'}`}
             >
               <option value="all">All Skilled Trades</option>
               {Object.entries(
@@ -93,8 +93,8 @@ export default function LocationPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className={`lg:col-span-2 card p-8 bg-white overflow-hidden relative min-h-[500px] border-none shadow-sm ${isStudent ? 'rounded-[2.5rem]' : ''}`}>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className={`lg:col-span-2 card p-4 bg-white overflow-hidden relative min-h-[400px] border-none shadow-sm ${isStudent ? 'rounded-[2rem]' : ''}`}>
           <div className="absolute top-6 left-6 z-10 flex items-center gap-4 bg-white/90 backdrop-blur p-3 rounded-2xl border border-white shadow-lg">
              <div className="flex items-center gap-2">
                <div className={`w-3 h-3 rounded-full ${isStudent ? 'bg-indigo-50' : 'bg-[#eff6ff]'}`} />
@@ -156,21 +156,21 @@ export default function LocationPage() {
 
         <div className="space-y-6">
           {selectedState ? (
-            <div className={`card p-8 text-white border-none animate-in slide-in-from-right-4 shadow-xl ${isStudent ? 'bg-indigo-900 rounded-[2.5rem]' : 'bg-industrial-900'}`}>
-              <div className="flex justify-between items-start mb-6">
+            <div className={`card p-6 text-white border-none animate-in slide-in-from-right-4 shadow-xl ${isStudent ? 'bg-indigo-900 rounded-[2rem]' : 'bg-industrial-900'}`}>
+              <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h4 className="text-3xl font-black tracking-tight">{selectedState.name}</h4>
-                  <p className={`${isStudent ? 'text-indigo-300' : 'text-industrial-400'} text-[10px] font-black uppercase tracking-widest`}>Regional Deep Dive</p>
+                  <h4 className="text-2xl font-black tracking-tight">{selectedState.name}</h4>
+                  <p className={`${isStudent ? 'text-indigo-300' : 'text-industrial-400'} text-[9px] font-black uppercase tracking-widest`}>Regional Deep Dive</p>
                 </div>
                 <button 
                   onClick={() => setSelectedState(null)}
-                  className={`${isStudent ? 'text-indigo-400 hover:text-white' : 'text-industrial-400 hover:text-white'} text-[10px] font-black uppercase tracking-widest`}
+                  className={`${isStudent ? 'text-indigo-400 hover:text-white' : 'text-industrial-400 hover:text-white'} text-[9px] font-black uppercase tracking-widest`}
                 >
                   Clear Selection
                 </button>
               </div>
-              <div className="space-y-6">
-                <div className={`p-5 rounded-[1.5rem] border ${isStudent ? 'bg-white/5 border-white/10' : 'bg-white/5 border-white/10'}`}>
+              <div className="space-y-4">
+                <div className={`p-4 rounded-[1.2rem] border ${isStudent ? 'bg-white/5 border-white/10' : 'bg-white/5 border-white/10'}`}>
                    <div className="flex justify-between items-start mb-1">
                      <p className={`text-[10px] font-black uppercase tracking-widest ${isStudent ? 'text-indigo-400' : 'text-safety-blue'}`}>Labor Concentration</p>
                      <TrendingUp className="w-4 h-4 text-emerald-400" />

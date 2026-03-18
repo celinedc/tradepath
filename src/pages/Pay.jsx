@@ -9,13 +9,13 @@ import {
   GraduationCap, Coins, ArrowRight, Zap, Target, BookmarkCheck, X, Sparkles
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { TRADE_CAREERS, ETHNICITIES, CITY_PAY_ADJUSTMENTS } from '../data/mockData';
+import { TRADE_CAREERS, ETHNICITIES, CITY_PAY_ADJUSTMENTS, DEMAND_DATA } from '../data/mockData';
 import { fetchCareerWages, getLocalizedMultiplier } from '../services/CareerOneStop';
 import { useUser } from '../context/UserContext';
 
 // Milestone Component for ROI Modal
 const Milestone = ({ year, title, desc, icon }) => (
-    <div className="flex gap-4 p-5 rounded-3xl bg-industrial-50 border border-industrial-100 group hover:border-indigo-200 transition-all">
+    <div className="flex gap-4 p-4 rounded-3xl bg-industrial-50 border border-industrial-100 group hover:border-indigo-200 transition-all">
         <div className="w-12 h-12 rounded-2xl bg-white border border-industrial-100 flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform">
             {icon}
         </div>
@@ -55,9 +55,9 @@ const ROIPathModal = ({ isOpen, onClose, tradeData, ethnicity, comparisonData })
         animate={{ scale: 1, opacity: 1, y: 0 }}
         className="relative bg-white rounded-[2.5rem] w-full max-w-lg overflow-hidden shadow-2xl border border-white/20"
       >
-        <div className="bg-indigo-600 p-8 text-white relative">
+        <div className="bg-indigo-600 p-5 text-white relative">
           <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-400 rounded-full blur-[80px] opacity-30 -mr-20 -mt-20" />
-          <button onClick={onClose} className="absolute top-6 right-6 text-white/60 hover:text-white transition-colors">
+          <button onClick={onClose} className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors">
             <X className="w-5 h-5" />
           </button>
           <div className="relative z-10 space-y-1.5">
@@ -69,7 +69,7 @@ const ROIPathModal = ({ isOpen, onClose, tradeData, ethnicity, comparisonData })
           </div>
         </div>
 
-        <div className="p-8 space-y-6">
+        <div className="p-5 space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1">
               <p className="text-[10px] font-black uppercase text-industrial-400 tracking-widest leading-none">40-Year Trade Wealth</p>
@@ -188,28 +188,55 @@ export default function PayPage() {
     }
   }, [useRegionalPay, selectedTrade, profile.schoolCity]);
 
+  const dynamicMultipliers = useMemo(() => {
+    const BASE_COL = {
+      'CA': 1.25, 'NY': 1.25, 'MA': 1.25, 'WA': 1.25, 'NJ': 1.25, 'CT': 1.25, 'HI': 1.25, 'AK': 1.25,
+      'TX': 1.1, 'FL': 1.1, 'IL': 1.1, 'GA': 1.1, 'PA': 1.1, 'OH': 1.1, 'CO': 1.1, 'AZ': 1.1, 'NC': 1.1, 'VA': 1.1, 'MD': 1.1,
+      'AR': 0.92, 'MS': 0.92, 'WV': 0.92, 'AL': 0.92, 'KY': 0.92, 'OK': 0.92, 'SC': 0.92, 'TN': 0.92, 'IN': 0.92, 'KS': 0.92, 'IA': 0.92
+    };
+
+    const multipliers = { ...BASE_COL };
+    if (tradeData.id === 'all-trades') return multipliers;
+
+    // Apply trade-specific logic
+    Object.keys(multipliers).forEach(stateCode => {
+      const stateData = DEMAND_DATA.find(d => d.id === stateCode);
+      let bonus = 0;
+
+      // Premium for Top Trades in that state
+      if (stateData?.topTrade === tradeData.id || stateData?.topTrade === tradeData.name) {
+        bonus += 0.08;
+      }
+
+      // Sector specialties
+      if (tradeData.sector === 'Healthcare & Medical' && ['NY', 'MA', 'PA', 'FL'].includes(stateCode)) {
+        bonus += 0.05; // High medical concentration
+      }
+      if (tradeData.sector === 'Industrial & Manufacturing' && ['MI', 'OH', 'IN', 'IL'].includes(stateCode)) {
+        bonus += 0.04; // Rust belt industrial premium
+      }
+      if (tradeData.sector === 'Construction' && ['TX', 'AZ', 'NV', 'FL'].includes(stateCode)) {
+        bonus += 0.04; // High growth construction premium
+      }
+
+      multipliers[stateCode] = parseFloat((multipliers[stateCode] + bonus).toFixed(2));
+    });
+
+    return multipliers;
+  }, [tradeData]);
+
   const regionMultiplier = useMemo(() => {
     if (!useRegionalPay) return 1;
+    const state = selectedCustomState || profile.schoolState || 'AR';
+    
     if (selectedCustomState) {
-        const state = selectedCustomState;
-        const highCostStates = ['CA', 'NY', 'MA', 'WA', 'NJ', 'CT', 'HI', 'AK'];
-        const midCostStates = ['TX', 'FL', 'IL', 'GA', 'PA', 'OH', 'CO', 'AZ', 'NC', 'VA', 'MD'];
-        const lowerCostStates = ['AR', 'MS', 'WV', 'AL', 'KY', 'OK', 'SC', 'TN', 'IN', 'KS', 'IA'];
-        if (highCostStates.includes(state)) return 1.25;
-        if (midCostStates.includes(state)) return 1.1;
-        if (lowerCostStates.includes(state)) return 0.92;
-        return 1;
+        return dynamicMultipliers[selectedCustomState] || 1;
     }
+    
     if (currentWageData) return getLocalizedMultiplier(currentWageData);
-    const state = profile.schoolState || 'AR';
-    const highCostStates = ['CA', 'NY', 'MA', 'WA', 'NJ', 'CT', 'HI', 'AK'];
-    const midCostStates = ['TX', 'FL', 'IL', 'GA', 'PA', 'OH', 'CO', 'AZ', 'NC', 'VA', 'MD'];
-    const lowerCostStates = ['AR', 'MS', 'WV', 'AL', 'KY', 'OK', 'SC', 'TN', 'IN', 'KS', 'IA'];
-    if (highCostStates.includes(state)) return 1.25;
-    if (midCostStates.includes(state)) return 1.1;
-    if (lowerCostStates.includes(state)) return 0.92;
-    return 1;
-  }, [useRegionalPay, selectedCustomState, currentWageData, profile.schoolState]);
+    
+    return dynamicMultipliers[state] || 1;
+  }, [useRegionalPay, selectedCustomState, currentWageData, profile.schoolState, dynamicMultipliers]);
 
   const processedChartData = tradeData.payGrowth.map(point => {
     const baseline = point[selectedEthnicity];
@@ -324,20 +351,20 @@ export default function PayPage() {
   const isStudent = userType === 'student';
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
       
       {/* Top Row: Sidebar + 40-Year Graph */}
-      <div className="flex flex-col lg:flex-row gap-8">
+      <div className="flex flex-col lg:flex-row gap-4">
         {/* Control Panel (Sidebar on Left) */}
-        <aside className="w-full lg:w-80 flex-shrink-0 space-y-6">
+        <aside className="w-full lg:w-80 flex-shrink-0 space-y-4">
           <div className={`card p-6 border-none shadow-sm ${isStudent ? 'bg-white rounded-[2rem]' : 'bg-white'}`}>
-              <div className="flex items-center gap-2 mb-6">
+              <div className="flex items-center gap-2 mb-4">
                 <Filter className={`w-5 h-5 ${isStudent ? 'text-indigo-600' : 'text-safety-blue'}`} />
                 <span className={`font-black uppercase tracking-widest text-xs ${isStudent ? 'text-indigo-900' : 'text-industrial-900'}`}>Control Panel</span>
               </div>
 
-              <div className="space-y-6">
-                <div className="space-y-2">
+              <div className="space-y-4">
+                <div className="space-y-1">
                   <label className="text-[10px] font-black text-industrial-400 uppercase tracking-widest">Career Path</label>
                   <select 
                     value={selectedTrade}
@@ -375,7 +402,7 @@ export default function PayPage() {
                     </button>
                   </div>
                   
-                  <div className="space-y-2">
+                  <div className="space-y-1">
                      <p className="text-[10px] text-industrial-400 leading-tight">Adjust earnings for specific state cost of living and local demand.</p>
                     <select 
                       value={selectedCustomState}
@@ -383,21 +410,35 @@ export default function PayPage() {
                       className={`w-full py-2 px-3 text-xs border rounded-xl appearance-none cursor-pointer ${isStudent ? 'bg-indigo-50/50 border-indigo-100' : 'bg-industrial-50 border-industrial-100'}`}
                     >
                       <option value="">Current Profile Location</option>
-                      <optgroup label="Core States">
-                        <option value="CA">California (+25%)</option>
-                        <option value="NY">New York (+25%)</option>
-                        <option value="TX">Texas (+10%)</option>
-                        <option value="FL">Florida (+10%)</option>
-                        <option value="AR">Arkansas (-8%)</option>
-                      </optgroup>
-                      <option value="all">View All States...</option>
+                      {Object.entries({
+                        'High Premium (+25%)': ['CA', 'NY', 'MA', 'WA', 'NJ', 'CT', 'HI', 'AK'],
+                        'Standard Premium (+10%)': ['TX', 'FL', 'IL', 'GA', 'PA', 'OH', 'CO', 'AZ', 'NC', 'VA', 'MD'],
+                        'Baseline / Rural (-8%)': ['AR', 'MS', 'WV', 'AL', 'KY', 'OK', 'SC', 'TN', 'IN', 'KS', 'IA'],
+                        'Other States (National Avg)': ['DE', 'ID', 'LA', 'ME', 'MI', 'MN', 'MO', 'MT', 'NE', 'NV', 'NH', 'NM', 'ND', 'OR', 'RI', 'SD', 'UT', 'VT', 'WI', 'WY']
+                      }).map(([label, states]) => (
+                        <optgroup key={label} label={label}>
+                          {states.map(state => {
+                            const mult = dynamicMultipliers[state] || 1;
+                            const diff = Math.round((mult - 1) * 100);
+                            const sign = diff >= 0 ? '+' : '';
+                            return (
+                              <option key={state} value={state}>
+                                {state} ({sign}{diff}%)
+                              </option>
+                            );
+                          })}
+                        </optgroup>
+                      ))}
                     </select>
                   </div>
                 </div>
 
                 <div className="pt-4 border-t border-industrial-100">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-bold text-industrial-700">Gender Equity</span>
+                    <span className="text-sm font-bold text-industrial-700">Display Settings</span>
+                  </div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] text-industrial-500 font-bold uppercase tracking-wider">Gender Equity Line</span>
                     <button 
                       onClick={() => setShowGenderGap(!showGenderGap)}
                       className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${showGenderGap ? 'bg-safety-blue' : 'bg-industrial-200'}`}
@@ -405,7 +446,6 @@ export default function PayPage() {
                       <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${showGenderGap ? 'translate-x-6' : 'translate-x-1'}`} />
                     </button>
                   </div>
-                  <p className="text-[10px] text-industrial-400 leading-tight">View potential wage gaps to better navigate career negotiations.</p>
                 </div>
               </div>
           </div>
@@ -421,8 +461,8 @@ export default function PayPage() {
         </aside>
 
         {/* First Graph Section */}
-        <section className="flex-1 card p-8 bg-white shadow-xl border-none min-w-0">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+        <section className="flex-1 card p-5 bg-white shadow-xl border-none min-w-0">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-4 gap-4">
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <TrendingUp className="w-4 h-4 text-safety-blue" />
@@ -505,8 +545,8 @@ export default function PayPage() {
       </div>
 
       {/* Full Width Middle Section: Quick Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="card p-6 bg-industrial-900 text-white border-none shadow-xl shadow-industrial-900/10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="card p-5 bg-industrial-900 text-white border-none shadow-xl shadow-industrial-900/10">
             <div className="flex items-center gap-2 mb-3">
               <Coins className="w-4 h-4 text-safety-blue" />
               <span className="text-[10px] font-black uppercase tracking-wider text-industrial-400">Total Career Potential</span>
@@ -519,7 +559,7 @@ export default function PayPage() {
             </p>
           </div>
           
-          <div className="card p-6 border-industrial-100 bg-white">
+          <div className="card p-5 border-industrial-100 bg-white">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 bg-emerald-100/50 rounded-lg">
                 <Briefcase className="w-5 h-5 text-emerald-600" />
@@ -535,7 +575,7 @@ export default function PayPage() {
             <p className="text-xs text-industrial-500 font-medium italic mt-2">National Market Growth: {tradeData.growth}</p>
           </div>
 
-          <div className="card p-6 border-industrial-100 bg-white">
+          <div className="card p-5 border-industrial-100 bg-white">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-2 bg-rose-50 rounded-lg">
                 <Users className="w-5 h-5 text-rose-500" />
@@ -552,9 +592,9 @@ export default function PayPage() {
       </div>
 
       {/* Full Width Bottom Section: True Wealth */}
-      <section className="space-y-8 pb-12">
-        <div className="card p-8 bg-industrial-50 border-industrial-200">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
+      <section className="space-y-4 pb-12">
+        <div className="card p-5 bg-industrial-50 border-industrial-200">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-6">
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <Coins className="w-4 h-4 text-safety-blue" />
@@ -570,7 +610,7 @@ export default function PayPage() {
             </div>
           </div>
 
-          <div className="flex flex-col xl:flex-row gap-8">
+          <div className="flex flex-col xl:flex-row gap-4">
             {/* Extended Chart Area */}
             <div className="flex-1 min-w-0">
               <div className="h-[500px] w-full bg-white/40 rounded-[2.5rem] p-6 border border-white">
@@ -587,9 +627,16 @@ export default function PayPage() {
                       axisLine={false} 
                       tickLine={false} 
                       tick={{fill: '#94a3b8', fontSize: 11}} 
-                      tickFormatter={(val) => `$${val/1000}k`} 
+                      tickFormatter={(val) => {
+                        if (val === 0) return '$0';
+                        if (Math.abs(val) >= 1000000) return `$${(val / 1000000).toFixed(1)}M`;
+                        return `$${val / 1000}k`;
+                      }} 
                     />
-                    <Tooltip contentStyle={{borderRadius: '16px', border: 'none', boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)', maxWidth: 'none', whiteSpace: 'pre-wrap'}} />
+                    <Tooltip 
+                      formatter={(val) => [`$${val.toLocaleString()}`, 'Cumulative Wealth']}
+                      contentStyle={{borderRadius: '16px', border: 'none', boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)', maxWidth: 'none', whiteSpace: 'pre-wrap'}} 
+                    />
                     <Area type="monotone" dataKey="tradeCumulative" stroke="#1e293b" fill="#1e293b" fillOpacity={0.03} strokeWidth={4} name={`${tradeData.name} Wealth`} />
                     <Area type="monotone" dataKey="degreeCumulative" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.03} strokeWidth={4} name={`${comparablePath.name} Wealth`} />
                   </ComposedChart>
@@ -598,8 +645,8 @@ export default function PayPage() {
             </div>
 
             {/* Restored Insight Column */}
-            <div className="w-full xl:w-80 flex flex-col gap-5">
-              <div className="card p-6 bg-white border-industrial-100/60 shadow-sm hover:shadow-md transition-all group">
+            <div className="w-full xl:w-80 flex flex-col gap-3">
+              <div className="card p-5 bg-white border-industrial-100/60 shadow-sm hover:shadow-md transition-all group">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-2 bg-rose-50 rounded-lg group-hover:bg-rose-100 transition-colors">
                     <GraduationCap className="w-5 h-5 text-rose-600" />
@@ -625,7 +672,7 @@ export default function PayPage() {
 
               <div 
                 onClick={() => setIsROIModalOpen(true)}
-                className="card p-6 mt-auto bg-industrial-900 text-white border-none flex flex-col justify-center gap-3 group cursor-pointer hover:bg-industrial-800 transition-all shadow-xl shadow-industrial-900/20"
+                className="card p-5 mt-auto bg-industrial-900 text-white border-none flex flex-col justify-center gap-2 group cursor-pointer hover:bg-industrial-800 transition-all shadow-xl shadow-industrial-900/20"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">

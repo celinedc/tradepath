@@ -1,11 +1,6 @@
 
 export const INTAKE_QUESTIONS = [
-  {
-    id: 'location',
-    question: "Where are you located?",
-    placeholder: "e.g., Boise, Idaho",
-    type: 'text'
-  },
+
   {
     id: 'favoriteSubject',
     question: "What is your favorite subject in school?",
@@ -26,7 +21,7 @@ export const INTAKE_QUESTIONS = [
   },
   {
     id: 'steadyHandAesthetics',
-    question: "Do you enjoy tasks that require a steady hand and an eye for aesthetics, such as soldering, tiling, or finishing wood surfaces?",
+    question: "Do you enjoy tasks that require a steady hand and an eye for aesthetics?",
     type: 'select',
     options: ['I love detailed work', 'Not for me']
   },
@@ -38,13 +33,13 @@ export const INTAKE_QUESTIONS = [
   },
   {
     id: 'techVsBookshelf',
-    question: "Are you the person friends ask to help set up their tech, or the person they ask to help build a bookshelf?",
+    question: "When someone needs help, what are they most likely to ask you for?",
     type: 'select',
-    options: ['Set up tech', 'Build a bookshelf']
+    options: ['Setting up tech/software', 'Building a bookshelf/furniture', 'Designing a creative project/art']
   },
   {
     id: 'dirtyHands',
-    question: "How much does the idea of getting your hands dirty (grease, mud, or water) bother you?",
+    question: "How much does the idea of getting your hands dirty bother you?",
     type: 'select',
     options: ["Doesn't bother me", "I'd rather stay clean"]
   },
@@ -52,7 +47,7 @@ export const INTAKE_QUESTIONS = [
     id: 'heightsVsCrawlspace',
     question: "Are you more comfortable working at the top of a 20-foot ladder or squeezed into a tight crawlspace under a floor?",
     type: 'select',
-    options: ['Top of 20-foot ladder', 'Tight crawlspace']
+    options: ['Top of 20-foot ladder', 'Tight crawlspace', 'Neither - keep me on level ground']
   },
   {
     id: 'visualization',
@@ -91,10 +86,10 @@ export const INTAKE_QUESTIONS = [
     options: ['Investigate', 'Wait for someone']
   },
   {
-    id: 'sandingVsSoldering',
-    question: "Which feels more satisfying: Sanding a piece of wood until it's perfectly smooth, or soldering a tiny wire onto a circuit board?",
+    id: 'grindVsClutch',
+    question: "Which feels like a bigger win? Putting in the long, repetitive grind to turn a messy rough draft into a perfect final project, or the high-pressure moment of hitting a game-winning shot (or nail-biting gaming clutch) where one tiny slip-up ruins the whole thing?",
     type: 'select',
-    options: ['Sanding wood', 'Soldering wire']
+    options: ['The long, satisfying grind', 'The high-pressure clutch moment']
   },
   {
     id: 'structureVsTinker',
