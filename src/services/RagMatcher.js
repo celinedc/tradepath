@@ -1,79 +1,98 @@
+import CAREER_EMBEDDINGS from '../data/careerEmbeddings.json';
 import { RECOMMENDATIONS } from '../data/aptitudeData';
 
-// This will load the generated pre-computed embeddings once we run our script!
-// We'll import it from a JSON file. For now, it's just a placeholder array.
-let PRECOMPUTED_EMBEDDINGS = [];
-try {
-  // Try to load if it exists
-  PRECOMPUTED_EMBEDDINGS = []; // require('../data/careerEmbeddings.json')
-} catch (e) {
-  // Optional runtime fallback
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+const EMBED_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:embedContent?key=${API_KEY}`;
+const GENERATE_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+
+/**
+ * Calculates cosine similarity between two vectors
+ */
+function cosineSimilarity(a, b) {
+  let dot = 0, normA = 0, normB = 0;
+  for (let i = 0; i < a.length; i++) {
+    dot += a[i] * b[i];
+    normA += a[i] * a[i];
+    normB += b[i] * b[i];
+  }
+  return normA && normB ? dot / (Math.sqrt(normA) * Math.sqrt(normB)) : 0;
 }
 
 /**
- * Calculates cosine similarity between two numeric vectors
+ * Embeds the student's profile narrative via Gemini
  */
-function cosineSimilarity(vecA, vecB) {
-  let dotProduct = 0;
-  let normA = 0;
-  let normB = 0;
-  for (let i = 0; i < vecA.length; i++) {
-    dotProduct += vecA[i] * vecB[i];
-    normA += vecA[i] * vecA[i];
-    normB += vecB[i] * vecB[i];
-  }
-  if (normA === 0 || normB === 0) return 0;
-  return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
+async function embedStudentProfile(narrative) {
+  const res = await fetch(EMBED_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ content: { parts: [{ text: narrative }] } }),
+  });
+  if (!res.ok) throw new Error(`Embedding API failed: ${res.status}`);
+  const json = await res.json();
+  return json.embedding.values;
+}
+
+/**
+ * Generates a 2-sentence personalized "why you match" summary using Gemini
+ */
+async function generateMatchSummary(studentNarrative, careerName) {
+  const prompt = `You are a career counselor for high school students. A student described themselves as: "${studentNarrative}". Based on this, write exactly 2 concise, encouraging sentences explaining why they are a great fit for the career: "${careerName}". Be specific, upbeat, and talk directly to the student.`;
+
+  const res = await fetch(GENERATE_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
+  });
+  if (!res.ok) return null;
+  const json = await res.json();
+  return json.candidates?.[0]?.content?.parts?.[0]?.text || null;
 }
 
 /**
  * RagMatcher API Service
- * Replaces SkillsMatcher by using actual LLM Embeddings and Semantic Search
- * instead of heuristic if-statement rules!
+ * Drop-in replacement for SkillsMatcher — uses real vector embeddings + Gemini synthesis.
+ * Original SkillsMatcher.js is preserved for easy rollback.
+ * 
+ * @param {Object} profile - same shape as SkillsMatcher expects
+ * @returns {Promise<Array>} - Sorted career matches with ragScore and aiSummary
  */
 export const RagMatcher = {
-  
-  /**
-   * Generates a semantic embedding for the student's profile text using Gemini
-   * (Placeholder logic until provided with Google Generative AI key)
-   */
-  getStudentVector: async (profileText) => {
-    // TODO: implement call to GoogleGenAI gemini-embedding-004
-    // return await geminiEmbed(profileText);
-    return new Array(768).fill(0).map(() => Math.random()); // Mock vector for now
-  },
-
-  /**
-   * Main matching function just like SkillsMatcher
-   * @param {Object} profile - { favoriteSubject, extracurriculars, etc }
-   */
   match: async (profile) => {
-    // 1. Serialize profile into a narrative paragraph
-    const narrative = `This student is good at ${profile.favoriteSubject}. They spend their free time doing ${profile.extracurriculars}. 
-      They enjoy ${profile.techVsBookshelf} and prefer working ${profile.environmentChoice}. 
-      When faced with a challenge, they ${profile.wifiFix} and their work style is ${profile.grindVsClutch}.
-      They feel comfortable working in ${profile.heightsVsCrawlspace}.`;
+    // 1. Build a natural language narrative from survey responses
+    const narrative = [
+      profile.favoriteSubject && `My favorite subject is ${profile.favoriteSubject}.`,
+      profile.extracurriculars && `I enjoy ${profile.extracurriculars}.`,
+      profile.techVsBookshelf && `When helping others, I tend to be asked to help with: ${profile.techVsBookshelf}.`,
+      profile.environmentChoice && `I prefer working ${profile.environmentChoice}.`,
+      profile.wiresPipes && `I find troubleshooting complex systems ${profile.wiresPipes === 'Fun challenge' ? 'exciting and fun' : 'frustrating'}.`,
+      profile.steadyHandAesthetics && (profile.steadyHandAesthetics === 'I love detailed work' ? 'I love detailed, precise work.' : 'I prefer broader tasks.'),
+      profile.heightsVsCrawlspace && `Physically, I am comfortable with: ${profile.heightsVsCrawlspace}.`,
+      profile.dirtyHands && `Getting my hands dirty ${profile.dirtyHands === "Doesn't bother me" ? "doesn't bother me" : 'is not for me'}.`,
+      profile.grindVsClutch && `My work style leans toward: ${profile.grindVsClutch}.`,
+      profile.visualization && `Visualizing blueprints in 3D is ${profile.visualization === 'Easy' ? 'easy for me' : 'challenging for me'}.`,
+    ].filter(Boolean).join(' ');
 
-    // 2. Embed the narrative into a context vector
-    const studentVector = await RagMatcher.getStudentVector(narrative);
+    // 2. Embed the student narrative
+    const studentVector = await embedStudentProfile(narrative);
 
-    // 3. Compute cosine similarities against all recommended paths
-    const scoredPaths = RECOMMENDATIONS.map((job, index) => {
-      // For now, if no embeddings exist, just use a random score to simulate
-      const jobVector = PRECOMPUTED_EMBEDDINGS[index] || new Array(768).fill(0).map(() => Math.random());
-      const score = cosineSimilarity(studentVector, jobVector);
-      return {
-        ...job,
-        ragScore: score
-      };
-    });
+    // 3. Score each career using cosine similarity against precomputed embeddings
+    const embeddingMap = Object.fromEntries(CAREER_EMBEDDINGS.map(e => [e.id, e.embedding]));
 
-    // 4. Sort by highest cosine similarity
-    const sortedMatches = scoredPaths.sort((a, b) => b.ragScore - a.ragScore);
-    
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    return sortedMatches;
+    const scoredCareers = RECOMMENDATIONS.map(job => {
+      const jobVector = embeddingMap[job.id];
+      const score = jobVector ? cosineSimilarity(studentVector, jobVector) : 0;
+      return { ...job, ragScore: score };
+    }).sort((a, b) => b.ragScore - a.ragScore);
+
+    // 4. Generate a personalized AI summary for the top match
+    const topMatch = scoredCareers[0];
+    try {
+      const aiSummary = await generateMatchSummary(narrative, topMatch.name);
+      if (aiSummary) topMatch.relevanceMatch = aiSummary;
+    } catch (_) {
+      // silently fall back to the static relevanceMatch if synthesis fails
+    }
+
+    return scoredCareers;
   }
 };

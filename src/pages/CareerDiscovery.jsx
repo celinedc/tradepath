@@ -9,6 +9,7 @@ import {
 import { INTAKE_QUESTIONS, RECOMMENDATIONS, TRAINING_MODELS } from '../data/aptitudeData';
 import { useUser } from '../context/UserContext';
 import { SkillsMatcher } from '../services/SkillsMatcher';
+import { RagMatcher } from '../services/RagMatcher';
 
 const MultiStepIntake = ({ onComplete, initialData, studentName }) => {
   const [step, setStep] = useState(0);
@@ -173,13 +174,22 @@ const CareerCard = ({ job, studentName, gender, onClick, isStarred, onStarToggle
         'solar-tech': 'solar',
         'carpenter-finish': 'carpenter',
         'auto-specialist': 'evmechanic',
-        'marine-mech': 'aircraft', // Fallback
-        'wind-tech': 'solar',      // Fallback
-        'precision-machinist': 'electrician' // Fallback
+        'marine-mech': 'aircraft',
+        'wind-tech': 'solar',
+        'precision-machinist': 'electrician',
+        'robotics-tech': 'electrician',
+        'solar-installer': 'solar',
+        'telecom-installer': 'datacenter',
+        'dental-assistant-special': 'carpenter',
+        'marine-mech-special': 'aircraft',
+        'auto-refinishing': 'evmechanic',
+        'dental-lab-tech': 'carpenter',
+        'historic-restoration': 'carpenter',
+        'bim-coordinator': 'datacenter',
     };
 
     const baseName = imageMap[job.id] || 'electrician';
-    const avatarUrl = `/src/assets/careers/${baseName}_${genderKey}.png`;
+    const avatarUrl = `/assets/careers/${baseName}_${genderKey}.png`;
     
     return (
         <motion.div
@@ -454,8 +464,14 @@ export default function CareerDiscovery() {
     setIsMatching(true);
     setView('matching');
     
-    // Call the Skills Matcher API with both survey data and existing profile data (grades/courses)
-    const matches = await SkillsMatcher.match({ ...profile, ...data });
+    // Try RAG semantic matching first; fall back to rule-based SkillsMatcher if it fails
+    let matches;
+    try {
+      matches = await RagMatcher.match({ ...profile, ...data });
+    } catch (ragErr) {
+      console.warn('RagMatcher failed, falling back to SkillsMatcher:', ragErr.message);
+      matches = await SkillsMatcher.match({ ...profile, ...data });
+    }
     const topMatches = matches.slice(0, 9); // Always show top 9
     
     setSurveyData(data);
@@ -577,7 +593,7 @@ export default function CareerDiscovery() {
                         {studentFirstName}'s Recommended Paths
                     </h2>
                     <p className="text-industrial-500 max-w-xl">
-                        Based on your profile, the <span className="text-industrial-900 font-bold uppercase">Skills Matcher AI</span> has identified these nine paths as your strongest career alignments.
+                        Based on your profile, the <span className="text-industrial-900 font-bold uppercase">AI Semantic Match Engine</span> has identified these nine paths as your strongest career alignments.
                     </p>
                 </div>
                 <div className="flex gap-3">
