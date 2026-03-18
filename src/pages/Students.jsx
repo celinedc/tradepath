@@ -100,6 +100,7 @@ const School = ({ className }) => (
 export default function StudentsPage() {
   const { userType } = useUser();
   const [searchTerm, setSearchTerm] = useState('');
+  const [stageFilter, setStageFilter] = useState('all');
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [isPlanModalOpen, setIsPlanModalOpen] = useState(false);
 
