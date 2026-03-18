@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Brain, CheckCircle2, ArrowRight, Target, Sparkles, Lightbulb, ShieldCheck, Zap, 
   Wind, Wrench, Flame, Eye, Droplets, Microscope, Palette, TreeDeciduous, Hammer, Baby
@@ -21,6 +21,9 @@ export default function AptitudePage() {
   if (userType === 'student') {
     return <Navigate to="/dashboard" replace />;
   }
+
+  const [selectedTradeId, setSelectedTradeId] = useState('electrician');
+  const [filter, setFilter] = useState('');
   
   // Auto-scroll to analysis when trade changes for counselor
   useEffect(() => {
