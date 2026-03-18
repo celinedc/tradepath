@@ -174,7 +174,7 @@ export default function LocationPage() {
                 <div className="p-3 bg-white rounded-xl shadow-sm border border-industrial-100">
                   <p className="text-[7px] font-black uppercase text-industrial-400 mb-1">Opp. Map</p>
                   <p className="text-[10px] font-black leading-tight">
-                    {selectedState.setting ? 'Rural' : 'N/A'}
+                    {selectedState.setting ? selectedState.setting.replace('Mostly ', '') : 'N/A'}
                   </p>
                 </div>
                 {selectedTrade === 'all' && (
