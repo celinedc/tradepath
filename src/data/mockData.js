@@ -34742,6 +34742,7 @@ export const STUDENTS_DATA = [
     name: "Marcus Williams",
     grade: "11th Grade",
     gpa: "3.2",
+    stage: "School Search",
     extracurriculars: "Varsity Football, Robotics Club, Volunteer Firefighter",
     discoveryMatch: "HVAC Technician (92%)",
     grades: [
@@ -34753,9 +34754,7 @@ export const STUDENTS_DATA = [
     skills: [
       { name: "Spatial Reasoning", value: 85, tooltip: "Excellent performance in woodshop and 3D modeling." },
       { name: "Team Leadership", value: 90, tooltip: "Football captain and lead in robotics team." },
-      { name: "Technical Aptitude", value: 80, tooltip: "Strong grasp of mechanics and electrical basics." },
-      { name: "Manual Dexterity", value: 82, tooltip: "Observed precision in woodshop (Grade A)." },
-      { name: "Systems Logic", value: 78, tooltip: "From robotics and firefighting training." }
+      { name: "Technical Aptitude", value: 80, tooltip: "Strong grasp of mechanics and electrical basics." }
     ]
   },
   {
@@ -34763,6 +34762,7 @@ export const STUDENTS_DATA = [
     name: "Elena Rodriguez",
     grade: "12th Grade",
     gpa: "3.8",
+    stage: "Accepted",
     extracurriculars: "Art Club, Math Olympiad, Coding Camp",
     discoveryMatch: "Avionics Tech (94%)",
     grades: [
@@ -34774,9 +34774,167 @@ export const STUDENTS_DATA = [
     skills: [
       { name: "Mathematical Logic", value: 95, tooltip: "Top performer in advanced math courses (Calculus: A)." },
       { name: "Attention to Detail", value: 90, tooltip: "Precise execution in fine arts and coding camp." },
-      { name: "Visual Analysis", value: 85, tooltip: "Strong interpretation of complex diagrams and art." },
-      { name: "Electronic Aptitude", value: 88, tooltip: "From coding and physics (Chemistry: A-)." },
-      { name: "Analytical Precision", value: 92, tooltip: "Derived from math olympiad results." }
+      { name: "Visual Analysis", value: 85, tooltip: "Strong interpretation of complex diagrams and art." }
+    ]
+  },
+  {
+    id: "s3",
+    name: "Jordan Lee",
+    grade: "10th Grade",
+    gpa: "2.8",
+    stage: "Career Discovery",
+    extracurriculars: "Drama Club, Photography, E-Sports Team",
+    discoveryMatch: "Graphic Designer / Multimedia Artist (88%)",
+    grades: [
+      { subject: "Geometry", grade: "C+" },
+      { subject: "Digital Art", grade: "A" },
+      { subject: "Computer Science", grade: "B" },
+      { subject: "World History", grade: "B-" }
+    ],
+    skills: [
+      { name: "Creative Vision", value: 88, tooltip: "High grade in Digital Art, strong photography portfolio." },
+      { name: "Digital Literacy", value: 82, tooltip: "Active in E-sports and Computer Science." },
+      { name: "Communication", value: 75, tooltip: "Drama club participant." }
+    ]
+  },
+  {
+    id: "s4",
+    name: "Aaliyah Johnson",
+    grade: "12th Grade",
+    gpa: "3.5",
+    stage: "Apply",
+    extracurriculars: "Habitat for Humanity, Key Club, Track & Field",
+    discoveryMatch: "Electrician (89%)",
+    grades: [
+      { subject: "Pre-Calculus", grade: "B+" },
+      { subject: "Physics", grade: "B" },
+      { subject: "Drafting", grade: "A" },
+      { subject: "Economics", grade: "A-" }
+    ],
+    skills: [
+      { name: "Practical Engineering", value: 86, tooltip: "Excels in drafting and physical building." },
+      { name: "Physical Stamina", value: 89, tooltip: "Track athlete and Habitat for Humanity volunteer." },
+      { name: "Systematic Approach", value: 84, tooltip: "Good performance in advanced math and econ." }
+    ]
+  },
+  {
+    id: "s5",
+    name: "Ethan Chen",
+    grade: "11th Grade",
+    gpa: "3.9",
+    stage: "School Search",
+    extracurriculars: "Auto Shop, Science Olympiad, Chess Club",
+    discoveryMatch: "CNC Machinist (95%)",
+    grades: [
+      { subject: "Calculus", grade: "A" },
+      { subject: "Chemistry", grade: "A" },
+      { subject: "Auto Mechanics", grade: "A+" },
+      { subject: "English", grade: "B+" }
+    ],
+    skills: [
+      { name: "Precision Machining", value: 95, tooltip: "Top of class in Auto Mechanics." },
+      { name: "Analytical Thinking", value: 92, tooltip: "Science Olympiad and Chess Club." },
+      { name: "Mathematical Logic", value: 94, tooltip: "Perfect score in Calculus." }
+    ]
+  },
+  {
+    id: "s6",
+    name: "Chloe Smith",
+    grade: "10th Grade",
+    gpa: "3.1",
+    stage: "Career Discovery",
+    extracurriculars: "Gardening Club, Environmental Action, FFA",
+    discoveryMatch: "Wind Turbine Technician (86%)",
+    grades: [
+      { subject: "Biology", grade: "B+" },
+      { subject: "Algebra I", grade: "B" },
+      { subject: "Agriculture", grade: "A" },
+      { subject: "Geography", grade: "B+" }
+    ],
+    skills: [
+      { name: "Environmental Awareness", value: 90, tooltip: "FFA and Environmental Action participation." },
+      { name: "Physical Endurance", value: 80, tooltip: "Gardening and outdoor lab work." },
+      { name: "Basic Science", value: 82, tooltip: "Solid performance in Biology." }
+    ]
+  },
+  {
+    id: "s7",
+    name: "Jackson Davis",
+    grade: "12th Grade",
+    gpa: "2.9",
+    stage: "Apply",
+    extracurriculars: "Stage Crew, Marching Band, Part-time at Hardware Store",
+    discoveryMatch: "Carpenter / Cabinetmaker (91%)",
+    grades: [
+      { subject: "Consumer Math", grade: "B" },
+      { subject: "Physics", grade: "C+" },
+      { subject: "Woodshop", grade: "A" },
+      { subject: "Band", grade: "A" }
+    ],
+    skills: [
+      { name: "Manual Dexterity", value: 92, tooltip: "Woodshop A-grade and instrument handling." },
+      { name: "Spatial Planning", value: 88, tooltip: "Stage crew set design and construction." },
+      { name: "Practical Math", value: 80, tooltip: "Experience in hardware store inventory." }
+    ]
+  },
+  {
+    id: "s8",
+    name: "Sophia Patel",
+    grade: "11th Grade",
+    gpa: "3.7",
+    stage: "School Search",
+    extracurriculars: "Culinary Arts Club, Debate Team, Student Council",
+    discoveryMatch: "Culinary Chef (93%)",
+    grades: [
+      { subject: "Chemistry", grade: "B+" },
+      { subject: "Culinary I", grade: "A+" },
+      { subject: "Speech", grade: "A" },
+      { subject: "History", grade: "A-" }
+    ],
+    skills: [
+      { name: "Culinary Technique", value: 96, tooltip: "Exceptional performance in culinary classes." },
+      { name: "Verbal Communication", value: 88, tooltip: "Debate team and student council." },
+      { name: "Time Management", value: 85, tooltip: "Juggling multiple high-commitment clubs." }
+    ]
+  },
+  {
+    id: "s9",
+    name: "Liam O'Connor",
+    grade: "12th Grade",
+    gpa: "3.4",
+    stage: "Accepted",
+    extracurriculars: "Computer Builders Club, JV Soccer, AV Squad",
+    discoveryMatch: "Telecommunications Equipment Installer (90%)",
+    grades: [
+      { subject: "Pre-Calculus", grade: "B" },
+      { subject: "IT Fundamentals", grade: "A" },
+      { subject: "Physics", grade: "B+" },
+      { subject: "P.E.", grade: "A" }
+    ],
+    skills: [
+      { name: "Hardware Troubleshooting", value: 90, tooltip: "Lead in hardware building club." },
+      { name: "Audio/Visual Tech", value: 86, tooltip: "Managing school AV squad." },
+      { name: "Team Coordination", value: 82, tooltip: "JV Soccer experience." }
+    ]
+  },
+  {
+    id: "s10",
+    name: "Mia Washington",
+    grade: "10th Grade",
+    gpa: "3.6",
+    stage: "Career Discovery",
+    extracurriculars: "Peer Tutoring, Yearbook Design, Choir",
+    discoveryMatch: "Dental Hygienist (87%)",
+    grades: [
+      { subject: "Biology", grade: "A-" },
+      { subject: "Geometry", grade: "B+" },
+      { subject: "Graphic Design", grade: "A" },
+      { subject: "Health", grade: "A" }
+    ],
+    skills: [
+      { name: "Detail Orientation", value: 89, tooltip: "Precise work in yearbook and health class." },
+      { name: "Interpersonal Empathy", value: 92, tooltip: "Highly rated peer tutor." },
+      { name: "Fine Motor Skills", value: 84, tooltip: "Design and artistic execution." }
     ]
   }
 ];

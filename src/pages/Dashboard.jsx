@@ -5,6 +5,7 @@ import {
   GraduationCap, Calendar, Clock, BarChart3, Bell, UserPlus, Star
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { TRADE_CAREERS, SCHOOLS } from '../data/mockData';
 import { useUser } from '../context/UserContext';
 
@@ -348,6 +349,14 @@ function StudentDashboard({ profile, onScheduleClick }) {
   );
 }
 
+const INTEREST_DATA = [
+  { name: 'Electrician', students: 28, color: '#f59e0b' },
+  { name: 'HVAC Tech', students: 22, color: '#3b82f6' },
+  { name: 'Welder', students: 18, color: '#f97316' },
+  { name: 'Data Center', students: 15, color: '#a855f7' },
+  { name: 'Healthcare', students: 12, color: '#f43f5e' }
+];
+
 function CounselorDashboard({ profile }) {
   return (
     <div className="space-y-8 animate-in fade-in duration-700">
@@ -393,12 +402,31 @@ function CounselorDashboard({ profile }) {
             </h3>
             <button className="text-xs font-bold text-safety-blue hover:underline">Download Report</button>
           </div>
-          <div className="card p-6 divide-y divide-industrial-100">
-            <StudentStatRow trade="Electrician" count="28" growth="+15%" color="bg-amber-100 text-amber-700" />
-            <StudentStatRow trade="HVAC Technician" count="22" growth="+5%" color="bg-blue-100 text-blue-700" />
-            <StudentStatRow trade="Welder" count="18" growth="-2%" color="bg-orange-100 text-orange-700" />
-            <StudentStatRow trade="Data Center Op" count="15" growth="+40%" color="bg-purple-100 text-purple-700" />
-            <StudentStatRow trade="Healthcare (LPN)" count="12" growth="+10%" color="bg-rose-100 text-rose-700" />
+          <div className="card p-6">
+            <div className="h-64 mb-6 px-2">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={INTEREST_DATA} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <XAxis dataKey="name" tick={{ fontSize: 10, fill: '#64748b', fontWeight: 'bold' }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fontSize: 10, fill: '#64748b', fontWeight: 'bold' }} axisLine={false} tickLine={false} />
+                  <Tooltip 
+                    cursor={{ fill: '#f8fafc' }}
+                    contentStyle={{ borderRadius: '16px', border: 'none', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', fontSize: '12px', fontWeight: '900', color: '#1e1b4b' }}
+                  />
+                  <Bar dataKey="students" radius={[8, 8, 8, 8]} barSize={40}>
+                    {INTEREST_DATA.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.color} />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="divide-y divide-industrial-100 border-t border-industrial-50 pt-2">
+              <StudentStatRow trade="Electrician" count="28" growth="+15%" color="bg-amber-100 text-amber-500" />
+              <StudentStatRow trade="HVAC Technician" count="22" growth="+5%" color="bg-blue-100 text-blue-500" />
+              <StudentStatRow trade="Welder" count="18" growth="-2%" color="bg-orange-100 text-orange-500" />
+              <StudentStatRow trade="Data Center Op" count="15" growth="+40%" color="bg-purple-100 text-purple-500" />
+              <StudentStatRow trade="Healthcare (LPN)" count="12" growth="+10%" color="bg-rose-100 text-rose-500" />
+            </div>
           </div>
         </div>
 

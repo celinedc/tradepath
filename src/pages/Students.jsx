@@ -8,6 +8,7 @@ import {
 import { STUDENTS_DATA } from '../data/mockData';
 import { useUser } from '../context/UserContext';
 import { Navigate } from 'react-router-dom';
+import { createPortal } from 'react-dom';
 
 const CareerPlanModal = ({ isOpen, onClose, student }) => {
   if (!isOpen) return null;
@@ -199,9 +200,11 @@ export default function StudentsPage() {
     transcriptWindow.document.close();
   };
 
-  const filteredStudents = STUDENTS_DATA.filter(s => 
-    s.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredStudents = STUDENTS_DATA.filter(s => {
+    const matchesSearch = s.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesStage = stageFilter === 'all' || s.stage === stageFilter;
+    return matchesSearch && matchesStage;
+  });
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -210,15 +213,28 @@ export default function StudentsPage() {
           <h3 className="text-3xl font-black text-industrial-900 tracking-tight">Student Success Hub</h3>
           <p className="text-industrial-500 font-medium italic">Translate academic excellence into trade career readiness.</p>
         </div>
-        <div className="relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-industrial-400" />
-          <input 
-            type="text" 
-            placeholder="Search students..." 
-            className="input-field pl-12 py-3 w-64 md:w-80 bg-white shadow-inner"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+        <div className="flex flex-col sm:flex-row gap-3">
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-industrial-400" />
+            <input 
+              type="text" 
+              placeholder="Search students..." 
+              className="input-field pl-12 py-3 w-full sm:w-64 bg-white shadow-inner"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+          <select
+            className="input-field py-3 px-4 bg-white shadow-inner font-bold text-xs uppercase text-industrial-700 cursor-pointer appearance-none w-full sm:w-48"
+            value={stageFilter}
+            onChange={(e) => setStageFilter(e.target.value)}
+          >
+            <option value="all">All Stages</option>
+            <option value="Career Discovery">Career Discovery</option>
+            <option value="School Search">School Search</option>
+            <option value="Apply">Apply</option>
+            <option value="Accepted">Accepted</option>
+          </select>
         </div>
       </header>
 
@@ -399,15 +415,18 @@ export default function StudentsPage() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {isPlanModalOpen && selectedStudent && (
-          <CareerPlanModal 
-            isOpen={isPlanModalOpen} 
-            onClose={() => setIsPlanModalOpen(false)} 
-            student={selectedStudent} 
-          />
-        )}
-      </AnimatePresence>
+      {createPortal(
+        <AnimatePresence>
+          {isPlanModalOpen && selectedStudent && (
+            <CareerPlanModal 
+              isOpen={isPlanModalOpen} 
+              onClose={() => setIsPlanModalOpen(false)} 
+              student={selectedStudent} 
+            />
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </div>
   );
 }
