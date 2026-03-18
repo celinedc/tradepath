@@ -25,7 +25,7 @@ export default function AptitudePage() {
   // Auto-scroll to analysis when trade changes for counselor
   useEffect(() => {
     if (isCounselor && selectedTradeId) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
     }
   }, [selectedTradeId, isCounselor]);
   

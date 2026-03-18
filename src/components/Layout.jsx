@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Banknote, MapPin, Brain, LogOut, User, Compass, School, Sparkles, Users, BookOpen } from 'lucide-react';
+import { LayoutDashboard, Banknote, MapPin, Brain, LogOut, User, School, Sparkles, Users, BookOpen } from 'lucide-react';
 import ProfileModal from './ProfileModal';
+import TradePathLogo from './TradePathLogo';
 import { TRADE_CAREERS } from '../data/mockData';
 import { useUser } from '../context/UserContext';
 
@@ -17,9 +18,7 @@ export default function Layout({ children }) {
       {/* Sidebar */}
       <aside className={`w-64 text-white flex flex-col fixed inset-y-0 left-0 shadow-2xl z-50 transition-colors duration-500 ${userType === 'student' ? 'bg-indigo-950' : 'bg-industrial-900'}`}>
         <div className="p-4 flex items-center gap-3">
-          <div className={`p-2 rounded-lg ${userType === 'student' ? 'bg-indigo-500 shadow-lg shadow-indigo-500/20' : 'bg-safety-blue'}`}>
-            <Compass className="w-6 h-6 text-white" />
-          </div>
+          <TradePathLogo className="w-10 h-10" light={userType === 'student'} />
           <h1 className="text-xl font-bold tracking-tight">TradePath</h1>
         </div>
 

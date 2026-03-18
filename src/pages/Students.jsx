@@ -108,64 +108,90 @@ export default function StudentsPage() {
 
   const handleViewTranscript = (student) => {
     const transcriptWindow = window.open('', '_blank');
+    if (!transcriptWindow) {
+      alert("Please allow pop-ups to view the transcript.");
+      return;
+    }
     const html = `
       <!DOCTYPE html>
       <html>
       <head>
         <title>Academic Transcript - ${student.name}</title>
         <style>
-          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-          body { font-family: 'Inter', sans-serif; padding: 40px; color: #1e293b; line-height: 1.6; }
-          .header { border-bottom: 4px solid #1e293b; padding-bottom: 20px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: flex-end; }
-          .title { font-weight: 900; font-size: 32px; text-transform: uppercase; letter-spacing: -1px; margin: 0; }
-          .student-info { margin-bottom: 40px; }
-          .student-info h2 { font-weight: 900; margin-bottom: 5px; }
-          .grid { display: grid; grid-template-cols: 1fr 1fr; gap: 40px; }
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+          :root { --industrial-900: #1e1b4b; --safety-blue: #4F46E5; }
+          body { font-family: 'Inter', sans-serif; padding: 60px; color: #1e293b; line-height: 1.6; max-width: 900px; margin: 0 auto; background: #f8fafc; }
+          .sheet { background: white; padding: 60px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-radius: 8px; border-top: 12px solid var(--industrial-900); }
+          .header { border-bottom: 2px solid #e2e8f0; padding-bottom: 30px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: flex-start; }
+          .title { font-weight: 900; font-size: 34px; text-transform: uppercase; letter-spacing: -1px; margin: 0; color: var(--industrial-900); }
+          .subtitle { font-size: 11px; font-weight: 900; color: var(--safety-blue); margin: 0 0 8px 0; text-transform: uppercase; letter-spacing: 2px; }
+          .seal { width: 90px; height: 90px; border: 4px solid var(--industrial-900); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 900; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--industrial-900); }
+          .student-info { margin-bottom: 40px; background: #f1f5f9; padding: 24px; border-radius: 12px; }
+          .student-name { font-weight: 900; font-size: 24px; margin: 0 0 10px 0; color: var(--industrial-900); }
+          .student-meta { margin: 0; font-size: 15px; font-weight: 500; color: #475569; display: flex; gap: 20px; }
+          .grid { display: grid; grid-template-cols: 1fr 1fr; gap: 50px; }
+          h3 { font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; color: var(--industrial-900); border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; }
           table { width: 100%; border-collapse: collapse; }
-          th { text-align: left; padding: 12px; border-bottom: 2px solid #e2e8f0; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
-          td { padding: 12px; border-bottom: 1px solid #f1f5f9; font-size: 14px; font-weight: 500; }
-          .grade { font-weight: 900; text-align: right; }
-          .footer { margin-top: 80px; font-size: 10px; color: #94a3b8; text-transform: uppercase; font-weight: 700; border-top: 1px solid #e2e8f0; padding-top: 20px; }
-          .seal { width: 80px; height: 80px; border: 4px solid #1e293b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 10px; text-align: center; }
+          th { text-align: left; padding: 12px 12px 12px 0; border-bottom: 2px solid #e2e8f0; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #64748b; }
+          td { padding: 16px 12px 16px 0; border-bottom: 1px solid #f1f5f9; font-size: 15px; font-weight: 500; color: #334155; }
+          .grade { font-weight: 900; text-align: right; color: var(--industrial-900); padding-right: 0; }
+          th.grade-th { text-align: right; padding-right: 0; }
+          .text-block { font-size: 14px; color: #475569; padding: 16px; background: #f8fafc; border-left: 3px solid var(--safety-blue); border-radius: 0 8px 8px 0; }
+          .footer { margin-top: 80px; font-size: 10px; color: #94a3b8; text-transform: uppercase; font-weight: 700; border-top: 2px solid #e2e8f0; padding-top: 20px; display: flex; justify-content: space-between; }
+          @media print { body { background: white; padding: 0; } .sheet { box-shadow: none; padding: 0; border-top: 6px solid #1e1b4b; } }
         </style>
       </head>
       <body>
-        <div class="header">
-          <div>
-            <p style="font-size: 10px; font-weight: 900; color: #6366f1; margin: 0 0 5px 0; text-transform: uppercase;">Official Academic Record</p>
-            <h1 class="title">TradePath Navigator</h1>
+        <div class="sheet">
+          <div class="header">
+            <div>
+              <p class="subtitle">Official Academic Record</p>
+              <h1 class="title">TradePath Navigator</h1>
+            </div>
+            <div class="seal"><span>Official</span><span>Transcript</span></div>
           </div>
-          <div class="seal">OFFICIAL<br>TRANSCRIPT</div>
-        </div>
-        
-        <div class="student-info">
-          <h2>${student.name}</h2>
-          <p>${student.grade} • GPA: <strong>${student.gpa}</strong></p>
-        </div>
+          
+          <div class="student-info">
+            <h2 class="student-name">${student.name}</h2>
+            <div class="student-meta">
+               <span>Grade: <strong>${student.grade}</strong></span>
+               <span>Cumulative GPA: <strong style="color: var(--safety-blue);">${student.gpa}</strong></span>
+            </div>
+          </div>
 
-        <div class="grid">
-          <div>
-            <table>
-              <thead>
-                <tr><th>Subject</th><th style="text-align: right">Grade</th></tr>
-              </thead>
-              <tbody>
-                ${student.grades.map(g => `<tr><td>${g.subject}</td><td class="grade">${g.grade}</td></tr>`).join('')}
-              </tbody>
-            </table>
+          <div class="grid">
+            <div>
+              <h3>Academic Coursework</h3>
+              <table>
+                <thead>
+                  <tr><th>Subject</th><th class="grade-th">Final Grade</th></tr>
+                </thead>
+                <tbody>
+                  ${student.grades.map(g => `<tr><td>${g.subject}</td><td class="grade">${g.grade}</td></tr>`).join('')}
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <h3>Extracurricular Profile</h3>
+              <div class="text-block" style="margin-bottom: 30px;">
+                 ${student.extracurriculars}
+              </div>
+              
+              <h3>Career Discovery Synthesis</h3>
+              <div class="text-block" style="border-left-color: #10b981;">
+                 Primary Match: <strong style="color: #10b981;">${student.discoveryMatch || 'N/A'}</strong>
+              </div>
+            </div>
           </div>
-          <div>
-            <h3 style="font-weight: 900; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">Extracurricular Activity</h3>
-            <p style="font-size: 14px; color: #475569;">${student.extracurriculars}</p>
-            
-            <h3 style="font-weight: 900; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 40px 0 20px 0;">Career Discovery Data</h3>
-            <p style="font-size: 14px; color: #475569;">Primary Match: <strong>${student.discoveryMatch || 'N/A'}</strong></p>
-          </div>
-        </div>
 
-        <div class="footer">
-          Generated on ${new Date().toLocaleDateString()} • System ID: TRADEPATH-OFFICIAL-${student.id.toUpperCase()}
+          <div class="footer">
+            <span>System ID: TRADEPATH-OFFICIAL-${student.id.toUpperCase()}</span>
+            <span>Generated on ${new Date().toLocaleDateString()}</span>
+          </div>
         </div>
+        <script>
+           window.onload = () => setTimeout(() => window.print(), 500);
+        </script>
       </body>
       </html>
     `;
@@ -309,34 +335,32 @@ export default function StudentsPage() {
                          </div>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                         {selectedStudent.skills.map((skill, i) => (
-                           <div key={i} className="space-y-3 group">
-                              <div className="flex justify-between items-center px-1">
-                                 <span className="text-[11px] font-black uppercase tracking-widest text-industrial-300">{skill.name}</span>
-                                 <div className="relative">
-                                    <HelpCircle className="w-3.5 h-3.5 text-industrial-500 cursor-help" />
-                                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-48 p-2 bg-white text-industrial-900 text-[10px] font-bold rounded-lg shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 border border-industrial-100">
-                                       {skill.tooltip}
-                                    </div>
-                                 </div>
-                              </div>
-                              <div className="h-2.5 bg-white/5 rounded-full overflow-hidden border border-white/10">
-                                 <motion.div 
-                                    initial={{ width: 0 }}
-                                    animate={{ width: `${skill.value}%` }}
-                                    transition={{ duration: 1, delay: i * 0.1 }}
-                                    className={`h-full rounded-full ${
-                                       skill.value > 85 ? 'bg-emerald-400' : skill.value > 70 ? 'bg-safety-blue' : 'bg-industrial-400'
-                                    } shadow-[0_0_10px_rgba(52,211,153,0.3)]`}
-                                 />
-                              </div>
-                              <div className="flex justify-between items-center px-1">
-                                 <span className="text-[10px] font-black text-white">{skill.value}% Mastery</span>
-                                 <span className="text-[8px] font-bold text-industrial-500 uppercase italic">Aptitude Match</span>
-                              </div>
-                           </div>
-                         ))}
+                      <div className="space-y-6">
+                         <div className="p-4 bg-white/5 border border-white/10 rounded-2xl space-y-3">
+                            <h5 className="text-[10px] font-black uppercase tracking-widest text-industrial-400">Career Discovery Match</h5>
+                            <p className="text-xl font-bold text-white">{selectedStudent.discoveryMatch || 'Results Pending'}</p>
+                         </div>
+                         
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="p-4 bg-white/5 border border-white/10 rounded-2xl space-y-3">
+                               <h5 className="text-[10px] font-black uppercase tracking-widest text-industrial-400">Academic Alignment</h5>
+                               <div className="space-y-2">
+                                  {selectedStudent.grades.slice(0, 2).map((g, i) => (
+                                     <div key={i} className="flex justify-between items-center bg-industrial-800 p-2 rounded-xl">
+                                        <span className="text-xs font-bold text-industrial-300">{g.subject}</span>
+                                        <span className="text-xs font-black text-emerald-400">{g.grade}</span>
+                                     </div>
+                                  ))}
+                                  <p className="text-[10px] text-industrial-500 italic mt-2">Core subject trends indicate strong technical foundation.</p>
+                               </div>
+                            </div>
+                            
+                            <div className="p-4 bg-white/5 border border-white/10 rounded-2xl space-y-3">
+                               <h5 className="text-[10px] font-black uppercase tracking-widest text-industrial-400">Co-Curricular Signals</h5>
+                               <p className="text-xs text-industrial-300 leading-relaxed font-medium">{selectedStudent.extracurriculars}</p>
+                               <p className="text-[10px] text-industrial-500 italic mt-2">Activities show marked inclination towards hands-on problem solving.</p>
+                            </div>
+                         </div>
                       </div>
 
                       <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row gap-6 items-center">
@@ -349,7 +373,7 @@ export default function StudentsPage() {
                          </div>
                          <div className="flex-1 text-center md:text-left">
                             <p className="text-xs font-bold text-industrial-200">Recommended Path: <span className="text-white font-black uppercase tracking-widest">{selectedStudent.discoveryMatch || 'Evaluating Match...'}</span></p>
-                            <p className="text-[10px] text-industrial-500 mt-1 italic">Based on highest skill clusters in {selectedStudent.skills[0].name} and {selectedStudent.skills[1].name}.</p>
+                            <p className="text-[10px] text-industrial-500 mt-1 italic">Based on synthesis of academic grades, extracurriculars, and career discovery profile.</p>
                          </div>
                          <button 
                             onClick={() => setIsPlanModalOpen(true)}

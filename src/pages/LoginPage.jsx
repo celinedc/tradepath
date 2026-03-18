@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Compass, Mail, Lock, Users } from 'lucide-react';
+import { Mail, Lock, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
+import TradePathLogo from '../components/TradePathLogo';
 
 import { useUser } from '../context/UserContext';
 
@@ -29,9 +30,7 @@ export default function LoginPage() {
         className="w-full max-w-md p-8 card bg-white/95 backdrop-blur-sm shadow-2xl z-10"
       >
         <div className="flex flex-col items-center mb-8">
-          <div className="bg-safety-blue p-3 rounded-xl mb-4 shadow-lg shadow-blue-500/20">
-            <Compass className="w-8 h-8 text-white" />
-          </div>
+          <TradePathLogo className="w-16 h-16 mb-2" />
           <h1 className="text-3xl font-black text-industrial-900 tracking-tight">TradePath</h1>
           <p className="text-industrial-500 font-medium">Navigate your industrial career</p>
         </div>
