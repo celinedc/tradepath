@@ -371,9 +371,9 @@ const JobDetailModal = ({ job, studentName, onClose }) => {
                     }
                     degreeContent={
                         <div className="space-y-4">
-                            <div className="p-4 bg-rose-500/10 rounded-[1.5rem] border-2 border-rose-500/30 shadow-inner">
-                                <p className="text-xl font-black text-rose-300">Avg. Education Cost: {degreeJob.avgCost}</p>
-                                <p className="text-xs text-rose-400/80 mt-1 uppercase font-black tracking-widest">Longer debt cycle predicted</p>
+                            <div className="p-4 bg-purple-500/10 rounded-[1.5rem] border-2 border-purple-500/30 shadow-inner">
+                                <p className="text-xl font-black text-purple-300">Avg. Education Cost: $48,000</p>
+                                <p className="text-xs text-purple-400/80 mt-1 uppercase font-black tracking-widest">In-State Public University</p>
                             </div>
                             <div className="grid grid-cols-2 gap-6 px-2">
                                 <div>
