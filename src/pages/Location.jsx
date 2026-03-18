@@ -154,115 +154,85 @@ export default function LocationPage() {
           )}
         </div>
 
-        <div className="space-y-6">
-          {selectedState ? (
-            <div className={`card p-6 text-white border-none animate-in slide-in-from-right-4 shadow-xl ${isStudent ? 'bg-indigo-900 rounded-[2rem]' : 'bg-industrial-900'}`}>
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h4 className="text-2xl font-black tracking-tight">{selectedState.name}</h4>
-                  <p className={`${isStudent ? 'text-indigo-300' : 'text-industrial-400'} text-[9px] font-black uppercase tracking-widest`}>Regional Deep Dive</p>
+        <div className="space-y-4 lg:max-h-[600px] lg:overflow-y-auto pr-1">
+          {selectedState && (
+            <div className={`space-y-3 animate-in slide-in-from-right-2`}>
+              {/* Compact State Header */}
+              <div className={`p-4 ${isStudent ? 'bg-indigo-900 rounded-[1.5rem]' : 'bg-industrial-900'} text-white shadow-lg`}>
+                <div className="flex justify-between items-center mb-1">
+                  <h4 className="text-xl font-black">{selectedState.name}</h4>
+                  <button onClick={() => setSelectedState(null)} className="text-[9px] font-black uppercase text-white/50 hover:text-white transition-colors">Close</button>
                 </div>
-                <button 
-                  onClick={() => setSelectedState(null)}
-                  className={`${isStudent ? 'text-indigo-400 hover:text-white' : 'text-industrial-400 hover:text-white'} text-[9px] font-black uppercase tracking-widest`}
-                >
-                  Clear Selection
-                </button>
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-black">{selectedTrade === 'all' ? selectedState.demand : (tradeDemandData.find(s => s.name === selectedState.name)?.demand || 'N/A')}%</span>
+                  <p className="text-[8px] font-black uppercase tracking-widest text-emerald-400">Trade Density</p>
+                </div>
               </div>
-              <div className="space-y-4">
-                <div className={`p-4 rounded-[1.2rem] border ${isStudent ? 'bg-white/5 border-white/10' : 'bg-white/5 border-white/10'}`}>
-                   <div className="flex justify-between items-start mb-1">
-                     <p className={`text-[10px] font-black uppercase tracking-widest ${isStudent ? 'text-indigo-400' : 'text-safety-blue'}`}>Labor Concentration</p>
-                     <TrendingUp className="w-4 h-4 text-emerald-400" />
-                   </div>
-                   <div className="flex items-end gap-2">
-                     <span className="text-4xl font-black">{selectedTrade === 'all' ? selectedState.demand : (tradeDemandData.find(s => s.name === selectedState.name)?.demand || 'N/A')}%</span>
-                     <span className="text-[10px] text-emerald-400 font-bold mb-2 uppercase tracking-widest">Trade Density</span>
-                   </div>
+
+              {/* Smaller Data Boxes */}
+              <div className="grid grid-cols-2 gap-2">
+                <div className="p-3 bg-white rounded-xl shadow-sm border border-industrial-100">
+                  <p className="text-[7px] font-black uppercase text-industrial-400 mb-1">Opp. Map</p>
+                  <p className="text-[10px] font-black leading-tight">
+                    {selectedTrade === 'all' 
+                        ? (selectedState.setting || 'Mixed') 
+                        : (['Urban', 'Rural', 'Hub', 'Suburban'][selectedTrade.length % 4])}
+                  </p>
                 </div>
-
-                 <div className="grid grid-cols-2 gap-4">
-                   <div className={`p-4 rounded-[1.2rem] border ${isStudent ? 'bg-white/5 border-white/10' : 'bg-white/5 border-white/10'}`}>
-                     <p className={`text-[9px] font-black uppercase tracking-widest mb-1 ${isStudent ? 'text-indigo-400' : 'text-industrial-400'}`}>Opportunity Map</p>
-                     <p className="text-sm font-black">
-                        {selectedTrade === 'all' 
-                          ? (selectedState.setting || 'Mixed Distribution') 
-                          : (['Mostly Urban', 'Rural Edge', 'Industrial Hub', 'Suburban/Mix'][selectedTrade.length % 4])}
-                     </p>
-                   </div>
-                   {selectedTrade === 'all' && (
-                    <div className={`p-4 rounded-[1.2rem] border ${isStudent ? 'bg-white/5 border-white/10' : 'bg-white/5 border-white/10'}`}>
-                      <p className={`text-[9px] font-black uppercase tracking-widest mb-1 ${isStudent ? 'text-indigo-400' : 'text-industrial-400'}`}>Top In-Demand Trade</p>
-                      <p className="text-sm font-black">{selectedState.topTrade || 'Construction'}</p>
-                    </div>
-                   )}
-                 </div>
-
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <p className={`text-[10px] font-black uppercase tracking-widest ${isStudent ? 'text-indigo-400' : 'text-industrial-300'}`}>Hot Sectors in {selectedState.name}</p>
-                    <span className="text-[8px] font-black text-industrial-500 uppercase">Certified Data</span>
+                {selectedTrade === 'all' && (
+                  <div className="p-3 bg-white rounded-xl shadow-sm border border-industrial-100">
+                    <p className="text-[7px] font-black uppercase text-industrial-400 mb-1">Top Trade</p>
+                    <p className="text-[10px] font-black leading-tight truncate">{selectedState.topTrade || 'Construction'}</p>
                   </div>
-                   <div className="grid grid-cols-1 gap-2">
-                     {(() => {
-                       const sectors = ['Advanced Manufacturing', 'Infrastructure', 'Telecommunications', 'Green Energy', 'Logistics', 'Robotics'];
-                       const stateHash = (selectedState.name || '').split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-                       return [
-                         sectors[(stateHash) % sectors.length],
-                         sectors[(stateHash + 1) % sectors.length],
-                         sectors[(stateHash + 2) % sectors.length]
-                       ].map((sector, i) => (
-                         <div key={i} className="flex items-center justify-between text-sm p-3 bg-white/5 rounded-xl border border-white/5 transition-all hover:bg-white/10">
-                           <span className="font-bold">{sector}</span>
-                           <div className="flex items-center gap-2">
-                              <span className="text-[9px] font-black text-emerald-400">Stable</span>
-                              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-                           </div>
-                         </div>
-                       ));
-                     })()}
-                   </div>
-                </div>
-                
-                <div className={`p-4 rounded-2xl bg-white/5 border border-white/5`}>
-                   <p className="text-[8px] font-black uppercase text-indigo-400 mb-1">State Data Source</p>
-                   <p className="text-[10px] font-medium text-indigo-100 italic">{selectedState.source || 'BLS National Repository'}</p>
-                </div>
+                )}
+              </div>
 
-                <button 
-                  onClick={() => navigate(`/schools?state=${encodeURIComponent(selectedState.id)}`)}
-                  className={`w-full py-4 text-xs font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all hover:scale-[1.02] ${isStudent ? 'bg-white text-indigo-900 shadow-indigo-500/20' : 'btn-primary shadow-safety-blue/20'}`}>
-                  Explore {selectedState.name} Programs
-                </button>
+              <div className="p-3 bg-white rounded-xl shadow-sm border border-industrial-100">
+                <p className="text-[7px] font-black uppercase text-industrial-400 mb-2">Regional Hot Sectors</p>
+                <div className="flex flex-wrap gap-1">
+                  {(() => {
+                    const sectors = ['Manufacturing', 'Infrastructure', 'Telecom', 'Green Energy', 'Logistics', 'Robotics'];
+                    const hash = (selectedState.name || '').split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+                    return [sectors[hash % 6], sectors[(hash+1) % 6]].map((s, i) => (
+                      <span key={i} className="px-2 py-0.5 bg-industrial-50 text-industrial-700 text-[8px] font-bold rounded-full border border-industrial-100">{s}</span>
+                    ));
+                  })()}
+                </div>
               </div>
-            </div>
-          ) : (
-            <div className={`card p-6 text-white border-none shadow-xl ${isStudent ? 'bg-indigo-900 rounded-[2rem]' : 'bg-industrial-900'}`}>
-              <h4 className="flex items-center gap-3 text-base font-black tracking-tight mb-4 text-white/90">
-                <TrendingUp className={`w-5 h-5 ${isStudent ? 'text-indigo-400' : 'text-safety-blue'}`} />
-                High Growth Regions
-              </h4>
-              <div className="space-y-2">
-                 {[
-                   { name: "Texas", demand: "98%", growth: "+12%" },
-                   { name: "California", demand: "95%", growth: "+8%" },
-                   { name: "New York", demand: "94%", growth: "+7%" },
-                   { name: "Florida", demand: "92%", growth: "+10%" },
-                 ].map((region, i) => (
-                   <div key={i} className={`flex justify-between items-center p-3 rounded-xl transition-all cursor-pointer group ${isStudent ? 'bg-white/5 hover:bg-white/10' : 'bg-white/5 hover:bg-white/10'}`}>
-                     <div>
-                       <p className="font-black text-base group-hover:text-indigo-300 transition-colors tracking-tight">{region.name}</p>
-                       <p className="text-[9px] font-black uppercase tracking-widest text-indigo-400">Demand: {region.demand}</p>
-                     </div>
-                     <div className="text-right">
-                       <span className="text-emerald-400 font-black text-xs">{region.growth}</span>
-                       <p className="text-[7px] font-black uppercase tracking-widest text-indigo-500">Growth</p>
-                     </div>
-                   </div>
-                 ))}
-              </div>
+
+              <button 
+                onClick={() => navigate(`/schools?state=${encodeURIComponent(selectedState.id)}`)}
+                className={`w-full py-3 text-[9px] font-black uppercase tracking-widest rounded-xl shadow-md transition-all ${isStudent ? 'bg-indigo-600 text-white' : 'bg-industrial-900 text-white'}`}>
+                Explore {selectedState.name} Schools
+              </button>
             </div>
           )}
+
+          {/* High Growth Regions - Always Visible */}
+          <div className={`card p-5 text-white border-none shadow-xl ${isStudent ? 'bg-indigo-900 rounded-[1.5rem]' : 'bg-industrial-900'}`}>
+            <h4 className="flex items-center gap-3 text-sm font-black tracking-tight mb-3 text-white/90">
+              <TrendingUp className={`w-4 h-4 ${isStudent ? 'text-indigo-400' : 'text-safety-blue'}`} />
+              High Growth Regions
+            </h4>
+            <div className="space-y-1.5">
+               {[
+                 { name: "Texas", demand: "98%", growth: "+12%" },
+                 { name: "California", demand: "95%", growth: "+8%" },
+                 { name: "New York", demand: "94%", growth: "+7%" },
+                 { name: "Florida", demand: "92%", growth: "+10%" },
+               ].map((region, i) => (
+                 <div key={i} className="flex justify-between items-center p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-pointer">
+                   <div>
+                     <p className="font-black text-sm group-hover:text-indigo-300 transition-colors tracking-tight">{region.name}</p>
+                     <p className="text-[8px] font-black uppercase tracking-widest text-indigo-400">Demand: {region.demand}</p>
+                   </div>
+                   <div className="text-right">
+                     <span className="text-emerald-400 font-black text-[10px]">{region.growth}</span>
+                   </div>
+                 </div>
+               ))}
+            </div>
+          </div>
 
           <div className={`card p-4 border-none shadow-sm ${isStudent ? 'bg-white rounded-[1.5rem]' : 'bg-white border-industrial-100'}`}>
              <div className="flex items-center gap-3 mb-4">
