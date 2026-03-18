@@ -6,7 +6,7 @@ import {
 } from 'recharts';
 import { 
   Filter, Briefcase, Info, TrendingUp, Users, Venus, 
-  GraduationCap, Coins, ArrowRight, Zap, Target, BookmarkCheck, X, Sparkles
+  GraduationCap, Coins, ArrowRight, Zap, Target, BookmarkCheck, X, Sparkles, ShieldCheck
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TRADE_CAREERS, ETHNICITIES, CITY_PAY_ADJUSTMENTS, DEMAND_DATA } from '../data/mockData';
