@@ -142,10 +142,23 @@ function StudentDashboard({ profile, onScheduleClick }) {
   const currentTrade = TRADE_CAREERS.find(t => t.id === profile.selectedTrade) || TRADE_CAREERS[0];
   const tradeName = hasCompletedDiscovery ? currentTrade.name : "High-Demand Trades";
 
+  const progressWidth = hasApplied ? '66%' : (hasCompletedDiscovery ? '33%' : '0%');
+
   const dynamicSteps = steps.map(s => {
-    if (s.id === 1) return { ...s, status: (hasCompletedDiscovery || hasApplied) ? 'complete' : 'current' };
-    if (s.id === 2) return { ...s, status: hasApplied ? 'complete' : (hasCompletedDiscovery ? 'current' : 'upcoming') };
-    if (s.id === 3) return { ...s, status: hasApplied ? 'current' : 'upcoming' };
+    // Current logic: Forward only progress. If further along, previous steps are complete.
+    if (s.id === 1) {
+      if (hasCompletedDiscovery || hasApplied) return { ...s, status: 'complete' };
+      return { ...s, status: 'current' };
+    }
+    if (s.id === 2) {
+      if (hasApplied) return { ...s, status: 'complete' };
+      if (hasCompletedDiscovery) return { ...s, status: 'current' };
+      return { ...s, status: 'upcoming' };
+    }
+    if (s.id === 3) {
+      if (hasApplied) return { ...s, status: 'current' };
+      return { ...s, status: 'upcoming' };
+    }
     return { ...s, status: 'upcoming' };
   });
 
@@ -194,7 +207,7 @@ function StudentDashboard({ profile, onScheduleClick }) {
             <div className="absolute top-1/2 left-0 right-0 h-1 bg-white/10 -translate-y-1/2 rounded-full overflow-hidden">
                <motion.div 
                 initial={{ width: 0 }}
-                animate={{ width: hasCompletedDiscovery ? '33%' : '0%' }}
+                animate={{ width: progressWidth }}
                 className="h-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.5)]"
                />
             </div>
