@@ -293,7 +293,30 @@ export default function PayPage() {
     const comparablePath = getComparablePath();
     const degreeStartSalary = comparablePath.startingSalary;
     const degreeCost = parseInt(comparablePath.avgCost.replace(/[^0-9]/g, '')) || 120000;
-    const degreeDebt = Math.min(Math.round(degreeCost * 0.25), 32000); 
+    // Average student debt per degree type (national averages, not a % of sticker price)
+    const DEGREE_DEBT_MAP = {
+      'Dental Student (DDS)': 293900,
+      'Doctor': 250000,
+      'Law Degree': 130000,
+      'Aerospace Engineer': 32000,
+      'Electrical Engineer': 30000,
+      'Mechanical Engineer': 29000,
+      'Civil Engineer': 28000,
+      'Environmental Engineer': 27000,
+      'Materials Engineer': 28000,
+      'Industrial Engineer': 28000,
+      'Manufacturing Engineer': 27500,
+      'Computer Science Degree': 31000,
+      'Registered Nurse (BSN)': 47000,
+      'ER Registered Nurse': 47000,
+      'Logistics Manager': 29000,
+      'Hospitality Management': 30000,
+      'Culinary Arts Degree': 35000,
+      'Interior Designer': 32000,
+      'Sustainable Energy Engineer': 28000,
+      'Naval Architect': 26000,
+    };
+    const degreeDebt = DEGREE_DEBT_MAP[comparablePath.name] ?? 37500; // $37,500 = national avg student debt
     const degreeGrowth = 0.042;
 
     const getTradeSalaryForYear = (targetYear) => {
@@ -663,15 +686,15 @@ export default function PayPage() {
 
             {/* Restored Insight Column */}
             <div className="w-full xl:w-80 flex flex-col gap-3">
-              <div className="card p-5 bg-white border-industrial-100/60 shadow-sm hover:shadow-md transition-all group">
+              <div className="card p-5 bg-white border-purple-100/60 shadow-sm hover:shadow-md transition-all group">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-rose-50 rounded-lg group-hover:bg-rose-100 transition-colors">
-                    <GraduationCap className="w-5 h-5 text-rose-600" />
+                  <div className="p-2 bg-purple-50 rounded-lg group-hover:bg-purple-100 transition-colors">
+                    <GraduationCap className="w-5 h-5 text-purple-600" />
                   </div>
-                  <h4 className="text-xs font-black text-industrial-900 uppercase">Hidden Cost of Debt</h4>
+                  <h4 className="text-xs font-black text-purple-900 uppercase">Hidden Cost of Debt</h4>
                 </div>
                 <p className="text-xs text-industrial-500 leading-relaxed font-medium">
-                  A typical <span className="font-black">{comparablePath.name}</span> graduate enters the market <span className="font-black text-rose-600">${degreeDebt.toLocaleString()}</span> in student debt. Total cost including lost wages exceeds <span className="font-black text-industrial-900">{comparablePath.avgCost}</span>.
+                  A typical <span className="font-black">{comparablePath.name}</span> graduate enters the workforce carrying an average of <span className="font-black text-purple-600">${degreeDebt.toLocaleString()}</span> in student loan debt — a financial burden that trade apprentices avoid entirely.
                 </p>
               </div>
 
