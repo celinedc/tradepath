@@ -434,7 +434,8 @@ const JobDetailModal = ({ job, studentName, onClose }) => {
 
 export default function CareerDiscovery() {
   const { profile, updateProfile, userType, toggleStarTrade } = useUser();
-  const [view, setView] = useState('opening'); 
+  const [view, setView] = useState('opening');
+  const [useRag, setUseRag] = useState(false);
 
   if (userType === 'counselor') {
     return <Navigate to="/students" replace />;
@@ -464,12 +465,11 @@ export default function CareerDiscovery() {
     setIsMatching(true);
     setView('matching');
     
-    // Try RAG semantic matching first; fall back to rule-based SkillsMatcher if it fails
+    // Run whichever algorithm the student selected
     let matches;
-    try {
+    if (useRag) {
       matches = await RagMatcher.match({ ...profile, ...data });
-    } catch (ragErr) {
-      console.warn('RagMatcher failed, falling back to SkillsMatcher:', ragErr.message);
+    } else {
       matches = await SkillsMatcher.match({ ...profile, ...data });
     }
     const topMatches = matches.slice(0, 9); // Always show top 9
@@ -552,6 +552,41 @@ export default function CareerDiscovery() {
                         Explore Your Future <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
                     </motion.button>
                 </div>
+
+                {/* Matching Algorithm Toggle */}
+                <div className="flex flex-col items-center gap-3 pt-2">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-industrial-400">Matching Algorithm</p>
+                  <div className="flex items-center bg-industrial-100 p-1 rounded-2xl gap-1">
+                    <button
+                      onClick={() => setUseRag(false)}
+                      className={`px-5 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all ${
+                        !useRag
+                          ? 'bg-white text-industrial-900 shadow-md'
+                          : 'text-industrial-400 hover:text-industrial-600'
+                      }`}
+                    >
+                      Weighted Heuristic
+                    </button>
+                    <button
+                      onClick={() => setUseRag(true)}
+                      className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-[11px] font-black uppercase tracking-widest transition-all ${
+                        useRag
+                          ? 'bg-industrial-900 text-white shadow-md shadow-industrial-900/30'
+                          : 'text-industrial-400 hover:text-industrial-600'
+                      }`}
+                    >
+                      Semantic RAG
+                      <span className={`text-[8px] font-black px-1.5 py-0.5 rounded-full ${
+                        useRag ? 'bg-safety-blue text-white' : 'bg-industrial-300 text-industrial-600'
+                      }`}>BETA</span>
+                    </button>
+                  </div>
+                  <p className="text-[10px] text-industrial-400 font-medium max-w-xs">
+                    {useRag
+                      ? '✦ AI Semantic Search — uses Gemini embeddings to deeply understand your profile.'
+                      : '✦ Classic scoring based on your interests, subjects, and survey answers.'}
+                  </p>
+                </div>
             </div>
           </motion.div>
         )}
@@ -593,7 +628,7 @@ export default function CareerDiscovery() {
                         {studentFirstName}'s Recommended Paths
                     </h2>
                     <p className="text-industrial-500 max-w-xl">
-                        Based on your profile, the <span className="text-industrial-900 font-bold uppercase">AI Semantic Match Engine</span> has identified these nine paths as your strongest career alignments.
+                        Based on your profile, the <span className="text-industrial-900 font-bold uppercase">{useRag ? 'AI Semantic Match Engine (Beta)' : 'Weighted Heuristic Matcher'}</span> has identified these nine paths as your strongest career alignments.
                     </p>
                 </div>
                 <div className="flex gap-3">
