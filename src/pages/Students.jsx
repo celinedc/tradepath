@@ -8,7 +8,6 @@ import {
 import { STUDENTS_DATA } from '../data/mockData';
 import { useUser } from '../context/UserContext';
 import { Navigate } from 'react-router-dom';
-import { createPortal } from 'react-dom';
 
 const CareerPlanModal = ({ isOpen, onClose, student }) => {
   if (!isOpen) return null;
@@ -25,7 +24,7 @@ const CareerPlanModal = ({ isOpen, onClose, student }) => {
       <motion.div 
         initial={{ scale: 0.9, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
-        className="relative bg-white rounded-[2.5rem] w-full max-w-2xl overflow-hidden shadow-2xl border border-white/20"
+        className="relative bg-white rounded-[2rem] w-full max-w-2xl max-h-[85vh] overflow-hidden shadow-2xl border border-white/20 flex flex-col"
       >
         <div className="bg-industrial-900 p-8 text-white relative">
           <button onClick={onClose} className="absolute top-6 right-6 text-white/40 hover:text-white transition-colors">
@@ -416,18 +415,15 @@ export default function StudentsPage() {
         </div>
       </div>
 
-      {createPortal(
-        <AnimatePresence>
-          {isPlanModalOpen && selectedStudent && (
-            <CareerPlanModal 
-              isOpen={isPlanModalOpen} 
-              onClose={() => setIsPlanModalOpen(false)} 
-              student={selectedStudent} 
-            />
-          )}
-        </AnimatePresence>,
-        document.body
-      )}
+      <AnimatePresence>
+        {isPlanModalOpen && selectedStudent && (
+          <CareerPlanModal 
+            isOpen={isPlanModalOpen} 
+            onClose={() => setIsPlanModalOpen(false)} 
+            student={selectedStudent} 
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
