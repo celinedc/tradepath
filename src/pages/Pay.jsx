@@ -348,14 +348,13 @@ export default function PayPage() {
     for (let year = 1; year <= 40; year++) {
       const tradeSalary = getTradeSalaryForYear(year);
       tradeCumulative += tradeSalary;
+      
       let degreeSalary = 0;
-      if (year <= 4) {
-        degreeSalary = -(degreeCost / 4);
-      } else {
+      if (year > 4) {
         degreeSalary = degreeStartSalary * Math.pow(1 + degreeGrowth, year - 5);
+        degreeCumulative += degreeSalary;
       }
-      if (year > 4) degreeCumulative += degreeSalary;
-      else degreeCumulative -= (degreeCost / 4);
+      
       if (breakEvenYear === null && degreeCumulative > tradeCumulative && year > 4) {
         breakEvenYear = year;
       }
@@ -641,7 +640,7 @@ export default function PayPage() {
               </div>
               <h3 className="text-2xl font-black text-industrial-900">The "True Wealth" Comparison</h3>
               <p className="text-xs text-industrial-500 max-w-2xl mt-1 leading-relaxed font-medium">
-                Benchmarking the cumulative earnings of <span className="font-bold text-industrial-900 uppercase">{tradeData.name}</span> training against a <span className="font-bold text-blue-600 uppercase">{comparablePath.name}</span> (starting at ${comparablePath.startingSalary.toLocaleString()}/yr).
+                Benchmarking the cumulative earnings of <span className="font-bold text-industrial-900 uppercase">{tradeData.name}</span> training against a <span className="font-bold text-purple-600 uppercase">{comparablePath.name}</span> (starting at ${comparablePath.startingSalary.toLocaleString()}/yr).
                 Cumulative earnings represent the total sum of all gross annual wages (pre-tax) earned over a 40-year career, reflecting the full financial trajectory of your professional life.
               </p>
             </div>
@@ -678,7 +677,7 @@ export default function PayPage() {
                       contentStyle={{borderRadius: '16px', border: 'none', boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1)', maxWidth: 'none', whiteSpace: 'pre-wrap'}} 
                     />
                     <Area type="monotone" dataKey="tradeCumulative" stroke="#1e293b" fill="#1e293b" fillOpacity={0.03} strokeWidth={4} name={`${tradeData.name} Wealth`} />
-                    <Area type="monotone" dataKey="degreeCumulative" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.03} strokeWidth={4} name={`${comparablePath.name} Wealth`} />
+                    <Area type="monotone" dataKey="degreeCumulative" stroke="#8b5cf6" fill="#8b5cf6" fillOpacity={0.03} strokeWidth={4} name={`${comparablePath.name} Wealth`} />
                   </ComposedChart>
                 </ResponsiveContainer>
               </div>
