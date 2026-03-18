@@ -464,43 +464,62 @@ export default function CareerDiscovery() {
   const handleIntakeComplete = async (data) => {
     setIsMatching(true);
     setView('matching');
-    
-    let topMatches;
 
-    if (useRag) {
-      // RAG fast path: only awaits the embedding call, returns immediately
-      const { matches, narrative } = await RagMatcher.match({ ...profile, ...data });
-      topMatches = matches.slice(0, 9);
+    try {
+      let topMatches;
+      let narrative = null;
+
+      if (useRag) {
+        try {
+          // RAG fast path: only awaits the embedding call, returns immediately
+          const result = await RagMatcher.match({ ...profile, ...data });
+          topMatches = result.matches.slice(0, 9);
+          narrative = result.narrative;
+        } catch (ragErr) {
+          console.warn('RAG embedding failed, falling back to SkillsMatcher:', ragErr.message);
+          const matches = await SkillsMatcher.match({ ...profile, ...data });
+          topMatches = matches.slice(0, 9);
+        }
+      } else {
+        const matches = await SkillsMatcher.match({ ...profile, ...data });
+        topMatches = matches.slice(0, 9);
+      }
 
       setSurveyData(data);
       setMatchedResults(topMatches);
       updateProfile({ discoveryResults: { formData: data, matches: topMatches } });
-      setIsMatching(false);
-      setView('results');
 
       // Background: generate personalized AI summary for top match — non-blocking
-      generateMatchSummary(narrative, topMatches[0].name).then(aiSummary => {
-        if (aiSummary) {
-          setMatchedResults(prev => {
-            if (!prev) return prev;
-            const updated = [...prev];
-            updated[0] = { ...updated[0], relevanceMatch: aiSummary };
-            return updated;
-          });
-        }
-      });
+      if (useRag && narrative && topMatches?.[0]) {
+        generateMatchSummary(narrative, topMatches[0].name).then(aiSummary => {
+          if (aiSummary) {
+            setMatchedResults(prev => {
+              if (!prev) return prev;
+              const updated = [...prev];
+              updated[0] = { ...updated[0], relevanceMatch: aiSummary };
+              return updated;
+            });
+          }
+        });
+      }
 
-    } else {
-      const matches = await SkillsMatcher.match({ ...profile, ...data });
-      topMatches = matches.slice(0, 9);
-
-      setSurveyData(data);
-      setMatchedResults(topMatches);
-      updateProfile({ discoveryResults: { formData: data, matches: topMatches } });
+    } catch (err) {
+      console.error('Matching failed entirely:', err);
+      // Last resort: show at least heuristic results so the user is never stuck
+      try {
+        const matches = await SkillsMatcher.match({ ...profile, ...data });
+        const topMatches = matches.slice(0, 9);
+        setSurveyData(data);
+        setMatchedResults(topMatches);
+        updateProfile({ discoveryResults: { formData: data, matches: topMatches } });
+      } catch (_) { /* give up gracefully */ }
+    } finally {
+      // ALWAYS resolve the spinner, no matter what
       setIsMatching(false);
       setView('results');
     }
   };
+
 
   const resetDiscovery = () => {
     if (window.confirm("This will clear your current matches and profile. Are you sure you want to start over?")) {
