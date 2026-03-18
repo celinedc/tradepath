@@ -477,7 +477,12 @@ export default function CareerDiscovery() {
 
   const resetDiscovery = () => {
     if (window.confirm("This will clear your current matches and profile. Are you sure you want to start over?")) {
-      updateProfile({ discoveryResults: null });
+      updateProfile({ 
+        discoveryResults: null,
+        searchSchoolsCompleted: false,
+        appliedSchoolId: null,
+        selectedTrade: 'undecided'
+      });
       setMatchedResults(null);
       setSurveyData(null);
       setView('opening');
