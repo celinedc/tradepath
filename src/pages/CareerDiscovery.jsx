@@ -9,7 +9,7 @@ import {
 import { INTAKE_QUESTIONS, RECOMMENDATIONS, TRAINING_MODELS } from '../data/aptitudeData';
 import { useUser } from '../context/UserContext';
 import { SkillsMatcher } from '../services/SkillsMatcher';
-import { RagMatcher } from '../services/RagMatcher';
+import { RagMatcher, generateMatchSummary } from '../services/RagMatcher';
 
 const MultiStepIntake = ({ onComplete, initialData, studentName }) => {
   const [step, setStep] = useState(0);
@@ -465,30 +465,41 @@ export default function CareerDiscovery() {
     setIsMatching(true);
     setView('matching');
     
-    // Run whichever algorithm the student selected
-    let matches;
-    if (useRag) {
-      matches = await RagMatcher.match({ ...profile, ...data });
-    } else {
-      matches = await SkillsMatcher.match({ ...profile, ...data });
-    }
-    const topMatches = matches.slice(0, 9); // Always show top 9
-    
-    setSurveyData(data);
-    setMatchedResults(topMatches);
-    
-    // Persist everything
-    updateProfile({ 
-      discoveryResults: { 
-        formData: data, 
-        matches: topMatches 
-      }
-    });
+    let topMatches;
 
-    setTimeout(() => {
+    if (useRag) {
+      // RAG fast path: only awaits the embedding call, returns immediately
+      const { matches, narrative } = await RagMatcher.match({ ...profile, ...data });
+      topMatches = matches.slice(0, 9);
+
+      setSurveyData(data);
+      setMatchedResults(topMatches);
+      updateProfile({ discoveryResults: { formData: data, matches: topMatches } });
       setIsMatching(false);
       setView('results');
-    }, 500); // Small buffer for visual smoothness
+
+      // Background: generate personalized AI summary for top match — non-blocking
+      generateMatchSummary(narrative, topMatches[0].name).then(aiSummary => {
+        if (aiSummary) {
+          setMatchedResults(prev => {
+            if (!prev) return prev;
+            const updated = [...prev];
+            updated[0] = { ...updated[0], relevanceMatch: aiSummary };
+            return updated;
+          });
+        }
+      });
+
+    } else {
+      const matches = await SkillsMatcher.match({ ...profile, ...data });
+      topMatches = matches.slice(0, 9);
+
+      setSurveyData(data);
+      setMatchedResults(topMatches);
+      updateProfile({ discoveryResults: { formData: data, matches: topMatches } });
+      setIsMatching(false);
+      setView('results');
+    }
   };
 
   const resetDiscovery = () => {
