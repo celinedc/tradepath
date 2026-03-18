@@ -552,7 +552,7 @@ export default function PayPage() {
               <span className="text-[10px] font-black uppercase tracking-wider text-industrial-400">Total Career Potential</span>
             </div>
             <h4 className="text-3xl font-black text-white leading-none mb-4">
-              ${Math.round(tradeData.payGrowth.reduce((acc, curr) => acc + curr[selectedEthnicity], 0) * 5 / 1.5).toLocaleString()}
+              ${comparisonDataResults[comparisonDataResults.length - 1].tradeCumulative.toLocaleString()}
             </h4>
             <p className="text-xs text-industrial-400 leading-relaxed font-medium">
               40-year cumulative estimate for {ETHNICITIES.find(e => e.id === selectedEthnicity)?.name} {tradeData.name}s.
@@ -603,6 +603,7 @@ export default function PayPage() {
               <h3 className="text-2xl font-black text-industrial-900">The "True Wealth" Comparison</h3>
               <p className="text-xs text-industrial-500 max-w-2xl mt-1 leading-relaxed font-medium">
                 Benchmarking the cumulative earnings of <span className="font-bold text-industrial-900 uppercase">{tradeData.name}</span> training against a <span className="font-bold text-blue-600 uppercase">{comparablePath.name}</span> (starting at ${comparablePath.startingSalary.toLocaleString()}/yr).
+                Cumulative earnings represent the total sum of all gross annual wages (pre-tax) earned over a 40-year career, reflecting the full financial trajectory of your professional life.
               </p>
             </div>
             <div className="p-4 bg-white rounded-xl border border-industrial-200 shadow-sm text-[10px] font-black uppercase">
