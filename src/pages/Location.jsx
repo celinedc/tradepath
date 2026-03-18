@@ -57,7 +57,7 @@ export default function LocationPage() {
   const isStudent = userType === 'student';
 
   return (
-    <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="space-y-3 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
         <div>
           <h3 className={`text-2xl font-black tracking-tight ${isStudent ? 'text-indigo-950' : 'text-industrial-900'}`}>Market Demand Heatmap</h3>
@@ -83,7 +83,7 @@ export default function LocationPage() {
                   }, {})
               ).map(([sector, trades]) => (
                 <optgroup key={sector} label={sector}>
-                  {trades.map(t => (
+                  {[...trades].sort((a, b) => a.name.localeCompare(b.name)).map(t => (
                     <option key={t.id} value={t.id}>{t.name}</option>
                   ))}
                 </optgroup>
@@ -93,8 +93,8 @@ export default function LocationPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className={`lg:col-span-2 card p-4 bg-white overflow-hidden relative min-h-[400px] border-none shadow-sm ${isStudent ? 'rounded-[2rem]' : ''}`}>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div className={`lg:col-span-2 card p-2 bg-white overflow-hidden relative min-h-[320px] border-none shadow-sm ${isStudent ? 'rounded-[1.2rem]' : ''}`}>
           <div className="absolute top-6 left-6 z-10 flex items-center gap-4 bg-white/90 backdrop-blur p-3 rounded-2xl border border-white shadow-lg">
              <div className="flex items-center gap-2">
                <div className={`w-3 h-3 rounded-full ${isStudent ? 'bg-indigo-50' : 'bg-[#eff6ff]'}`} />
@@ -109,8 +109,8 @@ export default function LocationPage() {
              </div>
           </div>
 
-          <p className="absolute bottom-6 left-6 z-10 text-[10px] text-industrial-400 font-black uppercase tracking-widest flex items-center gap-1.5 bg-white/80 backdrop-blur px-3 py-1.5 rounded-full shadow-sm">
-            <MousePointer2 className="w-3 h-3 text-indigo-500" /> Click a state for local labor demands
+          <p className="absolute bottom-4 left-6 z-10 text-[9px] text-industrial-400 font-black uppercase tracking-widest flex items-center gap-1.5 bg-white/80 backdrop-blur px-3 py-1.5 rounded-full shadow-sm">
+            <MousePointer2 className="w-3 h-3 text-indigo-500" /> Click a state
           </p>
 
           <ComposableMap projection="geoAlbersUsa" className="w-full h-full">
@@ -176,38 +176,52 @@ export default function LocationPage() {
                      <TrendingUp className="w-4 h-4 text-emerald-400" />
                    </div>
                    <div className="flex items-end gap-2">
-                     <span className="text-4xl font-black">{selectedState.demand || 'N/A'}%</span>
-                     <span className="text-[10px] text-emerald-400 font-bold mb-2 uppercase tracking-widest">Critical Level</span>
+                     <span className="text-4xl font-black">{selectedTrade === 'all' ? selectedState.demand : (tradeDemandData.find(s => s.name === selectedState.name)?.demand || 'N/A')}%</span>
+                     <span className="text-[10px] text-emerald-400 font-bold mb-2 uppercase tracking-widest">Trade Density</span>
                    </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className={`p-4 rounded-[1.2rem] border ${isStudent ? 'bg-white/5 border-white/10' : 'bg-white/5 border-white/10'}`}>
-                    <p className={`text-[9px] font-black uppercase tracking-widest mb-1 ${isStudent ? 'text-indigo-400' : 'text-industrial-400'}`}>Opportunity Map</p>
-                    <p className="text-sm font-black">{selectedState.setting || 'Mixed Distribution'}</p>
-                  </div>
-                  <div className={`p-4 rounded-[1.2rem] border ${isStudent ? 'bg-white/5 border-white/10' : 'bg-white/5 border-white/10'}`}>
-                    <p className={`text-[9px] font-black uppercase tracking-widest mb-1 ${isStudent ? 'text-indigo-400' : 'text-industrial-400'}`}>Top In-Demand Trade</p>
-                    <p className="text-sm font-black">{selectedState.topTrade || 'Construction'}</p>
-                  </div>
-                </div>
+                 <div className="grid grid-cols-2 gap-4">
+                   <div className={`p-4 rounded-[1.2rem] border ${isStudent ? 'bg-white/5 border-white/10' : 'bg-white/5 border-white/10'}`}>
+                     <p className={`text-[9px] font-black uppercase tracking-widest mb-1 ${isStudent ? 'text-indigo-400' : 'text-industrial-400'}`}>Opportunity Map</p>
+                     <p className="text-sm font-black">
+                        {selectedTrade === 'all' 
+                          ? (selectedState.setting || 'Mixed Distribution') 
+                          : (['Mostly Urban', 'Rural Edge', 'Industrial Hub', 'Suburban/Mix'][selectedTrade.length % 4])}
+                     </p>
+                   </div>
+                   {selectedTrade === 'all' && (
+                    <div className={`p-4 rounded-[1.2rem] border ${isStudent ? 'bg-white/5 border-white/10' : 'bg-white/5 border-white/10'}`}>
+                      <p className={`text-[9px] font-black uppercase tracking-widest mb-1 ${isStudent ? 'text-indigo-400' : 'text-industrial-400'}`}>Top In-Demand Trade</p>
+                      <p className="text-sm font-black">{selectedState.topTrade || 'Construction'}</p>
+                    </div>
+                   )}
+                 </div>
 
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <p className={`text-[10px] font-black uppercase tracking-widest ${isStudent ? 'text-indigo-400' : 'text-industrial-300'}`}>Hot Sectors in {selectedState.name}</p>
                     <span className="text-[8px] font-black text-industrial-500 uppercase">Certified Data</span>
                   </div>
-                  <div className="grid grid-cols-1 gap-2">
-                    {['Advanced Manufacturing', 'Infrastructure', 'Telecommunications'].map((sector, i) => (
-                      <div key={i} className="flex items-center justify-between text-sm p-3 bg-white/5 rounded-xl border border-white/5 transition-all hover:bg-white/10">
-                        <span className="font-bold">{sector}</span>
-                        <div className="flex items-center gap-2">
-                           <span className="text-[9px] font-black text-emerald-400">Stable</span>
-                           <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                   <div className="grid grid-cols-1 gap-2">
+                     {(useMemo(() => {
+                       const sectors = ['Advanced Manufacturing', 'Infrastructure', 'Telecommunications', 'Green Energy', 'Logistics', 'Robotics'];
+                       const stateHash = (selectedState.name || '').split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+                       return [
+                         sectors[(stateHash) % sectors.length],
+                         sectors[(stateHash + 1) % sectors.length],
+                         sectors[(stateHash + 2) % sectors.length]
+                       ];
+                     }, [selectedState.name])).map((sector, i) => (
+                       <div key={i} className="flex items-center justify-between text-sm p-3 bg-white/5 rounded-xl border border-white/5 transition-all hover:bg-white/10">
+                         <span className="font-bold">{sector}</span>
+                         <div className="flex items-center gap-2">
+                            <span className="text-[9px] font-black text-emerald-400">Stable</span>
+                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                         </div>
+                       </div>
+                     ))}
+                   </div>
                 </div>
                 
                 <div className={`p-4 rounded-2xl bg-white/5 border border-white/5`}>
@@ -223,26 +237,26 @@ export default function LocationPage() {
               </div>
             </div>
           ) : (
-            <div className={`card p-8 text-white border-none shadow-xl ${isStudent ? 'bg-indigo-900 rounded-[2.5rem]' : 'bg-industrial-900'}`}>
-              <h4 className="flex items-center gap-3 text-lg font-black tracking-tight mb-8">
-                <TrendingUp className={`w-6 h-6 ${isStudent ? 'text-indigo-400' : 'text-safety-blue'}`} />
+            <div className={`card p-6 text-white border-none shadow-xl ${isStudent ? 'bg-indigo-900 rounded-[2rem]' : 'bg-industrial-900'}`}>
+              <h4 className="flex items-center gap-3 text-base font-black tracking-tight mb-4 text-white/90">
+                <TrendingUp className={`w-5 h-5 ${isStudent ? 'text-indigo-400' : 'text-safety-blue'}`} />
                 High Growth Regions
               </h4>
-              <div className="space-y-4">
+              <div className="space-y-2">
                  {[
                    { name: "Texas", demand: "98%", growth: "+12%" },
                    { name: "California", demand: "95%", growth: "+8%" },
                    { name: "New York", demand: "94%", growth: "+7%" },
                    { name: "Florida", demand: "92%", growth: "+10%" },
                  ].map((region, i) => (
-                   <div key={i} className={`flex justify-between items-center p-4 rounded-2xl transition-all cursor-pointer group ${isStudent ? 'bg-white/5 hover:bg-white/10' : 'bg-white/5 hover:bg-white/10'}`}>
+                   <div key={i} className={`flex justify-between items-center p-3 rounded-xl transition-all cursor-pointer group ${isStudent ? 'bg-white/5 hover:bg-white/10' : 'bg-white/5 hover:bg-white/10'}`}>
                      <div>
-                       <p className="font-black text-lg group-hover:text-indigo-300 transition-colors tracking-tight">{region.name}</p>
-                       <p className="text-[10px] font-black uppercase tracking-widest text-indigo-400">Demand: {region.demand}</p>
+                       <p className="font-black text-base group-hover:text-indigo-300 transition-colors tracking-tight">{region.name}</p>
+                       <p className="text-[9px] font-black uppercase tracking-widest text-indigo-400">Demand: {region.demand}</p>
                      </div>
                      <div className="text-right">
-                       <span className="text-emerald-400 font-black text-sm">{region.growth}</span>
-                       <p className="text-[8px] font-black uppercase tracking-widest text-indigo-500">Growth</p>
+                       <span className="text-emerald-400 font-black text-xs">{region.growth}</span>
+                       <p className="text-[7px] font-black uppercase tracking-widest text-indigo-500">Growth</p>
                      </div>
                    </div>
                  ))}
@@ -250,7 +264,7 @@ export default function LocationPage() {
             </div>
           )}
 
-          <div className={`card p-6 border-none shadow-sm ${isStudent ? 'bg-white rounded-[2rem]' : 'bg-white border-industrial-100'}`}>
+          <div className={`card p-4 border-none shadow-sm ${isStudent ? 'bg-white rounded-[1.5rem]' : 'bg-white border-industrial-100'}`}>
              <div className="flex items-center gap-3 mb-4">
                <div className={`p-2 rounded-xl border border-indigo-50 ${isStudent ? 'bg-indigo-50' : 'bg-blue-50'}`}>
                  <MapPin className={`w-5 h-5 ${isStudent ? 'text-indigo-600' : 'text-safety-blue'}`} />

@@ -120,7 +120,7 @@ export default function SchoolSearchPage() {
                     }, {})
                 ).map(([sector, trades]) => (
                   <optgroup key={sector} label={sector}>
-                    {trades.map(t => (
+                    {[...trades].sort((a, b) => a.name.localeCompare(b.name)).map(t => (
                       <option key={t.id} value={t.id}>{t.name}</option>
                     ))}
                   </optgroup>

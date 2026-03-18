@@ -6,7 +6,7 @@ import { RECOMMENDATIONS } from '../data/aptitudeData';
 import { useUser } from '../context/UserContext';
 
 export default function ProfileModal({ isOpen, onClose }) {
-  const { profile, updateProfile, userType, toggleStarTrade, toggleStarSchool } = useUser();
+  const { profile, updateProfile, userType, toggleStarTrade, toggleStarSchool, completeSchoolSearch } = useUser();
   const [formData, setFormData] = useState({ ...profile });
   const [resume, setResume] = useState(profile.resume);
   const [isUploading, setIsUploading] = useState(false);
@@ -175,7 +175,7 @@ export default function ProfileModal({ isOpen, onClose }) {
                             onChange={handleChange}
                             className="input-field text-sm p-3 bg-white appearance-none font-bold shadow-sm"
                           >
-                            {TRADE_CAREERS.map(t => (
+                            {[...TRADE_CAREERS].sort((a, b) => a.name.localeCompare(b.name)).map(t => (
                               <option key={t.id} value={t.id}>{t.name}</option>
                             ))}
                           </select>
@@ -278,20 +278,37 @@ export default function ProfileModal({ isOpen, onClose }) {
                                     <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
                                       <Star className="w-4 h-4 text-safety-blue fill-current" />
                                     </div>
-                                    <div className="flex-1 min-w-0">
-                                      <p className="text-xs font-black text-industrial-900 truncate">{school.name}</p>
-                                      <p className="text-[10px] text-safety-blue font-bold uppercase truncate">
-                                        {TRADE_CAREERS.find(t => t.id === school.trade)?.name || 'General Trade'} • {school.location}
-                                      </p>
-                                    </div>
-                                  </div>
-                                  <button 
-                                    onClick={() => toggleStarSchool(schoolId)}
-                                    className="p-2 text-industrial-300 hover:text-rose-500 transition-colors"
-                                  >
-                                    <X className="w-4 h-4" />
-                                  </button>
-                                </div>
+                                     <div className="flex-1 min-w-0">
+                                       <p className="text-xs font-black text-industrial-900 truncate">{school.name}</p>
+                                       <p className="text-[10px] text-safety-blue font-bold uppercase truncate">
+                                         {TRADE_CAREERS.find(t => t.id === school.trade)?.name || 'General Trade'} • {school.location}
+                                       </p>
+                                     </div>
+                                   </div>
+                                   <div className="flex items-center gap-2">
+                                     {profile.appliedSchoolId === schoolId ? (
+                                       <span className="px-2 py-1 bg-emerald-100 text-emerald-700 text-[8px] font-black uppercase tracking-wider rounded-lg border border-emerald-200">
+                                         Intent Set
+                                       </span>
+                                     ) : (
+                                       <button 
+                                         onClick={() => {
+                                           updateProfile({ appliedSchoolId: schoolId });
+                                           completeSchoolSearch();
+                                         }}
+                                         className="px-2 py-1 bg-white border border-industrial-200 text-industrial-500 text-[8px] font-black uppercase tracking-wider rounded-lg hover:border-safety-blue hover:text-safety-blue transition-all"
+                                       >
+                                         Apply Intent
+                                       </button>
+                                     )}
+                                     <button 
+                                       onClick={() => toggleStarSchool(schoolId)}
+                                       className="p-2 text-industrial-300 hover:text-rose-500 transition-colors"
+                                     >
+                                       <X className="w-4 h-4" />
+                                     </button>
+                                   </div>
+                                 </div>
                               );
                             })
                           ) : (

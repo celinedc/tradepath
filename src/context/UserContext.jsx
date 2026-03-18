@@ -35,6 +35,10 @@ export function UserProvider({ children }) {
     setProfile(prev => ({ ...prev, ...updates }));
   };
 
+  const completeSchoolSearch = () => {
+    setProfile(prev => ({ ...prev, searchSchoolsCompleted: true }));
+  };
+
   const toggleStarTrade = (tradeId) => {
     setProfile(prev => {
       const starredTrades = prev.starredTrades || [];
@@ -66,7 +70,7 @@ export function UserProvider({ children }) {
   };
 
   return (
-    <UserContext.Provider value={{ profile, userType, updateProfile, login, toggleStarTrade, toggleStarSchool }}>
+    <UserContext.Provider value={{ profile, userType, updateProfile, login, toggleStarTrade, toggleStarSchool, completeSchoolSearch }}>
       {children}
     </UserContext.Provider>
   );

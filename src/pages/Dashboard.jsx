@@ -137,12 +137,15 @@ export default function Dashboard() {
 
 function StudentDashboard({ profile, onScheduleClick }) {
   const hasCompletedDiscovery = !!profile.discoveryResults?.matches;
+  const hasApplied = profile.searchSchoolsCompleted;
+  
   const currentTrade = TRADE_CAREERS.find(t => t.id === profile.selectedTrade) || TRADE_CAREERS[0];
   const tradeName = hasCompletedDiscovery ? currentTrade.name : "High-Demand Trades";
 
   const dynamicSteps = steps.map(s => {
     if (s.id === 1) return { ...s, status: hasCompletedDiscovery ? 'complete' : 'current' };
-    if (s.id === 2) return { ...s, status: hasCompletedDiscovery ? 'current' : 'upcoming' };
+    if (s.id === 2) return { ...s, status: hasApplied ? 'complete' : (hasCompletedDiscovery ? 'current' : 'upcoming') };
+    if (s.id === 3) return { ...s, status: hasApplied ? 'current' : 'upcoming' };
     return { ...s, status: 'upcoming' };
   });
 

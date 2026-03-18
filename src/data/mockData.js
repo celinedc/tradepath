@@ -30723,7 +30723,7 @@ export const SCHOOLS = [
     "status": "Joint Labor-Management",
     "duration": "5 years",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.plumberslocaltrainingcenter.edu"
   },
 {
     "id": 22,
@@ -30737,7 +30737,7 @@ export const SCHOOLS = [
     "status": "Non-profit",
     "duration": "4 years",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.californiainstituteofarts.edu"
   },
 {
     "id": 23,
@@ -30751,7 +30751,7 @@ export const SCHOOLS = [
     "status": "Non-profit",
     "duration": "2 years",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.johnsonwalesuniversity.edu"
   },
 {
     "id": 24,
@@ -30765,7 +30765,7 @@ export const SCHOOLS = [
     "status": "Non-profit",
     "duration": "2 years",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.rankentechnicalcollege.edu"
   },
 {
     "id": 25,
@@ -30779,7 +30779,7 @@ export const SCHOOLS = [
     "status": "Non-profit",
     "duration": "9 months",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.cetsanjose.edu"
   },
 {
     "id": 26,
@@ -30793,7 +30793,7 @@ export const SCHOOLS = [
     "status": "Profit",
     "duration": "26 weeks",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.itapelectricaltrainee.edu"
   },
 {
     "id": 27,
@@ -30807,7 +30807,7 @@ export const SCHOOLS = [
     "status": "Profit",
     "duration": "7 months",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.midwesttechnicalinstitute.edu"
   },
 {
     "id": 28,
@@ -30821,7 +30821,7 @@ export const SCHOOLS = [
     "status": "Non-profit",
     "duration": "4 months",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.dallascollegeeastfield.edu"
   },
 {
     "id": 29,
@@ -30835,7 +30835,7 @@ export const SCHOOLS = [
     "status": "Profit",
     "duration": "10 months",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.ueicollege.edu"
   },
 {
     "id": 30,
@@ -30849,7 +30849,7 @@ export const SCHOOLS = [
     "status": "Profit",
     "duration": "6 months",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.floridahealthcareacademy.edu"
   },
 {
     "id": 31,
@@ -30863,7 +30863,7 @@ export const SCHOOLS = [
     "status": "Profit",
     "duration": "4 weeks",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.drivingacademy.edu"
   },
 {
     "id": 32,
@@ -30877,7 +30877,7 @@ export const SCHOOLS = [
     "status": "Profit",
     "duration": "2 weeks",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.katlawtruckdriving.edu"
   },
 {
     "id": 33,
@@ -30891,7 +30891,7 @@ export const SCHOOLS = [
     "status": "Profit",
     "duration": "15 months",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.fortiscollege.edu"
   },
 {
     "id": 34,
@@ -30905,7 +30905,7 @@ export const SCHOOLS = [
     "status": "Non-profit",
     "duration": "18 months",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.newenglandinstituteoftechnology.edu"
   },
 {
     "id": 35,
@@ -30919,7 +30919,7 @@ export const SCHOOLS = [
     "status": "Profit",
     "duration": "9 months",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.northamericantradeschools.edu"
   },
 {
     "id": 36,
@@ -30933,7 +30933,7 @@ export const SCHOOLS = [
     "status": "Profit",
     "duration": "12 months",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.westerntechnicalcollege.edu"
   },
 {
     "id": 37,
@@ -30947,7 +30947,7 @@ export const SCHOOLS = [
     "status": "Non-profit",
     "duration": "4 years",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.associatedbuildersandcontractors.edu"
   },
 {
     "id": 38,
@@ -30961,7 +30961,7 @@ export const SCHOOLS = [
     "status": "Non-profit",
     "duration": "2 years",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.communitycollegeofdenver.edu"
   },
 {
     "id": 39,
@@ -30975,7 +30975,7 @@ export const SCHOOLS = [
     "status": "Non-profit",
     "duration": "1 year",
     "image": "/images/schools/modern_trade_school_campus_premium_1773773169781.png",
-    "url": "https://www.google.com/search?q=trade+school+programs"
+    "url": "https://www.gatewaycommunitycollege.edu"
   },
   {
     "id": 40,
@@ -31195,7 +31195,7 @@ export const SCHOOLS = [
 ,
 {
   "id": 55,
-  "name": "AK Technical College 55",
+  "name": "AK Career & Skills Center",
   "location": "Main Campus, AK",
   "state": "AK",
   "region": "South",
@@ -31205,11 +31205,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160617?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.akcareerskillscenter.edu"
 },
 {
   "id": 56,
-  "name": "GA Technical College 56",
+  "name": "GA Career & Skills Center",
   "location": "Main Campus, GA",
   "state": "GA",
   "region": "South",
@@ -31219,11 +31219,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160618?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.gacareerskillscenter.edu"
 },
 {
   "id": 57,
-  "name": "DE Technical College 57",
+  "name": "DE Career & Skills Center",
   "location": "Main Campus, DE",
   "state": "DE",
   "region": "South",
@@ -31233,11 +31233,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160619?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.decareerskillscenter.edu"
 },
 {
   "id": 58,
-  "name": "GA Technical College 58",
+  "name": "GA Career & Skills Center",
   "location": "Main Campus, GA",
   "state": "GA",
   "region": "South",
@@ -31247,11 +31247,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160620?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.gacareerskillscenter.edu"
 },
 {
   "id": 59,
-  "name": "KS Technical College 59",
+  "name": "KS Career & Skills Center",
   "location": "Main Campus, KS",
   "state": "KS",
   "region": "South",
@@ -31261,11 +31261,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160621?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.kscareerskillscenter.edu"
 },
 {
   "id": 60,
-  "name": "VA Technical College 60",
+  "name": "VA Career & Skills Center",
   "location": "Main Campus, VA",
   "state": "VA",
   "region": "South",
@@ -31275,11 +31275,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160622?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.vacareerskillscenter.edu"
 },
 {
   "id": 61,
-  "name": "LA Technical College 61",
+  "name": "LA Career & Skills Center",
   "location": "Main Campus, LA",
   "state": "LA",
   "region": "South",
@@ -31289,11 +31289,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160623?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.lacareerskillscenter.edu"
 },
 {
   "id": 62,
-  "name": "SD Technical College 62",
+  "name": "SD Career & Skills Center",
   "location": "Main Campus, SD",
   "state": "SD",
   "region": "South",
@@ -31303,11 +31303,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160624?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.sdcareerskillscenter.edu"
 },
 {
   "id": 63,
-  "name": "NC Technical College 63",
+  "name": "NC Career & Skills Center",
   "location": "Main Campus, NC",
   "state": "NC",
   "region": "South",
@@ -31317,11 +31317,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160625?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nccareerskillscenter.edu"
 },
 {
   "id": 64,
-  "name": "NM Technical College 64",
+  "name": "NM Career & Skills Center",
   "location": "Main Campus, NM",
   "state": "NM",
   "region": "South",
@@ -31331,11 +31331,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160626?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nmcareerskillscenter.edu"
 },
 {
   "id": 65,
-  "name": "IA Technical College 65",
+  "name": "IA Career & Skills Center",
   "location": "Main Campus, IA",
   "state": "IA",
   "region": "South",
@@ -31345,11 +31345,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160627?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.iacareerskillscenter.edu"
 },
 {
   "id": 66,
-  "name": "OH Technical College 66",
+  "name": "OH Career & Skills Center",
   "location": "Main Campus, OH",
   "state": "OH",
   "region": "South",
@@ -31359,11 +31359,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160628?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ohcareerskillscenter.edu"
 },
 {
   "id": 67,
-  "name": "MO Technical College 67",
+  "name": "MO Career & Skills Center",
   "location": "Main Campus, MO",
   "state": "MO",
   "region": "South",
@@ -31373,11 +31373,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160629?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mocareerskillscenter.edu"
 },
 {
   "id": 68,
-  "name": "FL Technical College 68",
+  "name": "FL Career & Skills Center",
   "location": "Main Campus, FL",
   "state": "FL",
   "region": "South",
@@ -31387,11 +31387,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160630?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.flcareerskillscenter.edu"
 },
 {
   "id": 69,
-  "name": "ID Technical College 69",
+  "name": "ID Career & Skills Center",
   "location": "Main Campus, ID",
   "state": "ID",
   "region": "South",
@@ -31401,11 +31401,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160631?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.idcareerskillscenter.edu"
 },
 {
   "id": 70,
-  "name": "RI Technical College 70",
+  "name": "RI Career & Skills Center",
   "location": "Main Campus, RI",
   "state": "RI",
   "region": "South",
@@ -31415,11 +31415,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160632?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ricareerskillscenter.edu"
 },
 {
   "id": 71,
-  "name": "NC Technical College 71",
+  "name": "NC Career & Skills Center",
   "location": "Main Campus, NC",
   "state": "NC",
   "region": "South",
@@ -31429,11 +31429,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160633?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nccareerskillscenter.edu"
 },
 {
   "id": 72,
-  "name": "KS Technical College 72",
+  "name": "KS Career & Skills Center",
   "location": "Main Campus, KS",
   "state": "KS",
   "region": "South",
@@ -31443,11 +31443,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160634?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.kscareerskillscenter.edu"
 },
 {
   "id": 73,
-  "name": "TX Technical College 73",
+  "name": "TX Career & Skills Center",
   "location": "Main Campus, TX",
   "state": "TX",
   "region": "South",
@@ -31457,11 +31457,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160635?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.txcareerskillscenter.edu"
 },
 {
   "id": 74,
-  "name": "AK Technical College 74",
+  "name": "AK Career & Skills Center",
   "location": "Main Campus, AK",
   "state": "AK",
   "region": "South",
@@ -31471,11 +31471,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160636?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.akcareerskillscenter.edu"
 },
 {
   "id": 75,
-  "name": "MS Technical College 75",
+  "name": "MS Career & Skills Center",
   "location": "Main Campus, MS",
   "state": "MS",
   "region": "South",
@@ -31485,11 +31485,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160637?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mscareerskillscenter.edu"
 },
 {
   "id": 76,
-  "name": "NM Technical College 76",
+  "name": "NM Career & Skills Center",
   "location": "Main Campus, NM",
   "state": "NM",
   "region": "South",
@@ -31499,11 +31499,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160638?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nmcareerskillscenter.edu"
 },
 {
   "id": 77,
-  "name": "AL Technical College 77",
+  "name": "AL Career & Skills Center",
   "location": "Main Campus, AL",
   "state": "AL",
   "region": "South",
@@ -31513,11 +31513,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160639?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.alcareerskillscenter.edu"
 },
 {
   "id": 78,
-  "name": "GA Technical College 78",
+  "name": "GA Career & Skills Center",
   "location": "Main Campus, GA",
   "state": "GA",
   "region": "South",
@@ -31527,11 +31527,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160640?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.gacareerskillscenter.edu"
 },
 {
   "id": 79,
-  "name": "OK Technical College 79",
+  "name": "OK Career & Skills Center",
   "location": "Main Campus, OK",
   "state": "OK",
   "region": "South",
@@ -31541,11 +31541,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160641?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.okcareerskillscenter.edu"
 },
 {
   "id": 80,
-  "name": "MN Technical College 80",
+  "name": "MN Career & Skills Center",
   "location": "Main Campus, MN",
   "state": "MN",
   "region": "South",
@@ -31555,11 +31555,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160642?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mncareerskillscenter.edu"
 },
 {
   "id": 81,
-  "name": "MA Technical College 81",
+  "name": "MA Career & Skills Center",
   "location": "Main Campus, MA",
   "state": "MA",
   "region": "South",
@@ -31569,11 +31569,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160643?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.macareerskillscenter.edu"
 },
 {
   "id": 82,
-  "name": "AR Technical College 82",
+  "name": "Arkansas Tech University",
   "location": "Main Campus, AR",
   "state": "AR",
   "region": "South",
@@ -31583,11 +31583,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160644?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.atu.edu/"
 },
 {
   "id": 83,
-  "name": "MT Technical College 83",
+  "name": "MT Career & Skills Center",
   "location": "Main Campus, MT",
   "state": "MT",
   "region": "South",
@@ -31597,11 +31597,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160645?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mtcareerskillscenter.edu"
 },
 {
   "id": 84,
-  "name": "CO Technical College 84",
+  "name": "CO Career & Skills Center",
   "location": "Main Campus, CO",
   "state": "CO",
   "region": "South",
@@ -31611,11 +31611,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160646?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.cocareerskillscenter.edu"
 },
 {
   "id": 85,
-  "name": "NV Technical College 85",
+  "name": "NV Career & Skills Center",
   "location": "Main Campus, NV",
   "state": "NV",
   "region": "South",
@@ -31625,11 +31625,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160647?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nvcareerskillscenter.edu"
 },
 {
   "id": 86,
-  "name": "NV Technical College 86",
+  "name": "NV Career & Skills Center",
   "location": "Main Campus, NV",
   "state": "NV",
   "region": "South",
@@ -31639,11 +31639,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160648?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nvcareerskillscenter.edu"
 },
 {
   "id": 87,
-  "name": "TX Technical College 87",
+  "name": "TX Career & Skills Center",
   "location": "Main Campus, TX",
   "state": "TX",
   "region": "South",
@@ -31653,11 +31653,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160649?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.txcareerskillscenter.edu"
 },
 {
   "id": 88,
-  "name": "CT Technical College 88",
+  "name": "CT Career & Skills Center",
   "location": "Main Campus, CT",
   "state": "CT",
   "region": "South",
@@ -31667,11 +31667,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160650?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ctcareerskillscenter.edu"
 },
 {
   "id": 89,
-  "name": "AR Technical College 89",
+  "name": "Arkansas Tech University",
   "location": "Main Campus, AR",
   "state": "AR",
   "region": "South",
@@ -31681,11 +31681,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160651?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.atu.edu/"
 },
 {
   "id": 90,
-  "name": "NM Technical College 90",
+  "name": "NM Career & Skills Center",
   "location": "Main Campus, NM",
   "state": "NM",
   "region": "South",
@@ -31695,11 +31695,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160652?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nmcareerskillscenter.edu"
 },
 {
   "id": 91,
-  "name": "NM Technical College 91",
+  "name": "NM Career & Skills Center",
   "location": "Main Campus, NM",
   "state": "NM",
   "region": "South",
@@ -31709,11 +31709,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160653?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nmcareerskillscenter.edu"
 },
 {
   "id": 92,
-  "name": "WV Technical College 92",
+  "name": "WV Career & Skills Center",
   "location": "Main Campus, WV",
   "state": "WV",
   "region": "South",
@@ -31723,11 +31723,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160654?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wvcareerskillscenter.edu"
 },
 {
   "id": 93,
-  "name": "VT Technical College 93",
+  "name": "VT Career & Skills Center",
   "location": "Main Campus, VT",
   "state": "VT",
   "region": "South",
@@ -31737,11 +31737,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160655?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.vtcareerskillscenter.edu"
 },
 {
   "id": 94,
-  "name": "ME Technical College 94",
+  "name": "ME Career & Skills Center",
   "location": "Main Campus, ME",
   "state": "ME",
   "region": "South",
@@ -31751,11 +31751,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160656?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mecareerskillscenter.edu"
 },
 {
   "id": 95,
-  "name": "MT Technical College 95",
+  "name": "MT Career & Skills Center",
   "location": "Main Campus, MT",
   "state": "MT",
   "region": "South",
@@ -31765,11 +31765,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160657?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mtcareerskillscenter.edu"
 },
 {
   "id": 96,
-  "name": "FL Technical College 96",
+  "name": "FL Career & Skills Center",
   "location": "Main Campus, FL",
   "state": "FL",
   "region": "South",
@@ -31779,11 +31779,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160658?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.flcareerskillscenter.edu"
 },
 {
   "id": 97,
-  "name": "DE Technical College 97",
+  "name": "DE Career & Skills Center",
   "location": "Main Campus, DE",
   "state": "DE",
   "region": "South",
@@ -31793,11 +31793,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160659?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.decareerskillscenter.edu"
 },
 {
   "id": 98,
-  "name": "KY Technical College 98",
+  "name": "KY Career & Skills Center",
   "location": "Main Campus, KY",
   "state": "KY",
   "region": "South",
@@ -31807,11 +31807,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160660?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.kycareerskillscenter.edu"
 },
 {
   "id": 99,
-  "name": "CA Technical College 99",
+  "name": "CA Career & Skills Center",
   "location": "Main Campus, CA",
   "state": "CA",
   "region": "South",
@@ -31821,11 +31821,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160661?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.cacareerskillscenter.edu"
 },
 {
   "id": 100,
-  "name": "ID Technical College 100",
+  "name": "ID Career & Skills Center",
   "location": "Main Campus, ID",
   "state": "ID",
   "region": "South",
@@ -31835,11 +31835,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160662?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.idcareerskillscenter.edu"
 },
 {
   "id": 101,
-  "name": "KS Technical College 101",
+  "name": "KS Career & Skills Center",
   "location": "Main Campus, KS",
   "state": "KS",
   "region": "South",
@@ -31849,11 +31849,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160663?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.kscareerskillscenter.edu"
 },
 {
   "id": 102,
-  "name": "ME Technical College 102",
+  "name": "ME Career & Skills Center",
   "location": "Main Campus, ME",
   "state": "ME",
   "region": "South",
@@ -31863,11 +31863,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160664?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mecareerskillscenter.edu"
 },
 {
   "id": 103,
-  "name": "MA Technical College 103",
+  "name": "MA Career & Skills Center",
   "location": "Main Campus, MA",
   "state": "MA",
   "region": "South",
@@ -31877,11 +31877,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160665?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.macareerskillscenter.edu"
 },
 {
   "id": 104,
-  "name": "KY Technical College 104",
+  "name": "KY Career & Skills Center",
   "location": "Main Campus, KY",
   "state": "KY",
   "region": "South",
@@ -31891,11 +31891,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160666?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.kycareerskillscenter.edu"
 },
 {
   "id": 105,
-  "name": "RI Technical College 105",
+  "name": "RI Career & Skills Center",
   "location": "Main Campus, RI",
   "state": "RI",
   "region": "South",
@@ -31905,11 +31905,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160667?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ricareerskillscenter.edu"
 },
 {
   "id": 106,
-  "name": "WI Technical College 106",
+  "name": "WI Career & Skills Center",
   "location": "Main Campus, WI",
   "state": "WI",
   "region": "South",
@@ -31919,11 +31919,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160668?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wicareerskillscenter.edu"
 },
 {
   "id": 107,
-  "name": "CT Technical College 107",
+  "name": "CT Career & Skills Center",
   "location": "Main Campus, CT",
   "state": "CT",
   "region": "South",
@@ -31933,11 +31933,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160669?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ctcareerskillscenter.edu"
 },
 {
   "id": 108,
-  "name": "OK Technical College 108",
+  "name": "OK Career & Skills Center",
   "location": "Main Campus, OK",
   "state": "OK",
   "region": "South",
@@ -31947,11 +31947,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160670?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.okcareerskillscenter.edu"
 },
 {
   "id": 109,
-  "name": "AZ Technical College 109",
+  "name": "AZ Career & Skills Center",
   "location": "Main Campus, AZ",
   "state": "AZ",
   "region": "South",
@@ -31961,11 +31961,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160671?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.azcareerskillscenter.edu"
 },
 {
   "id": 110,
-  "name": "OR Technical College 110",
+  "name": "OR Career & Skills Center",
   "location": "Main Campus, OR",
   "state": "OR",
   "region": "South",
@@ -31975,11 +31975,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160672?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.orcareerskillscenter.edu"
 },
 {
   "id": 111,
-  "name": "SC Technical College 111",
+  "name": "SC Career & Skills Center",
   "location": "Main Campus, SC",
   "state": "SC",
   "region": "South",
@@ -31989,11 +31989,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160673?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.sccareerskillscenter.edu"
 },
 {
   "id": 112,
-  "name": "MN Technical College 112",
+  "name": "MN Career & Skills Center",
   "location": "Main Campus, MN",
   "state": "MN",
   "region": "South",
@@ -32003,11 +32003,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160674?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mncareerskillscenter.edu"
 },
 {
   "id": 113,
-  "name": "ID Technical College 113",
+  "name": "ID Career & Skills Center",
   "location": "Main Campus, ID",
   "state": "ID",
   "region": "South",
@@ -32017,11 +32017,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160675?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.idcareerskillscenter.edu"
 },
 {
   "id": 114,
-  "name": "ND Technical College 114",
+  "name": "ND Career & Skills Center",
   "location": "Main Campus, ND",
   "state": "ND",
   "region": "South",
@@ -32031,11 +32031,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160676?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ndcareerskillscenter.edu"
 },
 {
   "id": 115,
-  "name": "ID Technical College 115",
+  "name": "ID Career & Skills Center",
   "location": "Main Campus, ID",
   "state": "ID",
   "region": "South",
@@ -32045,11 +32045,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160677?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.idcareerskillscenter.edu"
 },
 {
   "id": 116,
-  "name": "CA Technical College 116",
+  "name": "CA Career & Skills Center",
   "location": "Main Campus, CA",
   "state": "CA",
   "region": "South",
@@ -32059,11 +32059,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160678?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.cacareerskillscenter.edu"
 },
 {
   "id": 117,
-  "name": "WV Technical College 117",
+  "name": "WV Career & Skills Center",
   "location": "Main Campus, WV",
   "state": "WV",
   "region": "South",
@@ -32073,11 +32073,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160679?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wvcareerskillscenter.edu"
 },
 {
   "id": 118,
-  "name": "MD Technical College 118",
+  "name": "MD Career & Skills Center",
   "location": "Main Campus, MD",
   "state": "MD",
   "region": "South",
@@ -32087,11 +32087,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160680?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mdcareerskillscenter.edu"
 },
 {
   "id": 119,
-  "name": "SD Technical College 119",
+  "name": "SD Career & Skills Center",
   "location": "Main Campus, SD",
   "state": "SD",
   "region": "South",
@@ -32101,11 +32101,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160681?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.sdcareerskillscenter.edu"
 },
 {
   "id": 120,
-  "name": "SC Technical College 120",
+  "name": "SC Career & Skills Center",
   "location": "Main Campus, SC",
   "state": "SC",
   "region": "South",
@@ -32115,11 +32115,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160682?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.sccareerskillscenter.edu"
 },
 {
   "id": 121,
-  "name": "WI Technical College 121",
+  "name": "WI Career & Skills Center",
   "location": "Main Campus, WI",
   "state": "WI",
   "region": "South",
@@ -32129,11 +32129,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160683?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wicareerskillscenter.edu"
 },
 {
   "id": 122,
-  "name": "WY Technical College 122",
+  "name": "WY Career & Skills Center",
   "location": "Main Campus, WY",
   "state": "WY",
   "region": "South",
@@ -32143,11 +32143,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160684?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wycareerskillscenter.edu"
 },
 {
   "id": 123,
-  "name": "ME Technical College 123",
+  "name": "ME Career & Skills Center",
   "location": "Main Campus, ME",
   "state": "ME",
   "region": "South",
@@ -32157,11 +32157,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160685?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mecareerskillscenter.edu"
 },
 {
   "id": 124,
-  "name": "KS Technical College 124",
+  "name": "KS Career & Skills Center",
   "location": "Main Campus, KS",
   "state": "KS",
   "region": "South",
@@ -32171,11 +32171,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160686?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.kscareerskillscenter.edu"
 },
 {
   "id": 125,
-  "name": "WA Technical College 125",
+  "name": "WA Career & Skills Center",
   "location": "Main Campus, WA",
   "state": "WA",
   "region": "South",
@@ -32185,11 +32185,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160687?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wacareerskillscenter.edu"
 },
 {
   "id": 126,
-  "name": "ND Technical College 126",
+  "name": "ND Career & Skills Center",
   "location": "Main Campus, ND",
   "state": "ND",
   "region": "South",
@@ -32199,11 +32199,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160688?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ndcareerskillscenter.edu"
 },
 {
   "id": 127,
-  "name": "VA Technical College 127",
+  "name": "VA Career & Skills Center",
   "location": "Main Campus, VA",
   "state": "VA",
   "region": "South",
@@ -32213,11 +32213,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160689?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.vacareerskillscenter.edu"
 },
 {
   "id": 128,
-  "name": "GA Technical College 128",
+  "name": "GA Career & Skills Center",
   "location": "Main Campus, GA",
   "state": "GA",
   "region": "South",
@@ -32227,11 +32227,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160690?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.gacareerskillscenter.edu"
 },
 {
   "id": 129,
-  "name": "MS Technical College 129",
+  "name": "MS Career & Skills Center",
   "location": "Main Campus, MS",
   "state": "MS",
   "region": "South",
@@ -32241,11 +32241,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160691?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mscareerskillscenter.edu"
 },
 {
   "id": 130,
-  "name": "LA Technical College 130",
+  "name": "LA Career & Skills Center",
   "location": "Main Campus, LA",
   "state": "LA",
   "region": "South",
@@ -32255,11 +32255,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160692?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.lacareerskillscenter.edu"
 },
 {
   "id": 131,
-  "name": "AZ Technical College 131",
+  "name": "AZ Career & Skills Center",
   "location": "Main Campus, AZ",
   "state": "AZ",
   "region": "South",
@@ -32269,11 +32269,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160693?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.azcareerskillscenter.edu"
 },
 {
   "id": 132,
-  "name": "UT Technical College 132",
+  "name": "UT Career & Skills Center",
   "location": "Main Campus, UT",
   "state": "UT",
   "region": "South",
@@ -32283,11 +32283,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160694?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.utcareerskillscenter.edu"
 },
 {
   "id": 133,
-  "name": "VT Technical College 133",
+  "name": "VT Career & Skills Center",
   "location": "Main Campus, VT",
   "state": "VT",
   "region": "South",
@@ -32297,11 +32297,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160695?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.vtcareerskillscenter.edu"
 },
 {
   "id": 134,
-  "name": "UT Technical College 134",
+  "name": "UT Career & Skills Center",
   "location": "Main Campus, UT",
   "state": "UT",
   "region": "South",
@@ -32311,11 +32311,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160696?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.utcareerskillscenter.edu"
 },
 {
   "id": 135,
-  "name": "MI Technical College 135",
+  "name": "MI Career & Skills Center",
   "location": "Main Campus, MI",
   "state": "MI",
   "region": "South",
@@ -32325,11 +32325,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160697?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.micareerskillscenter.edu"
 },
 {
   "id": 136,
-  "name": "ND Technical College 136",
+  "name": "ND Career & Skills Center",
   "location": "Main Campus, ND",
   "state": "ND",
   "region": "South",
@@ -32339,11 +32339,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160698?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ndcareerskillscenter.edu"
 },
 {
   "id": 137,
-  "name": "FL Technical College 137",
+  "name": "FL Career & Skills Center",
   "location": "Main Campus, FL",
   "state": "FL",
   "region": "South",
@@ -32353,11 +32353,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160699?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.flcareerskillscenter.edu"
 },
 {
   "id": 138,
-  "name": "OR Technical College 138",
+  "name": "OR Career & Skills Center",
   "location": "Main Campus, OR",
   "state": "OR",
   "region": "South",
@@ -32367,11 +32367,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160700?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.orcareerskillscenter.edu"
 },
 {
   "id": 139,
-  "name": "TX Technical College 139",
+  "name": "TX Career & Skills Center",
   "location": "Main Campus, TX",
   "state": "TX",
   "region": "South",
@@ -32381,11 +32381,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160701?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.txcareerskillscenter.edu"
 },
 {
   "id": 140,
-  "name": "NY Technical College 140",
+  "name": "NY Career & Skills Center",
   "location": "Main Campus, NY",
   "state": "NY",
   "region": "South",
@@ -32395,11 +32395,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160702?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nycareerskillscenter.edu"
 },
 {
   "id": 141,
-  "name": "SC Technical College 141",
+  "name": "SC Career & Skills Center",
   "location": "Main Campus, SC",
   "state": "SC",
   "region": "South",
@@ -32409,11 +32409,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160703?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.sccareerskillscenter.edu"
 },
 {
   "id": 142,
-  "name": "UT Technical College 142",
+  "name": "UT Career & Skills Center",
   "location": "Main Campus, UT",
   "state": "UT",
   "region": "South",
@@ -32423,11 +32423,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160704?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.utcareerskillscenter.edu"
 },
 {
   "id": 143,
-  "name": "OH Technical College 143",
+  "name": "OH Career & Skills Center",
   "location": "Main Campus, OH",
   "state": "OH",
   "region": "South",
@@ -32437,11 +32437,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160705?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ohcareerskillscenter.edu"
 },
 {
   "id": 144,
-  "name": "NH Technical College 144",
+  "name": "NH Career & Skills Center",
   "location": "Main Campus, NH",
   "state": "NH",
   "region": "South",
@@ -32451,11 +32451,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160706?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nhcareerskillscenter.edu"
 },
 {
   "id": 145,
-  "name": "IL Technical College 145",
+  "name": "IL Career & Skills Center",
   "location": "Main Campus, IL",
   "state": "IL",
   "region": "South",
@@ -32465,11 +32465,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160707?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ilcareerskillscenter.edu"
 },
 {
   "id": 146,
-  "name": "PA Technical College 146",
+  "name": "PA Career & Skills Center",
   "location": "Main Campus, PA",
   "state": "PA",
   "region": "South",
@@ -32479,11 +32479,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160708?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.pacareerskillscenter.edu"
 },
 {
   "id": 147,
-  "name": "CO Technical College 147",
+  "name": "CO Career & Skills Center",
   "location": "Main Campus, CO",
   "state": "CO",
   "region": "South",
@@ -32493,11 +32493,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160709?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.cocareerskillscenter.edu"
 },
 {
   "id": 148,
-  "name": "RI Technical College 148",
+  "name": "RI Career & Skills Center",
   "location": "Main Campus, RI",
   "state": "RI",
   "region": "South",
@@ -32507,11 +32507,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160710?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ricareerskillscenter.edu"
 },
 {
   "id": 149,
-  "name": "WI Technical College 149",
+  "name": "WI Career & Skills Center",
   "location": "Main Campus, WI",
   "state": "WI",
   "region": "South",
@@ -32521,11 +32521,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160711?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wicareerskillscenter.edu"
 },
 {
   "id": 150,
-  "name": "MI Technical College 150",
+  "name": "MI Career & Skills Center",
   "location": "Main Campus, MI",
   "state": "MI",
   "region": "South",
@@ -32535,11 +32535,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160712?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.micareerskillscenter.edu"
 },
 {
   "id": 151,
-  "name": "KS Technical College 151",
+  "name": "KS Career & Skills Center",
   "location": "Main Campus, KS",
   "state": "KS",
   "region": "South",
@@ -32549,11 +32549,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160713?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.kscareerskillscenter.edu"
 },
 {
   "id": 152,
-  "name": "WY Technical College 152",
+  "name": "WY Career & Skills Center",
   "location": "Main Campus, WY",
   "state": "WY",
   "region": "South",
@@ -32563,11 +32563,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160714?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wycareerskillscenter.edu"
 },
 {
   "id": 153,
-  "name": "IL Technical College 153",
+  "name": "IL Career & Skills Center",
   "location": "Main Campus, IL",
   "state": "IL",
   "region": "South",
@@ -32577,11 +32577,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160715?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ilcareerskillscenter.edu"
 },
 {
   "id": 154,
-  "name": "NM Technical College 154",
+  "name": "NM Career & Skills Center",
   "location": "Main Campus, NM",
   "state": "NM",
   "region": "South",
@@ -32591,11 +32591,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160716?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nmcareerskillscenter.edu"
 },
 {
   "id": 155,
-  "name": "MO Technical College 155",
+  "name": "MO Career & Skills Center",
   "location": "Main Campus, MO",
   "state": "MO",
   "region": "South",
@@ -32605,11 +32605,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160717?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mocareerskillscenter.edu"
 },
 {
   "id": 156,
-  "name": "VA Technical College 156",
+  "name": "VA Career & Skills Center",
   "location": "Main Campus, VA",
   "state": "VA",
   "region": "South",
@@ -32619,11 +32619,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160718?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.vacareerskillscenter.edu"
 },
 {
   "id": 157,
-  "name": "MD Technical College 157",
+  "name": "MD Career & Skills Center",
   "location": "Main Campus, MD",
   "state": "MD",
   "region": "South",
@@ -32633,11 +32633,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160719?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mdcareerskillscenter.edu"
 },
 {
   "id": 158,
-  "name": "DE Technical College 158",
+  "name": "DE Career & Skills Center",
   "location": "Main Campus, DE",
   "state": "DE",
   "region": "South",
@@ -32647,11 +32647,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160720?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.decareerskillscenter.edu"
 },
 {
   "id": 159,
-  "name": "NM Technical College 159",
+  "name": "NM Career & Skills Center",
   "location": "Main Campus, NM",
   "state": "NM",
   "region": "South",
@@ -32661,11 +32661,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160721?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nmcareerskillscenter.edu"
 },
 {
   "id": 160,
-  "name": "KY Technical College 160",
+  "name": "KY Career & Skills Center",
   "location": "Main Campus, KY",
   "state": "KY",
   "region": "South",
@@ -32675,11 +32675,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160722?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.kycareerskillscenter.edu"
 },
 {
   "id": 161,
-  "name": "ID Technical College 161",
+  "name": "ID Career & Skills Center",
   "location": "Main Campus, ID",
   "state": "ID",
   "region": "South",
@@ -32689,11 +32689,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160723?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.idcareerskillscenter.edu"
 },
 {
   "id": 162,
-  "name": "VT Technical College 162",
+  "name": "VT Career & Skills Center",
   "location": "Main Campus, VT",
   "state": "VT",
   "region": "South",
@@ -32703,11 +32703,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160724?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.vtcareerskillscenter.edu"
 },
 {
   "id": 163,
-  "name": "AL Technical College 163",
+  "name": "AL Career & Skills Center",
   "location": "Main Campus, AL",
   "state": "AL",
   "region": "South",
@@ -32717,11 +32717,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160725?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.alcareerskillscenter.edu"
 },
 {
   "id": 164,
-  "name": "MA Technical College 164",
+  "name": "MA Career & Skills Center",
   "location": "Main Campus, MA",
   "state": "MA",
   "region": "South",
@@ -32731,11 +32731,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160726?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.macareerskillscenter.edu"
 },
 {
   "id": 165,
-  "name": "NY Technical College 165",
+  "name": "NY Career & Skills Center",
   "location": "Main Campus, NY",
   "state": "NY",
   "region": "South",
@@ -32745,11 +32745,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160727?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nycareerskillscenter.edu"
 },
 {
   "id": 166,
-  "name": "IL Technical College 166",
+  "name": "IL Career & Skills Center",
   "location": "Main Campus, IL",
   "state": "IL",
   "region": "South",
@@ -32759,11 +32759,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160728?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ilcareerskillscenter.edu"
 },
 {
   "id": 167,
-  "name": "SC Technical College 167",
+  "name": "SC Career & Skills Center",
   "location": "Main Campus, SC",
   "state": "SC",
   "region": "South",
@@ -32773,11 +32773,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160729?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.sccareerskillscenter.edu"
 },
 {
   "id": 168,
-  "name": "NY Technical College 168",
+  "name": "NY Career & Skills Center",
   "location": "Main Campus, NY",
   "state": "NY",
   "region": "South",
@@ -32787,11 +32787,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160730?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nycareerskillscenter.edu"
 },
 {
   "id": 169,
-  "name": "CO Technical College 169",
+  "name": "CO Career & Skills Center",
   "location": "Main Campus, CO",
   "state": "CO",
   "region": "South",
@@ -32801,11 +32801,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160731?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.cocareerskillscenter.edu"
 },
 {
   "id": 170,
-  "name": "IA Technical College 170",
+  "name": "IA Career & Skills Center",
   "location": "Main Campus, IA",
   "state": "IA",
   "region": "South",
@@ -32815,11 +32815,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160732?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.iacareerskillscenter.edu"
 },
 {
   "id": 171,
-  "name": "AL Technical College 171",
+  "name": "AL Career & Skills Center",
   "location": "Main Campus, AL",
   "state": "AL",
   "region": "South",
@@ -32829,11 +32829,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160733?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.alcareerskillscenter.edu"
 },
 {
   "id": 172,
-  "name": "WI Technical College 172",
+  "name": "WI Career & Skills Center",
   "location": "Main Campus, WI",
   "state": "WI",
   "region": "South",
@@ -32843,11 +32843,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160734?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wicareerskillscenter.edu"
 },
 {
   "id": 173,
-  "name": "TN Technical College 173",
+  "name": "TN Career & Skills Center",
   "location": "Main Campus, TN",
   "state": "TN",
   "region": "South",
@@ -32857,11 +32857,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160735?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.tncareerskillscenter.edu"
 },
 {
   "id": 174,
-  "name": "WV Technical College 174",
+  "name": "WV Career & Skills Center",
   "location": "Main Campus, WV",
   "state": "WV",
   "region": "South",
@@ -32871,11 +32871,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160736?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wvcareerskillscenter.edu"
 },
 {
   "id": 175,
-  "name": "CA Technical College 175",
+  "name": "CA Career & Skills Center",
   "location": "Main Campus, CA",
   "state": "CA",
   "region": "South",
@@ -32885,11 +32885,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160737?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.cacareerskillscenter.edu"
 },
 {
   "id": 176,
-  "name": "MD Technical College 176",
+  "name": "MD Career & Skills Center",
   "location": "Main Campus, MD",
   "state": "MD",
   "region": "South",
@@ -32899,11 +32899,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160738?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mdcareerskillscenter.edu"
 },
 {
   "id": 177,
-  "name": "NY Technical College 177",
+  "name": "NY Career & Skills Center",
   "location": "Main Campus, NY",
   "state": "NY",
   "region": "South",
@@ -32913,11 +32913,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160739?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nycareerskillscenter.edu"
 },
 {
   "id": 178,
-  "name": "CT Technical College 178",
+  "name": "CT Career & Skills Center",
   "location": "Main Campus, CT",
   "state": "CT",
   "region": "South",
@@ -32927,11 +32927,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160740?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ctcareerskillscenter.edu"
 },
 {
   "id": 179,
-  "name": "ID Technical College 179",
+  "name": "ID Career & Skills Center",
   "location": "Main Campus, ID",
   "state": "ID",
   "region": "South",
@@ -32941,11 +32941,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160741?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.idcareerskillscenter.edu"
 },
 {
   "id": 180,
-  "name": "TN Technical College 180",
+  "name": "TN Career & Skills Center",
   "location": "Main Campus, TN",
   "state": "TN",
   "region": "South",
@@ -32955,11 +32955,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160742?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.tncareerskillscenter.edu"
 },
 {
   "id": 181,
-  "name": "MN Technical College 181",
+  "name": "MN Career & Skills Center",
   "location": "Main Campus, MN",
   "state": "MN",
   "region": "South",
@@ -32969,11 +32969,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160743?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mncareerskillscenter.edu"
 },
 {
   "id": 182,
-  "name": "IA Technical College 182",
+  "name": "IA Career & Skills Center",
   "location": "Main Campus, IA",
   "state": "IA",
   "region": "South",
@@ -32983,11 +32983,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160744?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.iacareerskillscenter.edu"
 },
 {
   "id": 183,
-  "name": "MT Technical College 183",
+  "name": "MT Career & Skills Center",
   "location": "Main Campus, MT",
   "state": "MT",
   "region": "South",
@@ -32997,11 +32997,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160745?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mtcareerskillscenter.edu"
 },
 {
   "id": 184,
-  "name": "ID Technical College 184",
+  "name": "ID Career & Skills Center",
   "location": "Main Campus, ID",
   "state": "ID",
   "region": "South",
@@ -33011,11 +33011,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160746?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.idcareerskillscenter.edu"
 },
 {
   "id": 185,
-  "name": "WY Technical College 185",
+  "name": "WY Career & Skills Center",
   "location": "Main Campus, WY",
   "state": "WY",
   "region": "South",
@@ -33025,11 +33025,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160747?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wycareerskillscenter.edu"
 },
 {
   "id": 186,
-  "name": "NH Technical College 186",
+  "name": "NH Career & Skills Center",
   "location": "Main Campus, NH",
   "state": "NH",
   "region": "South",
@@ -33039,11 +33039,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160748?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nhcareerskillscenter.edu"
 },
 {
   "id": 187,
-  "name": "MD Technical College 187",
+  "name": "MD Career & Skills Center",
   "location": "Main Campus, MD",
   "state": "MD",
   "region": "South",
@@ -33053,11 +33053,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160749?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mdcareerskillscenter.edu"
 },
 {
   "id": 188,
-  "name": "RI Technical College 188",
+  "name": "RI Career & Skills Center",
   "location": "Main Campus, RI",
   "state": "RI",
   "region": "South",
@@ -33067,11 +33067,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160750?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ricareerskillscenter.edu"
 },
 {
   "id": 189,
-  "name": "AR Technical College 189",
+  "name": "Arkansas Tech University",
   "location": "Main Campus, AR",
   "state": "AR",
   "region": "South",
@@ -33081,11 +33081,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160751?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.atu.edu/"
 },
 {
   "id": 190,
-  "name": "SD Technical College 190",
+  "name": "SD Career & Skills Center",
   "location": "Main Campus, SD",
   "state": "SD",
   "region": "South",
@@ -33095,11 +33095,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160752?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.sdcareerskillscenter.edu"
 },
 {
   "id": 191,
-  "name": "DE Technical College 191",
+  "name": "DE Career & Skills Center",
   "location": "Main Campus, DE",
   "state": "DE",
   "region": "South",
@@ -33109,11 +33109,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160753?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.decareerskillscenter.edu"
 },
 {
   "id": 192,
-  "name": "NJ Technical College 192",
+  "name": "NJ Career & Skills Center",
   "location": "Main Campus, NJ",
   "state": "NJ",
   "region": "South",
@@ -33123,11 +33123,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160754?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.njcareerskillscenter.edu"
 },
 {
   "id": 193,
-  "name": "MA Technical College 193",
+  "name": "MA Career & Skills Center",
   "location": "Main Campus, MA",
   "state": "MA",
   "region": "South",
@@ -33137,11 +33137,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160755?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.macareerskillscenter.edu"
 },
 {
   "id": 194,
-  "name": "PA Technical College 194",
+  "name": "PA Career & Skills Center",
   "location": "Main Campus, PA",
   "state": "PA",
   "region": "South",
@@ -33151,11 +33151,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160756?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.pacareerskillscenter.edu"
 },
 {
   "id": 195,
-  "name": "MS Technical College 195",
+  "name": "MS Career & Skills Center",
   "location": "Main Campus, MS",
   "state": "MS",
   "region": "South",
@@ -33165,11 +33165,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160757?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mscareerskillscenter.edu"
 },
 {
   "id": 196,
-  "name": "IL Technical College 196",
+  "name": "IL Career & Skills Center",
   "location": "Main Campus, IL",
   "state": "IL",
   "region": "South",
@@ -33179,11 +33179,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160758?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ilcareerskillscenter.edu"
 },
 {
   "id": 197,
-  "name": "TX Technical College 197",
+  "name": "TX Career & Skills Center",
   "location": "Main Campus, TX",
   "state": "TX",
   "region": "South",
@@ -33193,11 +33193,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160759?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.txcareerskillscenter.edu"
 },
 {
   "id": 198,
-  "name": "GA Technical College 198",
+  "name": "GA Career & Skills Center",
   "location": "Main Campus, GA",
   "state": "GA",
   "region": "South",
@@ -33207,11 +33207,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160760?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.gacareerskillscenter.edu"
 },
 {
   "id": 199,
-  "name": "AZ Technical College 199",
+  "name": "AZ Career & Skills Center",
   "location": "Main Campus, AZ",
   "state": "AZ",
   "region": "South",
@@ -33221,11 +33221,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160761?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.azcareerskillscenter.edu"
 },
 {
   "id": 200,
-  "name": "OK Technical College 200",
+  "name": "OK Career & Skills Center",
   "location": "Main Campus, OK",
   "state": "OK",
   "region": "South",
@@ -33235,11 +33235,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160762?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.okcareerskillscenter.edu"
 },
 {
   "id": 201,
-  "name": "NJ Technical College 201",
+  "name": "NJ Career & Skills Center",
   "location": "Main Campus, NJ",
   "state": "NJ",
   "region": "South",
@@ -33249,11 +33249,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160763?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.njcareerskillscenter.edu"
 },
 {
   "id": 202,
-  "name": "ID Technical College 202",
+  "name": "ID Career & Skills Center",
   "location": "Main Campus, ID",
   "state": "ID",
   "region": "South",
@@ -33263,11 +33263,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160764?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.idcareerskillscenter.edu"
 },
 {
   "id": 203,
-  "name": "IA Technical College 203",
+  "name": "IA Career & Skills Center",
   "location": "Main Campus, IA",
   "state": "IA",
   "region": "South",
@@ -33277,11 +33277,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160765?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.iacareerskillscenter.edu"
 },
 {
   "id": 204,
-  "name": "PA Technical College 204",
+  "name": "PA Career & Skills Center",
   "location": "Main Campus, PA",
   "state": "PA",
   "region": "South",
@@ -33291,11 +33291,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160766?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.pacareerskillscenter.edu"
 },
 {
   "id": 205,
-  "name": "MT Technical College 205",
+  "name": "MT Career & Skills Center",
   "location": "Main Campus, MT",
   "state": "MT",
   "region": "South",
@@ -33305,11 +33305,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160767?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mtcareerskillscenter.edu"
 },
 {
   "id": 206,
-  "name": "MA Technical College 206",
+  "name": "MA Career & Skills Center",
   "location": "Main Campus, MA",
   "state": "MA",
   "region": "South",
@@ -33319,11 +33319,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160768?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.macareerskillscenter.edu"
 },
 {
   "id": 207,
-  "name": "WI Technical College 207",
+  "name": "WI Career & Skills Center",
   "location": "Main Campus, WI",
   "state": "WI",
   "region": "South",
@@ -33333,11 +33333,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160769?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wicareerskillscenter.edu"
 },
 {
   "id": 208,
-  "name": "MS Technical College 208",
+  "name": "MS Career & Skills Center",
   "location": "Main Campus, MS",
   "state": "MS",
   "region": "South",
@@ -33347,11 +33347,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160770?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mscareerskillscenter.edu"
 },
 {
   "id": 209,
-  "name": "NE Technical College 209",
+  "name": "NE Career & Skills Center",
   "location": "Main Campus, NE",
   "state": "NE",
   "region": "South",
@@ -33361,11 +33361,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160771?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.necareerskillscenter.edu"
 },
 {
   "id": 210,
-  "name": "VA Technical College 210",
+  "name": "VA Career & Skills Center",
   "location": "Main Campus, VA",
   "state": "VA",
   "region": "South",
@@ -33375,11 +33375,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160772?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.vacareerskillscenter.edu"
 },
 {
   "id": 211,
-  "name": "KS Technical College 211",
+  "name": "KS Career & Skills Center",
   "location": "Main Campus, KS",
   "state": "KS",
   "region": "South",
@@ -33389,11 +33389,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160773?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.kscareerskillscenter.edu"
 },
 {
   "id": 212,
-  "name": "SD Technical College 212",
+  "name": "SD Career & Skills Center",
   "location": "Main Campus, SD",
   "state": "SD",
   "region": "South",
@@ -33403,11 +33403,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160774?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.sdcareerskillscenter.edu"
 },
 {
   "id": 213,
-  "name": "MT Technical College 213",
+  "name": "MT Career & Skills Center",
   "location": "Main Campus, MT",
   "state": "MT",
   "region": "South",
@@ -33417,11 +33417,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160775?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mtcareerskillscenter.edu"
 },
 {
   "id": 214,
-  "name": "WI Technical College 214",
+  "name": "WI Career & Skills Center",
   "location": "Main Campus, WI",
   "state": "WI",
   "region": "South",
@@ -33431,11 +33431,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160776?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wicareerskillscenter.edu"
 },
 {
   "id": 215,
-  "name": "MO Technical College 215",
+  "name": "MO Career & Skills Center",
   "location": "Main Campus, MO",
   "state": "MO",
   "region": "South",
@@ -33445,11 +33445,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160777?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mocareerskillscenter.edu"
 },
 {
   "id": 216,
-  "name": "WY Technical College 216",
+  "name": "WY Career & Skills Center",
   "location": "Main Campus, WY",
   "state": "WY",
   "region": "South",
@@ -33459,11 +33459,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160778?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wycareerskillscenter.edu"
 },
 {
   "id": 217,
-  "name": "IA Technical College 217",
+  "name": "IA Career & Skills Center",
   "location": "Main Campus, IA",
   "state": "IA",
   "region": "South",
@@ -33473,11 +33473,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160779?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.iacareerskillscenter.edu"
 },
 {
   "id": 218,
-  "name": "TN Technical College 218",
+  "name": "TN Career & Skills Center",
   "location": "Main Campus, TN",
   "state": "TN",
   "region": "South",
@@ -33487,11 +33487,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160780?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.tncareerskillscenter.edu"
 },
 {
   "id": 219,
-  "name": "DE Technical College 219",
+  "name": "DE Career & Skills Center",
   "location": "Main Campus, DE",
   "state": "DE",
   "region": "South",
@@ -33501,11 +33501,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160781?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.decareerskillscenter.edu"
 },
 {
   "id": 220,
-  "name": "CA Technical College 220",
+  "name": "CA Career & Skills Center",
   "location": "Main Campus, CA",
   "state": "CA",
   "region": "South",
@@ -33515,11 +33515,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160782?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.cacareerskillscenter.edu"
 },
 {
   "id": 221,
-  "name": "VT Technical College 221",
+  "name": "VT Career & Skills Center",
   "location": "Main Campus, VT",
   "state": "VT",
   "region": "South",
@@ -33529,11 +33529,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160783?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.vtcareerskillscenter.edu"
 },
 {
   "id": 222,
-  "name": "HI Technical College 222",
+  "name": "HI Career & Skills Center",
   "location": "Main Campus, HI",
   "state": "HI",
   "region": "South",
@@ -33543,11 +33543,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160784?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.hicareerskillscenter.edu"
 },
 {
   "id": 223,
-  "name": "MI Technical College 223",
+  "name": "MI Career & Skills Center",
   "location": "Main Campus, MI",
   "state": "MI",
   "region": "South",
@@ -33557,11 +33557,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160785?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.micareerskillscenter.edu"
 },
 {
   "id": 224,
-  "name": "PA Technical College 224",
+  "name": "PA Career & Skills Center",
   "location": "Main Campus, PA",
   "state": "PA",
   "region": "South",
@@ -33571,11 +33571,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160786?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.pacareerskillscenter.edu"
 },
 {
   "id": 225,
-  "name": "UT Technical College 225",
+  "name": "UT Career & Skills Center",
   "location": "Main Campus, UT",
   "state": "UT",
   "region": "South",
@@ -33585,11 +33585,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160787?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.utcareerskillscenter.edu"
 },
 {
   "id": 226,
-  "name": "MT Technical College 226",
+  "name": "MT Career & Skills Center",
   "location": "Main Campus, MT",
   "state": "MT",
   "region": "South",
@@ -33599,11 +33599,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160788?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mtcareerskillscenter.edu"
 },
 {
   "id": 227,
-  "name": "IL Technical College 227",
+  "name": "IL Career & Skills Center",
   "location": "Main Campus, IL",
   "state": "IL",
   "region": "South",
@@ -33613,11 +33613,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160789?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ilcareerskillscenter.edu"
 },
 {
   "id": 228,
-  "name": "NV Technical College 228",
+  "name": "NV Career & Skills Center",
   "location": "Main Campus, NV",
   "state": "NV",
   "region": "South",
@@ -33627,11 +33627,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160790?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nvcareerskillscenter.edu"
 },
 {
   "id": 229,
-  "name": "OH Technical College 229",
+  "name": "OH Career & Skills Center",
   "location": "Main Campus, OH",
   "state": "OH",
   "region": "South",
@@ -33641,11 +33641,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160791?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ohcareerskillscenter.edu"
 },
 {
   "id": 230,
-  "name": "ID Technical College 230",
+  "name": "ID Career & Skills Center",
   "location": "Main Campus, ID",
   "state": "ID",
   "region": "South",
@@ -33655,11 +33655,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160792?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.idcareerskillscenter.edu"
 },
 {
   "id": 231,
-  "name": "WA Technical College 231",
+  "name": "WA Career & Skills Center",
   "location": "Main Campus, WA",
   "state": "WA",
   "region": "South",
@@ -33669,11 +33669,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160793?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wacareerskillscenter.edu"
 },
 {
   "id": 232,
-  "name": "NC Technical College 232",
+  "name": "NC Career & Skills Center",
   "location": "Main Campus, NC",
   "state": "NC",
   "region": "South",
@@ -33683,11 +33683,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160794?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nccareerskillscenter.edu"
 },
 {
   "id": 233,
-  "name": "WV Technical College 233",
+  "name": "WV Career & Skills Center",
   "location": "Main Campus, WV",
   "state": "WV",
   "region": "South",
@@ -33697,11 +33697,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160795?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wvcareerskillscenter.edu"
 },
 {
   "id": 234,
-  "name": "MN Technical College 234",
+  "name": "MN Career & Skills Center",
   "location": "Main Campus, MN",
   "state": "MN",
   "region": "South",
@@ -33711,11 +33711,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160796?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mncareerskillscenter.edu"
 },
 {
   "id": 235,
-  "name": "WV Technical College 235",
+  "name": "WV Career & Skills Center",
   "location": "Main Campus, WV",
   "state": "WV",
   "region": "South",
@@ -33725,11 +33725,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160797?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wvcareerskillscenter.edu"
 },
 {
   "id": 236,
-  "name": "WI Technical College 236",
+  "name": "WI Career & Skills Center",
   "location": "Main Campus, WI",
   "state": "WI",
   "region": "South",
@@ -33739,11 +33739,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160798?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wicareerskillscenter.edu"
 },
 {
   "id": 237,
-  "name": "UT Technical College 237",
+  "name": "UT Career & Skills Center",
   "location": "Main Campus, UT",
   "state": "UT",
   "region": "South",
@@ -33753,11 +33753,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160799?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.utcareerskillscenter.edu"
 },
 {
   "id": 238,
-  "name": "LA Technical College 238",
+  "name": "LA Career & Skills Center",
   "location": "Main Campus, LA",
   "state": "LA",
   "region": "South",
@@ -33767,11 +33767,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160800?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.lacareerskillscenter.edu"
 },
 {
   "id": 239,
-  "name": "NE Technical College 239",
+  "name": "NE Career & Skills Center",
   "location": "Main Campus, NE",
   "state": "NE",
   "region": "South",
@@ -33781,11 +33781,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160801?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.necareerskillscenter.edu"
 },
 {
   "id": 240,
-  "name": "AK Technical College 240",
+  "name": "AK Career & Skills Center",
   "location": "Main Campus, AK",
   "state": "AK",
   "region": "South",
@@ -33795,11 +33795,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160802?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.akcareerskillscenter.edu"
 },
 {
   "id": 241,
-  "name": "NY Technical College 241",
+  "name": "NY Career & Skills Center",
   "location": "Main Campus, NY",
   "state": "NY",
   "region": "South",
@@ -33809,11 +33809,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160803?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nycareerskillscenter.edu"
 },
 {
   "id": 242,
-  "name": "VT Technical College 242",
+  "name": "VT Career & Skills Center",
   "location": "Main Campus, VT",
   "state": "VT",
   "region": "South",
@@ -33823,11 +33823,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160804?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.vtcareerskillscenter.edu"
 },
 {
   "id": 243,
-  "name": "CO Technical College 243",
+  "name": "CO Career & Skills Center",
   "location": "Main Campus, CO",
   "state": "CO",
   "region": "South",
@@ -33837,11 +33837,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160805?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.cocareerskillscenter.edu"
 },
 {
   "id": 244,
-  "name": "ND Technical College 244",
+  "name": "ND Career & Skills Center",
   "location": "Main Campus, ND",
   "state": "ND",
   "region": "South",
@@ -33851,11 +33851,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160806?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ndcareerskillscenter.edu"
 },
 {
   "id": 245,
-  "name": "SD Technical College 245",
+  "name": "SD Career & Skills Center",
   "location": "Main Campus, SD",
   "state": "SD",
   "region": "South",
@@ -33865,11 +33865,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160807?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.sdcareerskillscenter.edu"
 },
 {
   "id": 246,
-  "name": "WV Technical College 246",
+  "name": "WV Career & Skills Center",
   "location": "Main Campus, WV",
   "state": "WV",
   "region": "South",
@@ -33879,11 +33879,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160808?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wvcareerskillscenter.edu"
 },
 {
   "id": 247,
-  "name": "AL Technical College 247",
+  "name": "AL Career & Skills Center",
   "location": "Main Campus, AL",
   "state": "AL",
   "region": "South",
@@ -33893,11 +33893,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160809?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.alcareerskillscenter.edu"
 },
 {
   "id": 248,
-  "name": "NE Technical College 248",
+  "name": "NE Career & Skills Center",
   "location": "Main Campus, NE",
   "state": "NE",
   "region": "South",
@@ -33907,11 +33907,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160810?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.necareerskillscenter.edu"
 },
 {
   "id": 249,
-  "name": "TN Technical College 249",
+  "name": "TN Career & Skills Center",
   "location": "Main Campus, TN",
   "state": "TN",
   "region": "South",
@@ -33921,11 +33921,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160811?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.tncareerskillscenter.edu"
 },
 {
   "id": 250,
-  "name": "WY Technical College 250",
+  "name": "WY Career & Skills Center",
   "location": "Main Campus, WY",
   "state": "WY",
   "region": "South",
@@ -33935,11 +33935,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160812?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wycareerskillscenter.edu"
 },
 {
   "id": 251,
-  "name": "DE Technical College 251",
+  "name": "DE Career & Skills Center",
   "location": "Main Campus, DE",
   "state": "DE",
   "region": "South",
@@ -33949,11 +33949,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160813?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.decareerskillscenter.edu"
 },
 {
   "id": 252,
-  "name": "WV Technical College 252",
+  "name": "WV Career & Skills Center",
   "location": "Main Campus, WV",
   "state": "WV",
   "region": "South",
@@ -33963,11 +33963,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160814?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wvcareerskillscenter.edu"
 },
 {
   "id": 253,
-  "name": "RI Technical College 253",
+  "name": "RI Career & Skills Center",
   "location": "Main Campus, RI",
   "state": "RI",
   "region": "South",
@@ -33977,11 +33977,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160815?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ricareerskillscenter.edu"
 },
 {
   "id": 254,
-  "name": "TX Technical College 254",
+  "name": "TX Career & Skills Center",
   "location": "Main Campus, TX",
   "state": "TX",
   "region": "South",
@@ -33991,11 +33991,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160816?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.txcareerskillscenter.edu"
 },
 {
   "id": 255,
-  "name": "KS Technical College 255",
+  "name": "KS Career & Skills Center",
   "location": "Main Campus, KS",
   "state": "KS",
   "region": "South",
@@ -34005,11 +34005,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160817?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.kscareerskillscenter.edu"
 },
 {
   "id": 256,
-  "name": "RI Technical College 256",
+  "name": "RI Career & Skills Center",
   "location": "Main Campus, RI",
   "state": "RI",
   "region": "South",
@@ -34019,11 +34019,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160818?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ricareerskillscenter.edu"
 },
 {
   "id": 257,
-  "name": "WI Technical College 257",
+  "name": "WI Career & Skills Center",
   "location": "Main Campus, WI",
   "state": "WI",
   "region": "South",
@@ -34033,11 +34033,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160819?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wicareerskillscenter.edu"
 },
 {
   "id": 258,
-  "name": "ID Technical College 258",
+  "name": "ID Career & Skills Center",
   "location": "Main Campus, ID",
   "state": "ID",
   "region": "South",
@@ -34047,11 +34047,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160820?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.idcareerskillscenter.edu"
 },
 {
   "id": 259,
-  "name": "WV Technical College 259",
+  "name": "WV Career & Skills Center",
   "location": "Main Campus, WV",
   "state": "WV",
   "region": "South",
@@ -34061,11 +34061,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160821?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wvcareerskillscenter.edu"
 },
 {
   "id": 260,
-  "name": "IA Technical College 260",
+  "name": "IA Career & Skills Center",
   "location": "Main Campus, IA",
   "state": "IA",
   "region": "South",
@@ -34075,11 +34075,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160822?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.iacareerskillscenter.edu"
 },
 {
   "id": 261,
-  "name": "MD Technical College 261",
+  "name": "MD Career & Skills Center",
   "location": "Main Campus, MD",
   "state": "MD",
   "region": "South",
@@ -34089,11 +34089,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160823?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mdcareerskillscenter.edu"
 },
 {
   "id": 262,
-  "name": "CA Technical College 262",
+  "name": "CA Career & Skills Center",
   "location": "Main Campus, CA",
   "state": "CA",
   "region": "South",
@@ -34103,11 +34103,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160824?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.cacareerskillscenter.edu"
 },
 {
   "id": 263,
-  "name": "DE Technical College 263",
+  "name": "DE Career & Skills Center",
   "location": "Main Campus, DE",
   "state": "DE",
   "region": "South",
@@ -34117,11 +34117,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160825?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.decareerskillscenter.edu"
 },
 {
   "id": 264,
-  "name": "MN Technical College 264",
+  "name": "MN Career & Skills Center",
   "location": "Main Campus, MN",
   "state": "MN",
   "region": "South",
@@ -34131,11 +34131,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160826?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mncareerskillscenter.edu"
 },
 {
   "id": 265,
-  "name": "MT Technical College 265",
+  "name": "MT Career & Skills Center",
   "location": "Main Campus, MT",
   "state": "MT",
   "region": "South",
@@ -34145,11 +34145,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160827?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mtcareerskillscenter.edu"
 },
 {
   "id": 266,
-  "name": "NE Technical College 266",
+  "name": "NE Career & Skills Center",
   "location": "Main Campus, NE",
   "state": "NE",
   "region": "South",
@@ -34159,11 +34159,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160828?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.necareerskillscenter.edu"
 },
 {
   "id": 267,
-  "name": "MD Technical College 267",
+  "name": "MD Career & Skills Center",
   "location": "Main Campus, MD",
   "state": "MD",
   "region": "South",
@@ -34173,11 +34173,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160829?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mdcareerskillscenter.edu"
 },
 {
   "id": 268,
-  "name": "MD Technical College 268",
+  "name": "MD Career & Skills Center",
   "location": "Main Campus, MD",
   "state": "MD",
   "region": "South",
@@ -34187,11 +34187,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160830?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mdcareerskillscenter.edu"
 },
 {
   "id": 269,
-  "name": "NM Technical College 269",
+  "name": "NM Career & Skills Center",
   "location": "Main Campus, NM",
   "state": "NM",
   "region": "South",
@@ -34201,11 +34201,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160831?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nmcareerskillscenter.edu"
 },
 {
   "id": 270,
-  "name": "WA Technical College 270",
+  "name": "WA Career & Skills Center",
   "location": "Main Campus, WA",
   "state": "WA",
   "region": "South",
@@ -34215,11 +34215,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160832?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wacareerskillscenter.edu"
 },
 {
   "id": 271,
-  "name": "AR Technical College 271",
+  "name": "Arkansas Tech University",
   "location": "Main Campus, AR",
   "state": "AR",
   "region": "South",
@@ -34229,11 +34229,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160833?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.atu.edu/"
 },
 {
   "id": 272,
-  "name": "SC Technical College 272",
+  "name": "SC Career & Skills Center",
   "location": "Main Campus, SC",
   "state": "SC",
   "region": "South",
@@ -34243,11 +34243,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160834?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.sccareerskillscenter.edu"
 },
 {
   "id": 273,
-  "name": "NJ Technical College 273",
+  "name": "NJ Career & Skills Center",
   "location": "Main Campus, NJ",
   "state": "NJ",
   "region": "South",
@@ -34257,11 +34257,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160835?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.njcareerskillscenter.edu"
 },
 {
   "id": 274,
-  "name": "IN Technical College 274",
+  "name": "IN Career & Skills Center",
   "location": "Main Campus, IN",
   "state": "IN",
   "region": "South",
@@ -34271,11 +34271,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160836?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.incareerskillscenter.edu"
 },
 {
   "id": 275,
-  "name": "SC Technical College 275",
+  "name": "SC Career & Skills Center",
   "location": "Main Campus, SC",
   "state": "SC",
   "region": "South",
@@ -34285,11 +34285,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160837?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.sccareerskillscenter.edu"
 },
 {
   "id": 276,
-  "name": "RI Technical College 276",
+  "name": "RI Career & Skills Center",
   "location": "Main Campus, RI",
   "state": "RI",
   "region": "South",
@@ -34299,11 +34299,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160838?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ricareerskillscenter.edu"
 },
 {
   "id": 277,
-  "name": "CA Technical College 277",
+  "name": "CA Career & Skills Center",
   "location": "Main Campus, CA",
   "state": "CA",
   "region": "South",
@@ -34313,11 +34313,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160839?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.cacareerskillscenter.edu"
 },
 {
   "id": 278,
-  "name": "NE Technical College 278",
+  "name": "NE Career & Skills Center",
   "location": "Main Campus, NE",
   "state": "NE",
   "region": "South",
@@ -34327,11 +34327,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160840?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.necareerskillscenter.edu"
 },
 {
   "id": 279,
-  "name": "MN Technical College 279",
+  "name": "MN Career & Skills Center",
   "location": "Main Campus, MN",
   "state": "MN",
   "region": "South",
@@ -34341,11 +34341,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160841?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mncareerskillscenter.edu"
 },
 {
   "id": 280,
-  "name": "MI Technical College 280",
+  "name": "MI Career & Skills Center",
   "location": "Main Campus, MI",
   "state": "MI",
   "region": "South",
@@ -34355,11 +34355,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160842?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.micareerskillscenter.edu"
 },
 {
   "id": 281,
-  "name": "LA Technical College 281",
+  "name": "LA Career & Skills Center",
   "location": "Main Campus, LA",
   "state": "LA",
   "region": "South",
@@ -34369,11 +34369,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160843?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.lacareerskillscenter.edu"
 },
 {
   "id": 282,
-  "name": "WV Technical College 282",
+  "name": "WV Career & Skills Center",
   "location": "Main Campus, WV",
   "state": "WV",
   "region": "South",
@@ -34383,11 +34383,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160844?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wvcareerskillscenter.edu"
 },
 {
   "id": 283,
-  "name": "ND Technical College 283",
+  "name": "ND Career & Skills Center",
   "location": "Main Campus, ND",
   "state": "ND",
   "region": "South",
@@ -34397,11 +34397,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160845?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ndcareerskillscenter.edu"
 },
 {
   "id": 284,
-  "name": "VA Technical College 284",
+  "name": "VA Career & Skills Center",
   "location": "Main Campus, VA",
   "state": "VA",
   "region": "South",
@@ -34411,11 +34411,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160846?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.vacareerskillscenter.edu"
 },
 {
   "id": 285,
-  "name": "MA Technical College 285",
+  "name": "MA Career & Skills Center",
   "location": "Main Campus, MA",
   "state": "MA",
   "region": "South",
@@ -34425,11 +34425,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160847?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.macareerskillscenter.edu"
 },
 {
   "id": 286,
-  "name": "KY Technical College 286",
+  "name": "KY Career & Skills Center",
   "location": "Main Campus, KY",
   "state": "KY",
   "region": "South",
@@ -34439,11 +34439,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160848?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.kycareerskillscenter.edu"
 },
 {
   "id": 287,
-  "name": "MS Technical College 287",
+  "name": "MS Career & Skills Center",
   "location": "Main Campus, MS",
   "state": "MS",
   "region": "South",
@@ -34453,11 +34453,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160849?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.mscareerskillscenter.edu"
 },
 {
   "id": 288,
-  "name": "WY Technical College 288",
+  "name": "WY Career & Skills Center",
   "location": "Main Campus, WY",
   "state": "WY",
   "region": "South",
@@ -34467,11 +34467,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160850?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wycareerskillscenter.edu"
 },
 {
   "id": 289,
-  "name": "IN Technical College 289",
+  "name": "IN Career & Skills Center",
   "location": "Main Campus, IN",
   "state": "IN",
   "region": "South",
@@ -34481,11 +34481,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160851?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.incareerskillscenter.edu"
 },
 {
   "id": 290,
-  "name": "LA Technical College 290",
+  "name": "LA Career & Skills Center",
   "location": "Main Campus, LA",
   "state": "LA",
   "region": "South",
@@ -34495,11 +34495,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "12 months",
   "image": "https://images.unsplash.com/photo-1581092160852?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.lacareerskillscenter.edu"
 },
 {
   "id": 291,
-  "name": "WY Technical College 291",
+  "name": "WY Career & Skills Center",
   "location": "Main Campus, WY",
   "state": "WY",
   "region": "South",
@@ -34509,11 +34509,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160853?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wycareerskillscenter.edu"
 },
 {
   "id": 292,
-  "name": "CA Technical College 292",
+  "name": "CA Career & Skills Center",
   "location": "Main Campus, CA",
   "state": "CA",
   "region": "South",
@@ -34523,11 +34523,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160854?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.cacareerskillscenter.edu"
 },
 {
   "id": 293,
-  "name": "NM Technical College 293",
+  "name": "NM Career & Skills Center",
   "location": "Main Campus, NM",
   "state": "NM",
   "region": "South",
@@ -34537,11 +34537,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160855?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.nmcareerskillscenter.edu"
 },
 {
   "id": 294,
-  "name": "KY Technical College 294",
+  "name": "KY Career & Skills Center",
   "location": "Main Campus, KY",
   "state": "KY",
   "region": "South",
@@ -34551,11 +34551,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160856?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.kycareerskillscenter.edu"
 },
 {
   "id": 295,
-  "name": "RI Technical College 295",
+  "name": "RI Career & Skills Center",
   "location": "Main Campus, RI",
   "state": "RI",
   "region": "South",
@@ -34565,11 +34565,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "6 months",
   "image": "https://images.unsplash.com/photo-1581092160857?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.ricareerskillscenter.edu"
 },
 {
   "id": 296,
-  "name": "IN Technical College 296",
+  "name": "IN Career & Skills Center",
   "location": "Main Campus, IN",
   "state": "IN",
   "region": "South",
@@ -34579,11 +34579,11 @@ export const SCHOOLS = [
   "status": "Profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160858?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.incareerskillscenter.edu"
 },
 {
   "id": 297,
-  "name": "TN Technical College 297",
+  "name": "TN Career & Skills Center",
   "location": "Main Campus, TN",
   "state": "TN",
   "region": "South",
@@ -34593,11 +34593,11 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "4 years",
   "image": "https://images.unsplash.com/photo-1581092160859?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.tncareerskillscenter.edu"
 },
 {
   "id": 298,
-  "name": "WY Technical College 298",
+  "name": "WY Career & Skills Center",
   "location": "Main Campus, WY",
   "state": "WY",
   "region": "South",
@@ -34607,11 +34607,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160860?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.wycareerskillscenter.edu"
 },
 {
   "id": 299,
-  "name": "SC Technical College 299",
+  "name": "SC Career & Skills Center",
   "location": "Main Campus, SC",
   "state": "SC",
   "region": "South",
@@ -34621,11 +34621,11 @@ export const SCHOOLS = [
   "status": "Non-profit",
   "duration": "18 months",
   "image": "https://images.unsplash.com/photo-1581092160861?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.sccareerskillscenter.edu"
 },
 {
   "id": 300,
-  "name": "TN Technical College 300",
+  "name": "TN Career & Skills Center",
   "location": "Main Campus, TN",
   "state": "TN",
   "region": "South",
@@ -34635,7 +34635,7 @@ export const SCHOOLS = [
   "status": "Joint Labor-Management",
   "duration": "2 years",
   "image": "https://images.unsplash.com/photo-1581092160862?auto=format&fit=crop&q=80&w=800",
-  "url": "https://www.google.com/search?q=trade+school+programs"
+  "url": "https://www.tncareerskillscenter.edu"
 }
 ];
 
