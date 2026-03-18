@@ -340,8 +340,8 @@ export default function PayPage() {
       return Math.round(valPrev + ratio * (valNext - valPrev));
     };
 
-    let tradeCumulative = -10000; // tradeDebt
-    let degreeCumulative = -degreeDebt;
+    let tradeCumulative = 0; 
+    let degreeCumulative = 0;
     let breakEvenYear = null;
     const dataResults = [];
 
@@ -353,6 +353,9 @@ export default function PayPage() {
       if (year > 4) {
         degreeSalary = degreeStartSalary * Math.pow(1 + degreeGrowth, year - 5);
         degreeCumulative += degreeSalary;
+      } else if (year === 4) {
+        // At the end of graduation, the debt is accounted for
+        degreeCumulative -= degreeDebt;
       }
       
       if (breakEvenYear === null && degreeCumulative > tradeCumulative && year > 4) {
@@ -593,7 +596,7 @@ export default function PayPage() {
               ${comparisonDataResults[comparisonDataResults.length - 1].tradeCumulative.toLocaleString()}
             </h4>
             <p className="text-xs text-industrial-400 leading-relaxed font-medium">
-              40-year cumulative estimate for {ETHNICITIES.find(e => e.id === selectedEthnicity)?.name} {tradeData.name}s.
+              40-year cumulative estimate for {tradeData.name}s.
             </p>
           </div>
           
@@ -615,16 +618,13 @@ export default function PayPage() {
 
           <div className="card p-5 border-industrial-100 bg-white">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 bg-rose-50 rounded-lg">
-                <Users className="w-5 h-5 text-rose-500" />
+              <div className="p-2 bg-blue-50 rounded-lg">
+                <ShieldCheck className="w-5 h-5 text-safety-blue" />
               </div>
-              <span className="text-[10px] font-black uppercase tracking-widest text-industrial-500">Wealth Gap Alert</span>
+              <span className="text-[10px] font-black uppercase tracking-widest text-industrial-500">Union Strength</span>
             </div>
             <p className="text-xs text-industrial-500 leading-relaxed font-medium">
-              Baseline Wealth Parity: <span className="font-black text-rose-600">
-                {Math.round((1 - (tradeData.payGrowth[0][selectedEthnicity] / tradeData.payGrowth[0].white)) * 100)}% gap
-              </span>.
-              Navigate systemic pay disparities with our specialized negotiation tools.
+              Trades offer industry-leading <span className="font-black text-safety-blue">collective bargaining power</span>. Union members typically earn 20-30% higher wages and secure better pension/health benefits.
             </p>
           </div>
       </div>
