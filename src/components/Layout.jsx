@@ -19,7 +19,9 @@ export default function Layout({ children }) {
       <aside className={`w-64 text-white flex flex-col fixed inset-y-0 left-0 shadow-2xl z-50 transition-colors duration-500 ${userType === 'student' ? 'bg-indigo-950' : 'bg-industrial-900'}`}>
         <div className="p-4 flex items-center gap-3">
           <TradePathLogo className="w-10 h-10" light={userType === 'student'} />
-          <h1 className="text-xl font-bold tracking-tight">TradePath</h1>
+          <h1 className={`text-xl font-bold tracking-tight bg-white px-3 py-1 rounded-lg ${userType === 'student' ? 'text-indigo-950' : 'text-industrial-900'}`}>
+            TradePath
+          </h1>
         </div>
 
         <nav className="flex-1 px-4 py-4 space-y-2">
