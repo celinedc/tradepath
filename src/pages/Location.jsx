@@ -204,23 +204,23 @@ export default function LocationPage() {
                     <span className="text-[8px] font-black text-industrial-500 uppercase">Certified Data</span>
                   </div>
                    <div className="grid grid-cols-1 gap-2">
-                     {(useMemo(() => {
+                     {(() => {
                        const sectors = ['Advanced Manufacturing', 'Infrastructure', 'Telecommunications', 'Green Energy', 'Logistics', 'Robotics'];
                        const stateHash = (selectedState.name || '').split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
                        return [
                          sectors[(stateHash) % sectors.length],
                          sectors[(stateHash + 1) % sectors.length],
                          sectors[(stateHash + 2) % sectors.length]
-                       ];
-                     }, [selectedState.name])).map((sector, i) => (
-                       <div key={i} className="flex items-center justify-between text-sm p-3 bg-white/5 rounded-xl border border-white/5 transition-all hover:bg-white/10">
-                         <span className="font-bold">{sector}</span>
-                         <div className="flex items-center gap-2">
-                            <span className="text-[9px] font-black text-emerald-400">Stable</span>
-                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                       ].map((sector, i) => (
+                         <div key={i} className="flex items-center justify-between text-sm p-3 bg-white/5 rounded-xl border border-white/5 transition-all hover:bg-white/10">
+                           <span className="font-bold">{sector}</span>
+                           <div className="flex items-center gap-2">
+                              <span className="text-[9px] font-black text-emerald-400">Stable</span>
+                              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                           </div>
                          </div>
-                       </div>
-                     ))}
+                       ));
+                     })()}
                    </div>
                 </div>
                 
