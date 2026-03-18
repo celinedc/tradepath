@@ -371,6 +371,51 @@ export default function PayPage() {
     }
     return { dataResults, breakEvenYear, comparablePath, degreeDebt };
   }, [tradeData, selectedEthnicity]);
+  
+  const unionDetails = useMemo(() => {
+    const sector = tradeData.sector;
+    const name = tradeData.name;
+    
+    let stats = {
+      level: 'Strong',
+      orgs: 'Standard Trade Guilds',
+      desc: 'Collective bargaining helps ensure fair wages and standard safety protections across the specialized trades.'
+    };
+
+    if (sector === 'Construction' || name.includes('Electrician') || name.includes('Pipe') || name.includes('Welder')) {
+      stats = {
+        level: 'Exceptional',
+        orgs: 'IBEW, UA, LIUNA',
+        desc: 'One of the most organized labor forces. Benefit from top-tier master-apprentice training and strict wage-parity rules.'
+      };
+    } else if (sector === 'Aviation & Aerospace' || sector === 'Transportation' || name.includes('Aircraft') || name.includes('Truck')) {
+      stats = {
+        level: 'Very High',
+        orgs: 'IAM, Teamsters, ALPA',
+        desc: 'Strategic roles with long histories of successful bargaining for pension stability and workplace safety.'
+      };
+    } else if (sector === 'Industrial & Manufacturing' || name.includes('Machinist') || name.includes('Robotics')) {
+      stats = {
+        level: 'High',
+        orgs: 'UAW, IAM, USW',
+        desc: 'Industry-wide protections for job security and specialized skill premiums in high-tech manufacturing.'
+      };
+    } else if (sector === 'Healthcare & Medical' || name.includes('Dental')) {
+      stats = {
+        level: 'Emerging',
+        orgs: 'SEIU, NNU, AFSCME',
+        desc: 'Growing union presence focused on improving staffing ratios and specialized professional retention.'
+      };
+    } else if (sector === 'Energy & Utilities' || name.includes('Solar') || name.includes('Wind')) {
+      stats = {
+        level: 'Very High',
+        orgs: 'UWUA, IBEW',
+        desc: 'Strong protections for high-skill technicians maintaining critical national infrastructure.'
+      };
+    }
+
+    return stats;
+  }, [tradeData]);
 
   const { dataResults: comparisonDataResults, breakEvenYear, comparablePath, degreeDebt } = comparisonData;
   const isStudent = userType === 'student';
@@ -621,10 +666,16 @@ export default function PayPage() {
               <div className="p-2 bg-blue-50 rounded-lg">
                 <ShieldCheck className="w-5 h-5 text-safety-blue" />
               </div>
-              <span className="text-[10px] font-black uppercase tracking-widest text-industrial-500">Union Strength</span>
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                   <span className="text-[10px] font-black uppercase tracking-widest text-industrial-500">Union Strength</span>
+                   <span className="text-[9px] font-black uppercase text-safety-blue bg-blue-50 px-2 py-0.5 rounded-full border border-blue-100">{unionDetails.level}</span>
+                </div>
+                <p className="text-[9px] font-bold text-industrial-400 mt-0.5 uppercase tracking-tighter">Key Orgs: {unionDetails.orgs}</p>
+              </div>
             </div>
             <p className="text-xs text-industrial-500 leading-relaxed font-medium">
-              Trades offer industry-leading <span className="font-black text-safety-blue">collective bargaining power</span>. Union members typically earn 20-30% higher wages and secure better pension/health benefits.
+              {unionDetails.desc} <span className="font-black text-safety-blue">Union members typically earn 25% higher wages</span> and superior retirement plans.
             </p>
           </div>
       </div>
