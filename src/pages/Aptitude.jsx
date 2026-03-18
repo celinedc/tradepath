@@ -22,8 +22,12 @@ export default function AptitudePage() {
     return <Navigate to="/dashboard" replace />;
   }
   
-  const [selectedTradeId, setSelectedTradeId] = useState(isCounselor ? (profile.starredTrades?.[0] || 'electrician') : (profile.selectedTrade || 'electrician'));
-  const [filter, setFilter] = useState('');
+  // Auto-scroll to analysis when trade changes for counselor
+  useEffect(() => {
+    if (isCounselor && selectedTradeId) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [selectedTradeId, isCounselor]);
   
   const currentTrade = TRADE_CAREERS.find(t => t.id === selectedTradeId) || TRADE_CAREERS[0];
   const filteredTrades = TRADE_CAREERS.filter(t => 
@@ -73,7 +77,7 @@ export default function AptitudePage() {
       <section className="space-y-4">
         <div className="flex justify-between items-end">
           <div>
-            <h3 className="text-xl font-bold text-industrial-900 flex items-center gap-2">
+            <h3 className="text-xl font-bold text-industrial-900 flex items-center gap-2" id="analysis-top">
               <Lightbulb className="w-5 h-5 text-safety-blue" />
               {isCounselor ? 'Competency Framework' : `Core Trade Competencies: ${currentTrade.name}`}
             </h3>
@@ -139,7 +143,7 @@ export default function AptitudePage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               onClick={() => setSelectedTradeId(trade.id)}
-              className={`p-5 rounded-2xl border transition-all cursor-pointer hover:shadow-lg ${
+              className={`p-5 rounded-2xl border transition-[background-color,border-color,box-shadow,transform] cursor-pointer hover:shadow-lg ${
                 trade.id === selectedTradeId 
                   ? 'bg-industrial-900 border-safety-blue ring-1 ring-safety-blue/50 text-white' 
                   : 'bg-white border-industrial-100 text-industrial-900'
