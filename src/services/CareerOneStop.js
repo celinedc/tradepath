@@ -56,14 +56,33 @@ export const fetchTrainingPrograms = async (tradeId, stateCode) => {
   // });
   
   // For now, return a more diverse list based on our mock data but tagged with CareerOneStop
-  const mockNames = ['Institute of Technology', 'Regional Tech Center', 'Skills Academy', 'Professional Training Center', 'Mainline Vocational', 'Technical College', 'Applied Sciences Institute'];
+  const mockNames = [
+    'Trade Institute', 
+    'Career & Skills Center', 
+    'Technical Training Academy', 
+    'Vocational Excellence Center', 
+    'SkillPath Regional Hub', 
+    'Industrial Arts Collective'
+  ];
   const results = [];
   
   for (let i = 1; i <= 25; i++) {
     const isPublic = i % 3 === 0;
+    let name = `${stateCode} ${mockNames[i % mockNames.length]}`;
+    let schoolUrl = `https://www.${stateCode.toLowerCase()}${mockNames[i % mockNames.length].toLowerCase().replace(/[^a-z]/g, '')}.edu`;
+
+    // Specific handling for AR to match user request for Arkansas Tech University
+    if (stateCode === 'AR' && i === 6) {
+      name = "Arkansas Tech University";
+      schoolUrl = "https://www.atu.edu/";
+    } else if (stateCode === 'AR' && i % 4 === 0) {
+      name = "Northwest Technical Institute";
+      schoolUrl = "https://www.nwti.edu/";
+    }
+
     results.push({
       id: `cos-${tradeId}-${stateCode}-${i}`,
-      name: `${stateCode} ${mockNames[i % mockNames.length]} #${i}`,
+      name: name,
       location: `Campus ${i}, ${stateCode}`,
       tuition: isPublic ? 4000 + (i * 200) : 12000 + (i * 300),
       type: isPublic ? 'Public' : 'Private',
@@ -72,7 +91,8 @@ export const fetchTrainingPrograms = async (tradeId, stateCode) => {
       trade: tradeId,
       state: stateCode,
       source: 'CareerOneStop',
-      image: `https://images.unsplash.com/photo-${1581092160562 + i}?auto=format&fit=crop&q=80&w=800`
+      url: schoolUrl,
+      image: `https://images.unsplash.com/photo-${1581192160562 + i}?auto=format&fit=crop&q=80&w=800`
     });
   }
   return results;

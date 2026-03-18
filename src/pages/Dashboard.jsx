@@ -143,7 +143,7 @@ function StudentDashboard({ profile, onScheduleClick }) {
   const tradeName = hasCompletedDiscovery ? currentTrade.name : "High-Demand Trades";
 
   const dynamicSteps = steps.map(s => {
-    if (s.id === 1) return { ...s, status: hasCompletedDiscovery ? 'complete' : 'current' };
+    if (s.id === 1) return { ...s, status: (hasCompletedDiscovery || hasApplied) ? 'complete' : 'current' };
     if (s.id === 2) return { ...s, status: hasApplied ? 'complete' : (hasCompletedDiscovery ? 'current' : 'upcoming') };
     if (s.id === 3) return { ...s, status: hasApplied ? 'current' : 'upcoming' };
     return { ...s, status: 'upcoming' };

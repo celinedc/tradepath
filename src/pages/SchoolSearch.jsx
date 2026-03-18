@@ -339,14 +339,14 @@ export default function SchoolSearchPage() {
                     </div>
 
                     <button 
-                      onClick={() => {
+                      onClick={(e) => {
+                        e.preventDefault();
                         const url = school.url || `https://www.google.com/search?q=${encodeURIComponent(school.name)}`;
                         window.open(url, '_blank');
                       }}
                       className="w-full mt-4 py-3 bg-industrial-900 text-white font-black text-[10px] uppercase tracking-[0.2em] rounded-xl hover:bg-industrial-800 transition-colors flex items-center justify-center gap-2 shadow-lg shadow-industrial-900/10"
                     >
-                      {school.source === 'Apprenticeship.gov' ? 'View on Apprenticeship.gov' : 
-                       school.source === 'CareerOneStop' ? 'View on CareerOneStop' : 'View Program Details'} <ArrowRight className="w-4 h-4" />
+                      {school.url ? 'Visit School Website' : (school.source || 'View Program Details')} <ArrowRight className="w-4 h-4" />
                     </button>
                   </div>
                 </motion.div>
