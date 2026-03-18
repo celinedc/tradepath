@@ -446,6 +446,22 @@ export default function PayPage() {
                       <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${showGenderGap ? 'translate-x-6' : 'translate-x-1'}`} />
                     </button>
                   </div>
+
+                  {!isStudent && (
+                    <div className="pt-4 border-t border-industrial-100 space-y-2">
+                      <label className="text-[10px] font-black text-industrial-400 uppercase tracking-widest">Demographic Filter</label>
+                      <select 
+                        value={selectedEthnicity}
+                        onChange={(e) => setSelectedEthnicity(e.target.value)}
+                        className="w-full py-2 px-3 text-xs border border-industrial-200 rounded-xl bg-industrial-50 text-industrial-900 font-bold appearance-none cursor-pointer"
+                      >
+                        {ETHNICITIES.map(eth => (
+                          <option key={eth.id} value={eth.id}>{eth.name}</option>
+                        ))}
+                      </select>
+                      <p className="text-[9px] text-industrial-400 italic font-medium leading-tight">Switch view to analyze wage disparities across ethnic backgrounds.</p>
+                    </div>
+                  )}
                 </div>
               </div>
           </div>

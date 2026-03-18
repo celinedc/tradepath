@@ -7,7 +7,7 @@ import {
   ZoomableGroup 
 } from 'react-simple-maps';
 import { scaleQuantile } from 'd3-scale';
-import { MapPin, Search, TrendingUp, Info, Briefcase, MousePointer2, ArrowRight, GraduationCap, Users } from 'lucide-react';
+import { MapPin, TrendingUp, Users, Briefcase, Target, ShieldCheck, Wallet, Scale, Award, MousePointer2, GraduationCap, ArrowRight } from 'lucide-react';
 import { DEMAND_DATA, TRADE_CAREERS } from '../data/mockData';
 import { useUser } from '../context/UserContext';
 
@@ -171,16 +171,67 @@ export default function LocationPage() {
 
               {/* Smaller Data Boxes */}
               <div className="grid grid-cols-2 gap-2">
-                <div className="p-3 bg-white rounded-xl shadow-sm border border-industrial-100">
-                  <p className="text-[7px] font-black uppercase text-industrial-400 mb-1">Opp. Map</p>
-                  <p className="text-[10px] font-black leading-tight">
-                    {selectedState.setting ? selectedState.setting.replace('Mostly ', '') : 'N/A'}
-                  </p>
+                <div className="p-3 bg-white rounded-xl shadow-sm border border-industrial-100 flex items-center gap-2">
+                   <div className="p-1.5 rounded-lg bg-emerald-50 text-emerald-600">
+                     <MapPin className="w-3 h-3" />
+                   </div>
+                   <div>
+                     <p className="text-[7px] font-black uppercase text-industrial-400">Opp. Map</p>
+                     <p className="text-[10px] font-black leading-tight">
+                       {selectedState.setting ? selectedState.setting.replace('Mostly ', '') : 'Rural'}
+                     </p>
+                   </div>
                 </div>
+                
+                <div className="p-3 bg-white rounded-xl shadow-sm border border-industrial-100 flex items-center gap-2">
+                   <div className="p-1.5 rounded-lg bg-amber-50 text-amber-600">
+                     <Wallet className="w-3 h-3" />
+                   </div>
+                   <div>
+                     <p className="text-[7px] font-black uppercase text-industrial-400">Wallet Impact</p>
+                     <p className="text-[10px] font-black leading-tight">{selectedState.col || 'Moderate'}</p>
+                   </div>
+                </div>
+
+                <div className="p-3 bg-white rounded-xl shadow-sm border border-industrial-100 flex items-center gap-2">
+                   <div className="p-1.5 rounded-lg bg-blue-50 text-blue-600">
+                     <Award className="w-3 h-3" />
+                   </div>
+                   <div>
+                     <p className="text-[7px] font-black uppercase text-industrial-400">Union Presence</p>
+                     <p className="text-[10px] font-black leading-tight">{selectedState.union || 'Growing'}</p>
+                   </div>
+                </div>
+
+                <div className="p-3 bg-white rounded-xl shadow-sm border border-industrial-100 flex items-center gap-2">
+                   <div className="p-1.5 rounded-lg bg-purple-50 text-purple-600">
+                     <Scale className="w-3 h-3" />
+                   </div>
+                   <div>
+                     <p className="text-[7px] font-black uppercase text-industrial-400">License Path</p>
+                     <p className="text-[10px] font-black leading-tight">{selectedState.licensing ? `Level ${selectedState.licensing}/5` : 'Standard'}</p>
+                   </div>
+                </div>
+
+                <div className="p-3 bg-white rounded-xl shadow-sm border border-industrial-100 flex items-center gap-2">
+                   <div className="p-1.5 rounded-lg bg-teal-50 text-teal-600">
+                     <ShieldCheck className="w-3 h-3" />
+                   </div>
+                   <div>
+                     <p className="text-[7px] font-black uppercase text-industrial-400">Trade Grants</p>
+                     <p className="text-[10px] font-black leading-tight">{selectedState.grants || 'Active'}</p>
+                   </div>
+                </div>
+
                 {selectedTrade === 'all' && (
-                  <div className="p-3 bg-white rounded-xl shadow-sm border border-industrial-100">
-                    <p className="text-[7px] font-black uppercase text-industrial-400 mb-1">Top Trade</p>
-                    <p className="text-[10px] font-black leading-tight truncate">{selectedState.topTrade || 'Construction'}</p>
+                  <div className="p-3 bg-white rounded-xl shadow-sm border border-industrial-100 flex items-center gap-2">
+                    <div className="p-1.5 rounded-lg bg-indigo-50 text-indigo-600">
+                      <Target className="w-3 h-3" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[7px] font-black uppercase text-industrial-400">Top Trade</p>
+                      <p className="text-[10px] font-black leading-tight truncate">{selectedState.topTrade || 'Construction'}</p>
+                    </div>
                   </div>
                 )}
               </div>

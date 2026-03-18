@@ -16,14 +16,16 @@ import { Navigate } from 'react-router-dom';
 
 export default function AptitudePage() {
   const { profile, userType } = useUser();
+  const isCounselor = userType === 'counselor';
   
   if (userType === 'student') {
     return <Navigate to="/dashboard" replace />;
   }
   
+  const [selectedTradeId, setSelectedTradeId] = useState(isCounselor ? (profile.starredTrades?.[0] || 'electrician') : (profile.selectedTrade || 'electrician'));
   const [filter, setFilter] = useState('');
   
-  const currentTrade = TRADE_CAREERS.find(t => t.id === profile.selectedTrade) || TRADE_CAREERS[0];
+  const currentTrade = TRADE_CAREERS.find(t => t.id === selectedTradeId) || TRADE_CAREERS[0];
   const filteredTrades = TRADE_CAREERS.filter(t => 
     t.name.toLowerCase().includes(filter.toLowerCase())
   );
@@ -36,34 +38,36 @@ export default function AptitudePage() {
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-      {/* Hero Section */}
-      <div className="card p-8 bg-industrial-900 border-none text-white relative overflow-hidden">
-        <div className="relative z-10 max-w-2xl">
-          <div className="flex items-center gap-2 mb-4">
-            <Sparkles className="w-5 h-5 text-safety-blue" />
-            <span className="text-xs font-black uppercase tracking-widest text-safety-blue">Skill Assessment</span>
-          </div>
-          <h2 className="text-4xl font-black mb-4">Discover Your Trade Match</h2>
-          <p className="text-industrial-400 text-lg leading-relaxed mb-8">
-            Our aptitude test analyzes your spatial reasoning, mechanical comprehension, and physical coordination to find the trades where you'll excel most.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <button className="bg-safety-blue hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-xl transition-all flex items-center gap-3 shadow-lg shadow-blue-500/20">
-              Start Assessment <ArrowRight className="w-5 h-5" />
-            </button>
-            <div className="flex items-center gap-3 px-6 py-4 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
-              <Target className="w-5 h-5 text-emerald-400" />
-              <div>
-                <p className="text-[10px] uppercase font-black text-industrial-500">Focusing On</p>
-                <p className="text-sm font-bold text-white">{currentTrade.name}</p>
+      {/* Skill Assessment Portion - Only for Students or if assessment is the main focus */}
+      {!isCounselor && (
+        <div className="card p-8 bg-industrial-900 border-none text-white relative overflow-hidden">
+          <div className="relative z-10 max-w-2xl">
+            <div className="flex items-center gap-2 mb-4">
+              <Sparkles className="w-5 h-5 text-safety-blue" />
+              <span className="text-xs font-black uppercase tracking-widest text-safety-blue">Skill Assessment</span>
+            </div>
+            <h2 className="text-4xl font-black mb-4">Discover Your Trade Match</h2>
+            <p className="text-industrial-400 text-lg leading-relaxed mb-8">
+              Our aptitude test analyzes your spatial reasoning, mechanical comprehension, and physical coordination to find the trades where you'll excel most.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <button className="bg-safety-blue hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-xl transition-all flex items-center gap-3 shadow-lg shadow-blue-500/20">
+                Start Assessment <ArrowRight className="w-5 h-5" />
+              </button>
+              <div className="flex items-center gap-3 px-6 py-4 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
+                <Target className="w-5 h-5 text-emerald-400" />
+                <div>
+                  <p className="text-[10px] uppercase font-black text-industrial-500">Focusing On</p>
+                  <p className="text-sm font-bold text-white">{currentTrade.name}</p>
+                </div>
               </div>
             </div>
           </div>
+          <div className="absolute right-[-10%] top-[-10%] opacity-10">
+             <Brain size={400} />
+          </div>
         </div>
-        <div className="absolute right-[-10%] top-[-10%] opacity-10">
-           <Brain size={400} />
-        </div>
-      </div>
+      )}
 
       {/* Dynamic Core Competencies */}
       <section className="space-y-4">
@@ -71,9 +75,11 @@ export default function AptitudePage() {
           <div>
             <h3 className="text-xl font-bold text-industrial-900 flex items-center gap-2">
               <Lightbulb className="w-5 h-5 text-safety-blue" />
-              Core Trade Competencies: {currentTrade.name}
+              {isCounselor ? 'Competency Framework' : `Core Trade Competencies: ${currentTrade.name}`}
             </h3>
-            <p className="text-industrial-500 text-sm mt-1">Key skills specifically mapped to your selected career path.</p>
+            <p className="text-industrial-500 text-sm mt-1">
+              {isCounselor ? `Analyzing the critical aptitude profile for ${currentTrade.name}.` : 'Key skills specifically mapped to your selected career path.'}
+            </p>
           </div>
         </div>
         
@@ -83,7 +89,7 @@ export default function AptitudePage() {
               const IconComponent = ICON_MAP[skill.icon] || Brain;
               return (
                 <motion.div 
-                  key={`${currentTrade.id}-${skill.title}`} 
+                  key={`${selectedTradeId}-${skill.title}`} 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
@@ -110,7 +116,7 @@ export default function AptitudePage() {
               <Zap className="w-5 h-5 text-amber-500" />
               Career-Specific Aptitudes
             </h3>
-            <p className="text-industrial-500 text-sm">A summary of the mental and physical traits needed for each discipline.</p>
+            <p className="text-industrial-500 text-sm">A summary of the mental and physical traits needed for each discipline. Click a trade to view its framework.</p>
           </div>
           <div className="relative w-full md:w-64">
             <input 
@@ -130,32 +136,32 @@ export default function AptitudePage() {
           ]).map((trade) => (
             <motion.div 
               key={trade.id}
-              layout
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className={`p-5 rounded-2xl border transition-all ${
-                trade.id === profile.selectedTrade 
+              onClick={() => setSelectedTradeId(trade.id)}
+              className={`p-5 rounded-2xl border transition-all cursor-pointer hover:shadow-lg ${
+                trade.id === selectedTradeId 
                   ? 'bg-industrial-900 border-safety-blue ring-1 ring-safety-blue/50 text-white' 
                   : 'bg-white border-industrial-100 text-industrial-900'
               }`}
             >
               <div className="flex justify-between items-start mb-3">
                 <h4 className="font-black uppercase tracking-tight text-sm">{trade.name}</h4>
-                {trade.id === profile.selectedTrade && (
+                {trade.id === selectedTradeId && (
                   <span className="bg-safety-blue text-[8px] font-black px-2 py-0.5 rounded-full uppercase">Selected</span>
                 )}
               </div>
-              <p className={`text-xs leading-relaxed ${trade.id === profile.selectedTrade ? 'text-industrial-300' : 'text-industrial-500'}`}>
+              <p className={`text-xs leading-relaxed ${trade.id === selectedTradeId ? 'text-industrial-300' : 'text-industrial-500'}`}>
                 {trade.aptitude}
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                <span className={`text-[9px] font-bold px-2 py-1 rounded-md ${trade.id === profile.selectedTrade ? 'bg-white/10' : 'bg-industrial-50'}`}>
+                <span className={`text-[9px] font-bold px-2 py-1 rounded-md ${trade.id === selectedTradeId ? 'bg-white/10' : 'bg-industrial-50'}`}>
                   {trade.demand}
                 </span>
-                <span className={`text-[9px] font-bold px-2 py-1 rounded-md ${trade.id === profile.selectedTrade ? 'bg-white/10' : 'bg-industrial-50'}`}>
+                <span className={`text-[9px] font-bold px-2 py-1 rounded-md ${trade.id === selectedTradeId ? 'bg-white/10' : 'bg-industrial-50'}`}>
                   {trade.growth} Growth
                 </span>
-                <span className={`text-[9px] font-bold px-2 py-1 rounded-md opacity-60 ${trade.id === profile.selectedTrade ? 'bg-white/10' : 'bg-industrial-50'}`}>
+                <span className={`text-[9px] font-bold px-2 py-1 rounded-md opacity-60 ${trade.id === selectedTradeId ? 'bg-white/10' : 'bg-industrial-50'}`}>
                   {trade.sector}
                 </span>
               </div>

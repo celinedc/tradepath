@@ -33,28 +33,26 @@ export default function Layout({ children }) {
             <span className="font-medium">Dashboard</span>
           </NavLink>
 
-          {/* Student-specific: Career Discovery */}
-          {userType === 'student' && (
-            <NavLink 
-              to="/discovery" 
-              className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${isActive ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/20' : 'text-industrial-400 hover:bg-industrial-800 hover:text-white'}`}
-            >
-              <Sparkles className="w-5 h-5" />
-              <span className="font-medium">Career Discovery</span>
-            </NavLink>
-          )}
+          {/* Career-specific navigation based on userType */}
+          {userType === 'student' ? (
+            <>
+              <NavLink 
+                to="/discovery" 
+                className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${isActive ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/20' : 'text-industrial-400 hover:bg-industrial-800 hover:text-white'}`}
+              >
+                <Sparkles className="w-5 h-5" />
+                <span className="font-medium">Career Discovery</span>
+              </NavLink>
 
-          {/* Trade Library (Both roles) */}
-          <NavLink 
-            to="/library" 
-            className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${isActive ? (userType === 'student' ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/20' : 'bg-safety-blue text-white shadow-lg shadow-safety-blue/20') : 'text-industrial-400 hover:bg-industrial-800 hover:text-white'}`}
-          >
-            <BookOpen className="w-5 h-5" />
-            <span className="font-medium">Trade Library</span>
-          </NavLink>
-
-          {/* Counselor Exclusive Links */}
-          {userType === 'counselor' && (
+              <NavLink 
+                to="/library" 
+                className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${isActive ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/20' : 'text-industrial-400 hover:bg-industrial-800 hover:text-white'}`}
+              >
+                <BookOpen className="w-5 h-5" />
+                <span className="font-medium">Trade Library</span>
+              </NavLink>
+            </>
+          ) : (
             <>
               <NavLink 
                 to="/students" 
@@ -69,6 +67,13 @@ export default function Layout({ children }) {
               >
                 <Brain className="w-5 h-5" />
                 <span className="font-medium">Aptitude</span>
+              </NavLink>
+              <NavLink 
+                to="/library" 
+                className={({ isActive }) => `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 ${isActive ? 'bg-safety-blue text-white shadow-lg shadow-safety-blue/20' : 'text-industrial-400 hover:bg-industrial-800 hover:text-white'}`}
+              >
+                <BookOpen className="w-5 h-5" />
+                <span className="font-medium">Trade Library</span>
               </NavLink>
             </>
           )}

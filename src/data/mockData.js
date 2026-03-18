@@ -30034,7 +30034,11 @@ export const DEMAND_DATA = [
     "demand": 68,
     "setting": "Mixed",
     "source": "Alabama Dept. of Labor",
-    "topTrade": "it-support-specialist"
+    "topTrade": "it-support-specialist",
+    "col": "Low",
+    "union": "Moderate",
+    "licensing": 2,
+    "grants": "Active"
   },
   {
     "id": "AK",
@@ -30042,7 +30046,11 @@ export const DEMAND_DATA = [
     "demand": 42,
     "setting": "Mostly Rural",
     "source": "Alaska Dept. of Labor",
-    "topTrade": "aircraft-tech"
+    "topTrade": "aircraft-tech",
+    "col": "High",
+    "union": "Strong",
+    "licensing": 3,
+    "grants": "Active"
   },
   {
     "id": "AZ",
@@ -30050,7 +30058,11 @@ export const DEMAND_DATA = [
     "demand": 84,
     "setting": "Mostly Urban",
     "source": "Arizona Office of Economic Opportunity",
-    "topTrade": "automotive-technician"
+    "topTrade": "automotive-technician",
+    "col": "Moderate",
+    "union": "Growing",
+    "licensing": 2,
+    "grants": "N/A"
   },
   {
     "id": "AR",
@@ -30058,7 +30070,11 @@ export const DEMAND_DATA = [
     "demand": 58,
     "setting": "Mostly Rural",
     "source": "Arkansas Division of Workforce Services",
-    "topTrade": "hvac"
+    "topTrade": "hvac",
+    "col": "Low",
+    "union": "Moderate",
+    "licensing": 2,
+    "grants": "Active"
   },
   {
     "id": "CA",
@@ -30066,7 +30082,11 @@ export const DEMAND_DATA = [
     "demand": 95,
     "setting": "Mostly Urban",
     "source": "California Employment Development Dept.",
-    "topTrade": "welder"
+    "topTrade": "welder",
+    "col": "High",
+    "union": "Strong",
+    "licensing": 4,
+    "grants": "Active"
   },
   {
     "id": "CO",
@@ -30074,7 +30094,11 @@ export const DEMAND_DATA = [
     "demand": 82,
     "setting": "Mostly Urban",
     "source": "Colorado Dept. of Labor and Employment",
-    "topTrade": "automotive-technician"
+    "topTrade": "automotive-technician",
+    "col": "Moderate",
+    "union": "Moderate",
+    "licensing": 3,
+    "grants": "Active"
   },
   {
     "id": "CT",
@@ -30082,7 +30106,11 @@ export const DEMAND_DATA = [
     "demand": 64,
     "setting": "Mostly Urban",
     "source": "Connecticut Dept. of Labor",
-    "topTrade": "hvac"
+    "topTrade": "hvac",
+    "col": "High",
+    "union": "Strong",
+    "licensing": 4,
+    "grants": "Active"
   },
   {
     "id": "DE",
@@ -30090,7 +30118,11 @@ export const DEMAND_DATA = [
     "demand": 55,
     "setting": "Mixed",
     "source": "Delaware Dept. of Labor",
-    "topTrade": "aircraft-tech"
+    "topTrade": "aircraft-tech",
+    "col": "Moderate",
+    "union": "Moderate",
+    "licensing": 2,
+    "grants": "N/A"
   },
   {
     "id": "FL",
@@ -30098,7 +30130,11 @@ export const DEMAND_DATA = [
     "demand": 92,
     "setting": "Mostly Urban",
     "source": "Florida Dept. of Economic Opportunity",
-    "topTrade": "LPN"
+    "topTrade": "LPN",
+    "col": "Moderate",
+    "union": "Growing",
+    "licensing": 3,
+    "grants": "Active"
   },
   {
     "id": "GA",
@@ -30106,7 +30142,11 @@ export const DEMAND_DATA = [
     "demand": 88,
     "setting": "Mixed",
     "source": "Georgia Dept. of Labor",
-    "topTrade": "LPN"
+    "topTrade": "LPN",
+    "col": "Low",
+    "union": "Moderate",
+    "licensing": 2,
+    "grants": "Active"
   },
   {
     "id": "HI",
@@ -30114,7 +30154,11 @@ export const DEMAND_DATA = [
     "demand": 48,
     "setting": "Mostly Urban",
     "source": "Hawaii Dept. of Labor and Industrial Relations",
-    "topTrade": "Aircraft Tech"
+    "topTrade": "Aircraft Tech",
+    "col": "High",
+    "union": "Moderate",
+    "licensing": 4,
+    "grants": "N/A"
   },
   {
     "id": "ID",
@@ -30122,7 +30166,11 @@ export const DEMAND_DATA = [
     "demand": 62,
     "setting": "Mostly Rural",
     "source": "Idaho Dept. of Labor",
-    "topTrade": "Machinist"
+    "topTrade": "Machinist",
+    "col": "Low",
+    "union": "Growing",
+    "licensing": 2,
+    "grants": "Active"
   },
   {
     "id": "IL",
@@ -30130,7 +30178,11 @@ export const DEMAND_DATA = [
     "demand": 85,
     "setting": "Mostly Urban",
     "source": "Illinois Dept. of Employment Security",
-    "topTrade": "Plumber"
+    "topTrade": "Plumber",
+    "col": "Moderate",
+    "union": "Strong",
+    "licensing": 4,
+    "grants": "Active"
   },
   {
     "id": "IN",
@@ -30138,7 +30190,11 @@ export const DEMAND_DATA = [
     "demand": 78,
     "setting": "Mixed",
     "source": "Indiana Dept. of Workforce Development",
-    "topTrade": "Machinist"
+    "topTrade": "Machinist",
+    "col": "Low",
+    "union": "Strong",
+    "licensing": 2,
+    "grants": "Active"
   },
   {
     "id": "IA",
@@ -30146,7 +30202,11 @@ export const DEMAND_DATA = [
     "demand": 65,
     "setting": "Mostly Rural",
     "source": "Iowa Workforce Development",
-    "topTrade": "LPN"
+    "topTrade": "LPN",
+    "col": "Low",
+    "union": "Moderate",
+    "licensing": 2,
+    "grants": "Active"
   },
   {
     "id": "KS",
@@ -30282,7 +30342,11 @@ export const DEMAND_DATA = [
     "demand": 94,
     "setting": "Mostly Urban",
     "source": "New York Dept. of Labor",
-    "topTrade": "HVAC Technician"
+    "topTrade": "HVAC Technician",
+    "col": "High",
+    "union": "Strong",
+    "licensing": 4,
+    "grants": "Active"
   },
   {
     "id": "NC",
@@ -34679,6 +34743,7 @@ export const STUDENTS_DATA = [
     grade: "11th Grade",
     gpa: "3.2",
     extracurriculars: "Varsity Football, Robotics Club, Volunteer Firefighter",
+    discoveryMatch: "HVAC Technician (92%)",
     grades: [
       { subject: "Algebra II", grade: "B+" },
       { subject: "Physics", grade: "A-" },
@@ -34689,9 +34754,8 @@ export const STUDENTS_DATA = [
       { name: "Spatial Reasoning", value: 85, tooltip: "Excellent performance in woodshop and 3D modeling." },
       { name: "Team Leadership", value: 90, tooltip: "Football captain and lead in robotics team." },
       { name: "Technical Aptitude", value: 80, tooltip: "Strong grasp of mechanics and electrical basics." },
-      { name: "Problem Solving", value: 75, tooltip: "Effective troubleshooting in robotics projects." },
-      { name: "Physical Stamina", value: 95, tooltip: "Athletic background translates to site endurance." },
-      { name: "Safety Awareness", value: 88, tooltip: "Certified in basic fire safety and first aid." }
+      { name: "Manual Dexterity", value: 82, tooltip: "Observed precision in woodshop (Grade A)." },
+      { name: "Systems Logic", value: 78, tooltip: "From robotics and firefighting training." }
     ]
   },
   {
@@ -34700,6 +34764,7 @@ export const STUDENTS_DATA = [
     grade: "12th Grade",
     gpa: "3.8",
     extracurriculars: "Art Club, Math Olympiad, Coding Camp",
+    discoveryMatch: "Avionics Tech (94%)",
     grades: [
       { subject: "Calculus", grade: "A" },
       { subject: "Art History", grade: "A" },
@@ -34707,12 +34772,11 @@ export const STUDENTS_DATA = [
       { subject: "Spanish", grade: "A" }
     ],
     skills: [
-      { name: "Mathematical Logic", value: 95, tooltip: "Top performer in advanced math courses." },
-      { name: "Attention to Detail", value: 90, tooltip: "Precise execution in fine arts and coding." },
+      { name: "Mathematical Logic", value: 95, tooltip: "Top performer in advanced math courses (Calculus: A)." },
+      { name: "Attention to Detail", value: 90, tooltip: "Precise execution in fine arts and coding camp." },
       { name: "Visual Analysis", value: 85, tooltip: "Strong interpretation of complex diagrams and art." },
-      { name: "Methodical Approach", value: 80, tooltip: "Consistent documentation in chemistry labs." },
-      { name: "Digital Literacy", value: 92, tooltip: "Fluent in multiple CAD and coding environments." },
-      { name: "Communication", value: 78, tooltip: "Clear presentation of technical concepts." }
+      { name: "Electronic Aptitude", value: 88, tooltip: "From coding and physics (Chemistry: A-)." },
+      { name: "Analytical Precision", value: 92, tooltip: "Derived from math olympiad results." }
     ]
   }
 ];
